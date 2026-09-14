@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Create Staff &amp; Broker Account | Crestline Realty Group</title>
+<meta name="description" content="Register as a licensed broker or operations staff member with Crestline Realty Group.">
+<meta name="theme-color" content="#18241f">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.crestline-realty.example/admin-register.html">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232f7d5d'/%3E%3Cpath d='M12 5l7 5.5v8h-4.5v-5h-5v5H5v-8L12 5z' fill='white'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
+          display: ['Fraunces', 'Georgia', 'serif']
+        },
+        colors: {
+          brand: {
+            50: '#eef7f0', 100: '#d9eee2', 200: '#b2dcc6', 300: '#82c3a3',
+            400: '#5bb98f', 500: '#3d9c73', 600: '#2f7d5d', 700: '#256b4e',
+            800: '#1f5740', 900: '#1a4634', 950: '#0f2b20'
+          },
+          ember: {
+            50: '#fdf3ea', 100: '#f9e0cb', 200: '#f2c3a3', 300: '#e8a76f',
+            400: '#d98a4f', 500: '#c96f4a', 600: '#b2542f', 700: '#93401f',
+            800: '#6f3018', 900: '#4e2312'
+          },
+          ink: {
+            50: '#f7f4f0', 100: '#ece6dd', 200: '#d8cdbd', 300: '#b8a993',
+            400: '#94836d', 500: '#6e6050', 600: '#54483c', 700: '#3c342c',
+            800: '#2b2622', 900: '#201c19'
+          },
+          cream: '#faf6f0',
+          forest: { 800: '#18241f', 900: '#141b17', 950: '#101713' }
+        },
+        boxShadow: {
+          soft: '0 10px 40px -12px rgba(47,125,93,0.35)',
+          card: '0 2px 10px -2px rgba(32,28,25,0.08)',
+          lift: '0 24px 50px -24px rgba(32,28,25,0.28)'
+        },
+        borderRadius: { '2xl': '1.25rem', '3xl': '1.75rem' }
+      }
+    }
+  }
+</script>
+
+<script>
+  (function () {
+    var theme = localStorage.getItem('oak-theme') || 'light';
+    var dir = localStorage.getItem('oak-dir') || 'ltr';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+  })();
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css?v=2">
+</head>
+<body class="bg-cream dark:bg-forest-900 text-ink-700 dark:text-slate-300 antialiased min-h-screen flex flex-col justify-between relative overflow-x-hidden selection:bg-ember-500 selection:text-white">
+
+  <!-- Ambient Glow Orbs -->
+  <div class="fixed top-[-100px] end-[-100px] w-96 h-96 rounded-full bg-ember-500/15 dark:bg-ember-500/10 blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-[-100px] start-[-100px] w-96 h-96 rounded-full bg-brand-500/15 dark:bg-brand-500/10 blur-3xl pointer-events-none"></div>
+
+  <!-- Top bar controls -->
+  <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-end relative z-10">
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold text-ink-700 dark:text-slate-300 hover:text-ember-600 dark:hover:text-ember-400 hover:bg-ink-100 dark:hover:bg-white/10 transition me-1">
+        <i class="ri-arrow-left-line"></i> Back to Site
+      </a>
+      <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-ink-700 dark:text-slate-200 hover:bg-ink-100 dark:hover:bg-white/10 transition">
+        <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7H4M8 3.5L4 7l4 3.5" />
+          <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
+        </svg>
+      </button>
+      <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-ink-700 dark:text-slate-200 hover:bg-ink-100 dark:hover:bg-white/10 transition">
+        <i class="ri-moon-line text-lg dark:hidden"></i>
+        <i class="ri-sun-line text-lg hidden dark:inline"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Register Card Section -->
+  <main class="flex-1 flex items-center justify-center px-4 py-8 relative z-10">
+    <div class="w-full max-w-lg" data-aos="fade-up">
+      
+      <!-- Register Container with custom rich background color -->
+      <div class="rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/15 bg-[#1c1815] text-white relative backdrop-blur-xl">
+        
+        <!-- Centered Brand Logo & Header -->
+        <div class="text-center mb-6">
+          <a href="index.html" class="brand-logo inline-flex items-center justify-center gap-3 mb-3 group hover:opacity-90 transition">
+            <span class="w-11 h-11 rounded-xl bg-white text-ember-700 flex items-center justify-center text-xl shadow-md shrink-0">
+              <i class="ri-home-smile-fill"></i>
+            </span>
+            <span class="flex flex-col text-start">
+              <span class="text-white text-2xl font-extrabold tracking-tight">Crest<span class="text-ember-400">line</span></span>
+              <span class="text-slate-300 text-[11px] font-bold uppercase tracking-wider">Realty Group</span>
+            </span>
+          </a>
+          <h1 class="font-display text-2xl sm:text-3xl font-bold text-white">Create Staff &amp; Broker Account</h1>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">TREC license verification &amp; operations hub access.</p>
+        </div>
+
+        <!-- Form -->
+        <form data-auth="register" class="space-y-4" novalidate>
+          <input type="hidden" name="role" value="admin">
+          
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="admin-reg-first" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">First Name *</label>
+              <input type="text" id="admin-reg-first" name="first" placeholder="Omar" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-sm font-semibold text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ember-400 focus:bg-white/15">
+            </div>
+            <div>
+              <label for="admin-reg-last" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">Last Name *</label>
+              <input type="text" id="admin-reg-last" name="last" placeholder="Haddad" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-sm font-semibold text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ember-400 focus:bg-white/15">
+            </div>
+          </div>
+
+          <div>
+            <label for="admin-reg-email" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">Work Email Address *</label>
+            <input type="email" id="admin-reg-email" name="email" placeholder="omar@crestline-realty.example" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-sm font-semibold text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ember-400 focus:bg-white/15">
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="admin-reg-license" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">TREC License ID</label>
+              <input type="text" id="admin-reg-license" name="license" placeholder="#784291" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-sm font-semibold text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ember-400 focus:bg-white/15">
+            </div>
+            <div>
+              <label for="admin-reg-branch" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">Branch Hub</label>
+              <select id="admin-reg-branch" class="w-full px-4 py-3 rounded-xl bg-[#28211b] border border-white/20 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-ember-400">
+                <option class="bg-[#1c1815] text-white">Austin Central HQ</option>
+                <option class="bg-[#1c1815] text-white">Dallas / Fort Worth</option>
+                <option class="bg-[#1c1815] text-white">Houston Galleria</option>
+                <option class="bg-[#1c1815] text-white">San Antonio Pearl</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="admin-reg-pass" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">Staff Password *</label>
+            <input type="password" id="admin-reg-pass" name="pass" placeholder="At least 6 characters" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-sm font-semibold text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ember-400 focus:bg-white/15">
+          </div>
+
+          <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-ember-600 hover:bg-ember-500 text-white font-bold text-sm shadow-soft transition">
+            <i class="ri-shield-check-line"></i> Register Staff Account
+          </button>
+        </form>
+
+        <!-- Footnote Links -->
+        <div class="mt-6 pt-5 border-t border-white/15 text-center space-y-2 text-xs text-slate-300">
+          <p>
+            Already have staff credentials? <a href="admin-login.html" class="font-bold text-ember-300 hover:underline">Sign in here</a>
+          </p>
+          <p class="pt-1">
+            <a href="login.html" class="text-slate-300 hover:text-emerald-300 transition">
+              <i class="ri-user-smile-line text-emerald-400"></i> Not a staff member? Customer login
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+
+
+  <!-- Firebase Authentication SDK & Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/firebase-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="assets/js/main.js?v=2"></script>
+</body>
+</html>

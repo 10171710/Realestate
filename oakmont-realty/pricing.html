@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Transparent Real Estate Pricing &amp; Commission Plans | Crestline Realty Group</title>
+<meta name="description" content="Transparent, fair pricing for home buyers ($0 fee), home sellers ($299 flat-fee or 2.5% full-service), landlords, and agent commission splits at Crestline Realty Group.">
+<meta name="theme-color" content="#18241f">
+<link rel="canonical" href="https://www.crestline-realty.example/pricing.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Crestline Realty Group">
+<meta property="og:title" content="Real Estate Pricing &amp; Fee Structure | Crestline Realty Group">
+<meta property="og:description" content="Transparent pricing for every step of buying, selling or renting — no hidden broker fees.">
+<meta property="og:image" content="assets/img/story.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232f7d5d'/%3E%3Cpath d='M12 5l7 5.5v8h-4.5v-5h-5v5H5v-8L12 5z' fill='white'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
+          display: ['Fraunces', 'Georgia', 'serif']
+        },
+        colors: {
+          brand: {
+            50: '#eef7f0', 100: '#d9eee2', 200: '#b2dcc6', 300: '#82c3a3',
+            400: '#5bb98f', 500: '#3d9c73', 600: '#2f7d5d', 700: '#256b4e',
+            800: '#1f5740', 900: '#1a4634', 950: '#0f2b20'
+          },
+          ember: {
+            50: '#fdf3ea', 100: '#f9e0cb', 200: '#f2c3a3', 300: '#e8a76f',
+            400: '#d98a4f', 500: '#c96f4a', 600: '#b2542f', 700: '#93401f',
+            800: '#6f3018', 900: '#4e2312'
+          },
+          ink: {
+            50: '#f7f4f0', 100: '#ece6dd', 200: '#d8cdbd', 300: '#b8a993',
+            400: '#94836d', 500: '#6e6050', 600: '#54483c', 700: '#3c342c',
+            800: '#2b2622', 900: '#201c19'
+          },
+          cream: '#faf6f0',
+          forest: { 800: '#18241f', 900: '#141b17', 950: '#101713' }
+        },
+        boxShadow: {
+          soft: '0 10px 40px -12px rgba(47,125,93,0.35)',
+          card: '0 2px 10px -2px rgba(32,28,25,0.08)',
+          lift: '0 24px 50px -24px rgba(32,28,25,0.28)'
+        },
+        borderRadius: { '2xl': '1.25rem', '3xl': '1.75rem' }
+      }
+    }
+  }
+</script>
+
+<script>
+  (function () {
+    var theme = localStorage.getItem('oak-theme') || 'light';
+    var dir = localStorage.getItem('oak-dir') || 'ltr';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+  })();
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css?v=2">
+</head>
+<body class="bg-cream dark:bg-forest-900 text-ink-700 dark:text-slate-300 antialiased">
+
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-forest-800/95 backdrop-blur-md border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="brand-logo shrink-0 group">
+        <span class="clay brand-icon">
+          <i class="ri-home-smile-fill"></i>
+        </span>
+        <span class="flex flex-col">
+          <span class="brand-text-main">Crest<span class="brand-text-accent">line</span></span>
+          <span class="brand-text-sub">Realty Group</span>
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1 font-medium text-sm">
+        <div class="relative group">
+          <button class="nav-link flex items-center gap-1 px-3 py-2 rounded-lg font-semibold hover:text-white hover:bg-white/10 transition">
+            Home <i class="ri-arrow-down-s-line text-base transition group-hover:rotate-180"></i>
+          </button>
+          <div class="dropdown absolute start-0 top-full mt-1 w-64 rounded-xl bg-white dark:bg-forest-900 border border-ink-100 dark:border-white/10 shadow-xl p-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all">
+            <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm hover:bg-brand-50 dark:hover:bg-white/5 hover:text-brand-700 dark:hover:text-brand-300">
+              <span><span class="block font-semibold text-ink-900 dark:text-white">Home 01</span><span class="block text-xs text-ink-400">Hero banner &amp; search focus</span></span>
+            </a>
+            <a href="home-2.html" class="block px-3 py-2.5 rounded-lg text-sm hover:bg-brand-50 dark:hover:bg-white/5 hover:text-brand-700 dark:hover:text-brand-300">
+              <span><span class="block font-semibold text-ink-900 dark:text-white">Home 02</span><span class="block text-xs text-ink-400">Featured listings grid</span></span>
+            </a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">About</a>
+        <a href="services.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Services</a>
+        <a href="pricing.html" class="nav-link nav-active px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Pricing</a>
+        <a href="blog.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Blog</a>
+        <a href="contact.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition">
+          <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 7H4M8 3.5L4 7l4 3.5" />
+            <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
+          </svg>
+        </button>
+        <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition">
+          <i class="ri-moon-line text-lg dark:hidden"></i>
+          <i class="ri-sun-line text-lg hidden dark:inline"></i>
+        </button>
+        <a href="login.html" id="login-btn" class="hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 shadow-soft transition">
+          <i class="ri-user-line"></i><span>Login</span>
+        </a>
+        <button id="mobile-menu-btn" aria-label="Open menu" class="lg:hidden w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-100 hover:bg-white/10">
+          <i class="ri-menu-3-line text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 bg-forest-800 max-h-[85vh] overflow-y-auto">
+    <nav class="px-4 py-3 space-y-1 text-sm font-medium">
+      <a href="login.html" id="login-btn-mobile" class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft transition"><i class="ri-user-line"></i> Login</a>
+      <button data-mobile-toggle="mobile-home" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5">
+        Home <i class="ri-arrow-down-s-line text-base transition"></i>
+      </button>
+      <div id="mobile-home" class="hidden ps-4 space-y-1">
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5">Home 01</a>
+        <a href="home-2.html" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5">Home 02</a>
+      </div>
+
+      <a href="about.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">About</a>
+      <a href="services.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Services</a>
+      <a href="pricing.html" class="block px-3 py-2.5 rounded-lg bg-white/5 nav-active">Pricing</a>
+      <a href="blog.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Blog</a>
+      <a href="contact.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Contact</a>
+      <div class="flex gap-2 pt-3 border-t border-white/10 mt-2">
+        <button id="dir-toggle-mobile" class="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg neu-icon text-slate-200 text-sm font-semibold">
+          <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 7H4M8 3.5L4 7l4 3.5" />
+            <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
+          </svg>
+          <span>Direction &bull; RTL / LTR</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="h-16"></div>
+
+<main>
+
+<!-- ============================================================
+  PAGE HERO
+============================================================ -->
+<section class="page-hero relative overflow-hidden pt-16 pb-16 sm:pt-20 sm:pb-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+      <span class="eyebrow bg-white/10 border-white/15 text-brand-200"><i class="ri-price-tag-3-line"></i> Transparent Fees</span>
+      <h1 class="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.08]">Transparent Real Estate Pricing</h1>
+      <p class="mt-5 text-lg text-slate-300 max-w-2xl mx-auto">No surprise administrative line items. Whether you are buying, listing, renting, or managing an investment portfolio — here is our exact fee structure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  BUYER / RENTER PLANS
+============================================================ -->
+<section class="py-20 sm:py-24 bg-cream dark:bg-forest-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
+      <span class="eyebrow"><i class="ri-user-heart-line"></i> For Buyers &amp; Renters</span>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-display font-bold text-ink-900 dark:text-white">Zero Direct Fees for Home Buyers</h2>
+      <p class="mt-4 text-ink-500 dark:text-slate-400">Buyer broker commissions are paid by the seller at closing under standard industry practice. Browsing, touring, and submitting offers is free to you.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6 items-start">
+      <div class="rounded-3xl glass-card p-8 shadow-card" data-aos="fade-up">
+        <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl"><i class="ri-search-eye-line"></i></span>
+        <h3 class="mt-5 text-xl font-bold text-ink-900 dark:text-white">Self-Guided Search</h3>
+        <p class="mt-1 text-3xl font-extrabold text-ink-900 dark:text-white">$0</p>
+        <p class="text-sm text-ink-500 dark:text-slate-400">Browse &amp; save independently</p>
+        <ul class="mt-6 space-y-3 text-sm text-ink-600 dark:text-slate-300">
+          <li class="flex gap-2"><i class="ri-check-line text-brand-600 mt-0.5"></i> Unlimited saved listings &amp; instant alerts</li>
+          <li class="flex gap-2"><i class="ri-check-line text-brand-600 mt-0.5"></i> Neighborhood comps &amp; market reports</li>
+          <li class="flex gap-2"><i class="ri-check-line text-brand-600 mt-0.5"></i> Self-service open house schedules</li>
+          <li class="flex gap-2"><i class="ri-close-line text-ink-300 dark:text-slate-600 mt-0.5"></i> No assigned broker</li>
+        </ul>
+        <a href="home-2.html" class="mt-7 block text-center px-5 py-3 rounded-xl border border-ink-200 dark:border-white/15 text-ink-800 dark:text-white font-semibold hover:bg-ink-50 dark:hover:bg-white/5 transition">Browse Properties</a>
+      </div>
+
+      <div class="card-hover relative rounded-3xl glass-card p-8 shadow-card ring-2 ring-brand-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+        <span class="absolute -top-3.5 start-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider shadow-soft">Most Popular</span>
+        <div>
+          <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl shadow-soft"><i class="ri-team-line"></i></span>
+          <h3 class="mt-5 text-xl font-bold text-ink-900 dark:text-white">Guided Buyer Broker</h3>
+          <p class="mt-1 text-3xl font-extrabold text-ink-900 dark:text-white">$0 <span class="text-sm font-medium text-ink-500 dark:text-slate-400">to buyer</span></p>
+          <p class="text-sm text-ink-500 dark:text-slate-400">Dedicated licensed agent paid at closing</p>
+          <ul class="mt-6 space-y-3 text-sm text-ink-600 dark:text-slate-300">
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> One dedicated licensed buyer specialist</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> In-person &amp; 4K live video walk-throughs</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> CMA comparative offer strategy &amp; negotiation</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Escrow, title &amp; inspection management</li>
+          </ul>
+        </div>
+        <a href="contact.html" class="mt-7 block text-center px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold shadow-soft transition">Get Paired With Agent</a>
+      </div>
+
+      <div class="rounded-3xl glass-card p-8 shadow-card flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+        <div>
+          <span class="w-12 h-12 rounded-xl bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 flex items-center justify-center text-xl"><i class="ri-vip-crown-2-line"></i></span>
+          <h3 class="mt-5 text-xl font-bold text-ink-900 dark:text-white">Relocation Concierge</h3>
+          <p class="mt-1 text-3xl font-extrabold text-ink-900 dark:text-white">1% <span class="text-sm font-medium text-ink-400">or Rebate</span></p>
+          <p class="text-sm text-ink-500 dark:text-slate-400">White-glove relocation &amp; luxury advisory</p>
+          <ul class="mt-6 space-y-3 text-sm text-ink-600 dark:text-slate-300">
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Everything in Guided representation</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> School district &amp; commute logistics matrix</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Private off-market pocket listings access</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Contractor &amp; interior designer coordination</li>
+          </ul>
+        </div>
+        <a href="contact.html" class="mt-7 block text-center px-5 py-3 rounded-xl border border-ink-200 dark:border-white/15 text-ink-800 dark:text-white font-semibold hover:bg-ink-50 dark:hover:bg-white/5 transition">Talk to Concierge</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  SELLER & LISTING PLANS
+============================================================ -->
+<section class="py-20 sm:py-24 bg-white dark:bg-forest-800/40 border-t border-ink-100 dark:border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
+      <span class="eyebrow"><i class="ri-home-4-line"></i> For Sellers &amp; Landlords</span>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-display font-bold text-ink-900 dark:text-white">Flexible Listing Options</h2>
+      <p class="mt-4 text-ink-500 dark:text-slate-400">Choose between self-managed flat-fee MLS syndication or 2.5% full-service broker representation.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6 items-start">
+      <div class="rounded-3xl glass-card p-8 flex flex-col justify-between" data-aos="fade-up">
+        <div>
+          <h3 class="text-xl font-bold text-ink-900 dark:text-white">Essential Flat-Fee</h3>
+          <p class="mt-1 text-3xl font-extrabold text-ink-900 dark:text-white">$299</p>
+          <p class="text-sm text-ink-500 dark:text-slate-400">One-time flat fee — 60-day MLS</p>
+          <ul class="mt-6 space-y-3 text-sm text-ink-600 dark:text-slate-300">
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Full MLS syndication (Zillow, Redfin, etc.)</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Up to 25 HD listing photos</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Buyer lead forwarding &amp; showing manager</li>
+            <li class="flex gap-2"><i class="ri-close-line text-ink-300 dark:text-slate-600 mt-0.5"></i> No in-person host or staging</li>
+          </ul>
+        </div>
+        <a href="contact.html" class="mt-7 block text-center px-5 py-3 rounded-xl border border-ink-200 dark:border-white/15 text-ink-800 dark:text-white font-semibold hover:bg-white dark:hover:bg-white/5 transition">List Flat-Fee</a>
+      </div>
+
+      <div class="card-hover relative rounded-3xl glass-card p-8 shadow-card ring-2 ring-brand-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+        <span class="absolute -top-3.5 start-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider shadow-soft">Best Value</span>
+        <div>
+          <h3 class="text-xl font-bold text-ink-900 dark:text-white">Full-Service Listing</h3>
+          <p class="mt-1 text-3xl font-extrabold text-ink-900 dark:text-white">2.5% <span class="text-sm font-medium text-ink-500 dark:text-slate-400">commission</span></p>
+          <p class="text-sm text-ink-500 dark:text-slate-400">Zero upfront fees — paid only at closing</p>
+          <ul class="mt-6 space-y-3 text-sm text-ink-600 dark:text-slate-300">
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Dedicated licensed listing specialist</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Professional HDR photography &amp; 3D tour</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Live digital offer tracker &amp; counter negotiation</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600 dark:text-brand-400 mt-0.5"></i> Contract, appraisal &amp; title closing coordination</li>
+          </ul>
+        </div>
+        <a href="contact.html" class="mt-7 block text-center px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold shadow-soft transition">Request Free Valuation</a>
+      </div>
+
+      <div class="rounded-3xl glass-card p-8" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl font-bold text-ink-900 dark:text-white">Turnkey Property Mgmt</h3>
+        <p class="mt-1 text-3xl font-extrabold text-ink-900 dark:text-white">8% <span class="text-sm font-medium text-ink-400">monthly</span></p>
+        <p class="text-sm text-ink-500 dark:text-slate-400">Complete landlord portfolio management</p>
+        <ul class="mt-6 space-y-3 text-sm text-ink-600 dark:text-slate-300">
+          <li class="flex gap-2"><i class="ri-check-line text-brand-600 mt-0.5"></i> 30-Day Tenant Placement Guarantee</li>
+          <li class="flex gap-2"><i class="ri-check-line text-brand-600 mt-0.5"></i> Full background, credit &amp; eviction screening</li>
+          <li class="flex gap-2"><i class="ri-check-line text-brand-600 mt-0.5"></i> Automated rent collection &amp; direct deposit</li>
+          <li class="flex gap-2"><i class="ri-check-line text-brand-600 mt-0.5"></i> 24/7 emergency maintenance dispatch</li>
+        </ul>
+        <a href="contact.html" class="mt-7 block text-center px-5 py-3 rounded-xl border border-ink-200 dark:border-white/15 text-ink-800 dark:text-white font-semibold hover:bg-white dark:hover:bg-white/5 transition">Hire Property Manager</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  HOW OUR PRICING WORKS (3 SIMPLE STEPS)
+============================================================ -->
+<section id="pricing-steps-section" class="py-16 sm:py-20 bg-white dark:bg-forest-900/60 border-t border-ink-100 dark:border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center mb-12" data-aos="fade-up">
+      <span class="eyebrow"><i class="ri-route-line"></i> Simple Process</span>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-display font-bold text-ink-900 dark:text-white">How Our Pricing Works</h2>
+      <p class="mt-3 text-ink-600 dark:text-slate-300 text-sm sm:text-base">Three straightforward steps from selecting your plan to your final closing statement.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      <!-- Step 1 -->
+      <div class="rounded-3xl glass-card p-7 border border-ink-100 dark:border-white/10 flex flex-col justify-between card-hover" data-aos="fade-up" data-aos-delay="50">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl font-extrabold shadow-soft">
+              01
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-100 dark:bg-brand-500/20 text-brand-800 dark:text-brand-300 uppercase tracking-wider">
+              Choose
+            </span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-ink-900 dark:text-white">Select Your Plan</h3>
+          <p class="mt-2 text-xs sm:text-sm text-ink-500 dark:text-slate-400 leading-relaxed">
+            Pick between $0 homebuyer concierge, flat-fee MLS syndication ($299), or 2.5% full-service broker representation.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-ink-100 dark:border-white/5 flex items-center gap-2 text-xs font-semibold text-brand-700 dark:text-brand-300">
+          <i class="ri-checkbox-circle-fill text-brand-500"></i> Upfront pricing clarity
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="rounded-3xl glass-card p-7 border border-ink-100 dark:border-white/10 flex flex-col justify-between card-hover" data-aos="fade-up" data-aos-delay="100">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl font-extrabold shadow-soft">
+              02
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-100 dark:bg-brand-500/20 text-brand-800 dark:text-brand-300 uppercase tracking-wider">
+              Pair
+            </span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-ink-900 dark:text-white">Partner With Your Broker</h3>
+          <p class="mt-2 text-xs sm:text-sm text-ink-500 dark:text-slate-400 leading-relaxed">
+            Work 1-on-1 with a named licensed Texas specialist for private showings, forensic comps, and negotiation strategy.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-ink-100 dark:border-white/5 flex items-center gap-2 text-xs font-semibold text-brand-700 dark:text-brand-300">
+          <i class="ri-checkbox-circle-fill text-brand-500"></i> No call center handoffs
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="rounded-3xl glass-card p-7 border border-ink-100 dark:border-white/10 flex flex-col justify-between card-hover" data-aos="fade-up" data-aos-delay="150">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl font-extrabold shadow-soft">
+              03
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-100 dark:bg-brand-500/20 text-brand-800 dark:text-brand-300 uppercase tracking-wider">
+              Close
+            </span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-ink-900 dark:text-white">Transparent Closing</h3>
+          <p class="mt-2 text-xs sm:text-sm text-ink-500 dark:text-slate-400 leading-relaxed">
+            Track title, escrow, and contingencies in real-time. Review your final closing disclosure with zero surprise charges.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-ink-100 dark:border-white/5 flex items-center gap-2 text-xs font-semibold text-brand-700 dark:text-brand-300">
+          <i class="ri-checkbox-circle-fill text-brand-500"></i> Guaranteed on-time escrow
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  SIMPLE PRICING GUARANTEES & NO-HIDDEN-FEE PROMISE
+============================================================ -->
+<section id="pricing-guarantees-section" class="py-16 sm:py-20 bg-cream/60 dark:bg-forest-950 border-t border-ink-100 dark:border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center mb-12" data-aos="fade-up">
+      <span class="eyebrow"><i class="ri-shield-check-line"></i> The Crestline Standard</span>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-display font-bold text-ink-900 dark:text-white">Our Simple Pricing Promise</h2>
+      <p class="mt-3 text-ink-600 dark:text-slate-300 text-sm sm:text-base">Clear economics, human accountability, and zero hidden line items.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Guarantee 1 -->
+      <div class="rounded-2xl glass-card p-6 border border-ink-100 dark:border-white/10 card-hover" data-aos="fade-up" data-aos-delay="50">
+        <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-2xl mb-4 shadow-soft">
+          <i class="ri-money-dollar-circle-line"></i>
+        </span>
+        <h3 class="font-display font-bold text-base sm:text-lg text-ink-900 dark:text-white">Zero Hidden Fees</h3>
+        <p class="mt-2 text-xs sm:text-sm text-ink-500 dark:text-slate-400 leading-relaxed">
+          No surprise administrative charges, tech fees, or compliance line items at closing.
+        </p>
+      </div>
+
+      <!-- Guarantee 2 -->
+      <div class="rounded-2xl glass-card p-6 border border-ink-100 dark:border-white/10 card-hover" data-aos="fade-up" data-aos-delay="100">
+        <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-2xl mb-4 shadow-soft">
+          <i class="ri-close-circle-line"></i>
+        </span>
+        <h3 class="font-display font-bold text-base sm:text-lg text-ink-900 dark:text-white">Cancel Anytime</h3>
+        <p class="mt-2 text-xs sm:text-sm text-ink-500 dark:text-slate-400 leading-relaxed">
+          Satisfaction guarantee. Cancel any seller agreement with $0 penalty before contract.
+        </p>
+      </div>
+
+      <!-- Guarantee 3 -->
+      <div class="rounded-2xl glass-card p-6 border border-ink-100 dark:border-white/10 card-hover" data-aos="fade-up" data-aos-delay="150">
+        <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-2xl mb-4 shadow-soft">
+          <i class="ri-line-chart-line"></i>
+        </span>
+        <h3 class="font-display font-bold text-base sm:text-lg text-ink-900 dark:text-white">Free Market Comps</h3>
+        <p class="mt-2 text-xs sm:text-sm text-ink-500 dark:text-slate-400 leading-relaxed">
+          Complimentary broker price opinions and neighborhood market valuation reports.
+        </p>
+      </div>
+
+      <!-- Guarantee 4 -->
+      <div class="rounded-2xl glass-card p-6 border border-ink-100 dark:border-white/10 card-hover" data-aos="fade-up" data-aos-delay="200">
+        <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-2xl mb-4 shadow-soft">
+          <i class="ri-shield-user-line"></i>
+        </span>
+        <h3 class="font-display font-bold text-base sm:text-lg text-ink-900 dark:text-white">Licensed Fiduciary</h3>
+        <p class="mt-2 text-xs sm:text-sm text-ink-500 dark:text-slate-400 leading-relaxed">
+          Every client is represented by a dedicated TREC-licensed broker (#9004812) with full fiduciary duty.
+        </p>
+      </div>
+    </div>
+
+    <!-- Simple Custom Inquiry Strip -->
+    <div class="mt-10 rounded-2xl glass-card p-6 border border-brand-500/20 bg-white/70 dark:bg-forest-900/70 flex flex-col sm:flex-row items-center justify-between gap-4" data-aos="fade-up">
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center text-xl shrink-0 shadow-soft">
+          <i class="ri-chat-1-line"></i>
+        </span>
+        <div>
+          <h4 class="font-bold text-ink-900 dark:text-white text-sm sm:text-base">Need a custom plan for commercial or portfolio properties?</h4>
+          <p class="text-xs text-ink-500 dark:text-slate-400">Get a tailored quote from our managing broker within 2 hours.</p>
+        </div>
+      </div>
+      <a href="contact.html" class="px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm shadow-soft transition shrink-0">
+        Request Custom Quote
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+  FAQ
+============================================================ -->
+<section class="py-20 sm:py-24 bg-cream dark:bg-forest-900 border-t border-ink-100 dark:border-white/5">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10" data-aos="fade-up">
+      <span class="eyebrow"><i class="ri-question-line"></i> Pricing FAQ</span>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-display font-bold text-ink-900 dark:text-white">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+      <details class="faq-item group rounded-2xl glass-card p-6 cursor-pointer" open>
+        <summary class="flex items-center justify-between font-bold text-ink-900 dark:text-white list-none">
+          <span>Do buyers ever pay Crestline directly?</span>
+          <i class="ri-arrow-down-s-line text-xl transition-transform group-open:rotate-180 text-brand-600"></i>
+        </summary>
+        <p class="mt-4 text-sm text-ink-500 dark:text-slate-400">In almost every transaction, no. Buyer broker commission is paid out of the seller's proceeds at closing, so browsing, touring, and making offers through Crestline is completely free to you.</p>
+      </details>
+      <details class="faq-item group rounded-2xl glass-card p-6 cursor-pointer">
+        <summary class="flex items-center justify-between font-bold text-ink-900 dark:text-white list-none">
+          <span>Can I cancel or switch a seller listing plan?</span>
+          <i class="ri-arrow-down-s-line text-xl transition-transform group-open:rotate-180 text-brand-600"></i>
+        </summary>
+        <p class="mt-4 text-sm text-ink-500 dark:text-slate-400">Yes. We offer an unconditional satisfaction guarantee. You may cancel your listing agreement at any time before accepting an offer with zero penalty fees.</p>
+      </details>
+      <details class="faq-item group rounded-2xl glass-card p-6 cursor-pointer">
+        <summary class="flex items-center justify-between font-bold text-ink-900 dark:text-white list-none">
+          <span>Are there fees for scheduling viewings or messaging agents?</span>
+          <i class="ri-arrow-down-s-line text-xl transition-transform group-open:rotate-180 text-brand-600"></i>
+        </summary>
+        <p class="mt-4 text-sm text-ink-500 dark:text-slate-400">No. Scheduling in-person or live video tours, messaging your assigned agent, and tracking offers inside your customer dashboard are included with zero extra charge.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer text-slate-300 pt-16 pb-8 border-t border-white/15 bg-[#0d1712]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/15">
+      <div class="lg:col-span-2">
+        <a href="index.html" class="brand-logo mb-4 group">
+          <span class="clay brand-icon">
+            <i class="ri-home-smile-fill"></i>
+          </span>
+          <span class="flex flex-col">
+            <span class="brand-text-main">Crest<span class="brand-text-accent">line</span></span>
+            <span class="brand-text-sub">Realty Group</span>
+          </span>
+        </a>
+        <p class="text-sm leading-relaxed text-slate-300 max-w-sm">A full-service Texas real estate brokerage helping families buy, sell, and rent with curated listings, verified licensed agents, and transparent technology.</p>
+        <div class="flex flex-wrap items-center gap-2.5 mt-3 text-xs">
+          <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-emerald-300 font-mono font-medium inline-flex items-center gap-1.5"><i class="ri-shield-check-line text-emerald-400"></i> TREC Broker License #9004812</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-slate-300 font-medium inline-flex items-center gap-1.5"><i class="ri-home-heart-line text-emerald-400"></i> Equal Housing Opportunity</span>
+        </div>
+        <div class="flex items-center gap-3 mt-5">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Open Facebook" aria-label="Crestline on Facebook" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-brand-600 hover:text-white text-white flex items-center justify-center transition border border-white/15"><i class="ri-facebook-fill"></i></a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" title="Open Instagram" aria-label="Crestline on Instagram" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-brand-600 hover:text-white text-white flex items-center justify-center transition border border-white/15"><i class="ri-instagram-line"></i></a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" title="Open X (Twitter)" aria-label="Crestline on X" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-brand-600 hover:text-white text-white flex items-center justify-center transition border border-white/15"><i class="ri-twitter-x-fill"></i></a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" title="Open YouTube" aria-label="Crestline on YouTube" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-brand-600 hover:text-white text-white flex items-center justify-center transition border border-white/15"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold text-base mb-4">Company</h4>
+        <ul class="space-y-2.5 text-sm text-slate-300">
+          <li><a href="about.html" class="hover:text-emerald-300 transition">About Us</a></li>
+          <li><a href="services.html" class="hover:text-emerald-300 transition">Our Services</a></li>
+          <li><a href="pricing.html" class="hover:text-emerald-300 transition">Pricing Plans</a></li>
+          <li><a href="blog.html" class="hover:text-emerald-300 transition">Blog &amp; Guides</a></li>
+          <li><a href="contact.html" class="hover:text-emerald-300 transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold text-base mb-4">Core Services</h4>
+        <ul class="space-y-2.5 text-sm text-slate-300">
+          <li><a href="services.html#core-services" class="hover:text-emerald-300 transition">Home Buyer Concierge</a></li>
+          <li><a href="services.html#core-services" class="hover:text-emerald-300 transition">Seller &amp; MLS Listings</a></li>
+          <li><a href="services.html#core-services" class="hover:text-emerald-300 transition">Leasing &amp; Property Mgmt</a></li>
+          <li><a href="services.html#savings-calculator" class="hover:text-emerald-300 transition">Commission Calculator</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold text-base mb-4">Stay Connected</h4>
+        <form class="rounded-xl p-2.5 flex gap-2 bg-white/5 border border-white/20 shadow-inner" data-validate data-success="#pricing-footer-newsletter-success" novalidate>
+          <label for="pricing-footer-newsletter-email" class="sr-only">Email address</label>
+          <input id="pricing-footer-newsletter-email" type="email" required placeholder="Enter your email" class="min-w-0 flex-1 px-3 py-2 rounded-lg bg-white/10 border border-white/25 text-sm placeholder:text-slate-400 text-white focus:outline-none focus:ring-2 focus:ring-brand-400">
+          <button type="submit" class="px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shrink-0 transition">Join</button>
+        </form>
+        <p id="pricing-footer-newsletter-email-error" class="hidden mt-2 text-sm font-medium text-ember-300" role="alert"></p>
+        <p id="pricing-footer-newsletter-success" class="hidden mt-2 text-sm text-emerald-300"><i class="ri-checkbox-circle-fill"></i> Subscribed to market reports.</p>
+        <div class="flex items-center gap-2 mt-4 text-sm text-slate-300"><i class="ri-map-pin-2-line text-emerald-400"></i>2400 Crestline Avenue, Austin, TX 78704</div>
+        <div class="flex items-center gap-2 mt-2 text-sm text-slate-300"><i class="ri-phone-line text-emerald-400"></i>+1 (512) 555-0142</div>
+      </div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-4 pt-6 text-xs text-slate-300 border-t border-white/15">
+      <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 text-slate-300">
+        <span>&copy; <span id="footer-year">2026</span> Crestline Realty Group. All rights reserved.</span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center lg:justify-end gap-x-5 gap-y-2 text-slate-300">
+        <a href="#privacy-policy" class="legal-modal-trigger hover:text-emerald-300 transition" data-legal="privacy">Privacy Policy</a>
+        <a href="#terms-of-service" class="legal-modal-trigger hover:text-emerald-300 transition" data-legal="terms">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/js/main.js?v=2"></script>
+</body>
+</html>

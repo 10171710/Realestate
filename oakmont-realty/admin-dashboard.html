@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brokerage Operations &amp; Admin Dashboard | Crestline Realty Group</title>
+<meta name="description" content="Crestline Realty admin dashboard — listings, lead assignment, agents, document approvals, offers, master visit calendar, analytics and content.">
+<meta name="theme-color" content="#14201a">
+<meta name="robots" content="noindex">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232f7d5d'/%3E%3Cpath d='M12 5l7 5.5v8h-4.5v-5h-5v5H5v-8L12 5z' fill='white'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
+          display: ['Fraunces', 'Georgia', 'serif']
+        },
+        colors: {
+          brand: {
+            50: '#eef7f0', 100: '#d9eee2', 200: '#b2dcc6', 300: '#82c3a3',
+            400: '#5bb98f', 500: '#3d9c73', 600: '#2f7d5d', 700: '#256b4e',
+            800: '#1f5740', 900: '#1a4634', 950: '#0f2b20'
+          },
+          ember: {
+            50: '#fdf3ea', 100: '#f9e0cb', 200: '#f2c3a3', 300: '#e8a76f',
+            400: '#d98a4f', 500: '#c96f4a', 600: '#b2542f', 700: '#93401f',
+            800: '#6f3018', 900: '#4e2312'
+          },
+          ink: {
+            50: '#f7f4f0', 100: '#ece6dd', 200: '#d8cdbd', 300: '#b8a993',
+            400: '#94836d', 500: '#6e6050', 600: '#54483c', 700: '#3c342c',
+            800: '#2b2622', 900: '#201c19'
+          },
+          cream: '#faf6f0',
+          forest: { 800: '#18241f', 900: '#141b17', 950: '#101713' }
+        },
+        boxShadow: {
+          soft: '0 10px 40px -12px rgba(47,125,93,0.35)',
+          card: '0 2px 10px -2px rgba(32,28,25,0.08)',
+          lift: '0 24px 50px -24px rgba(32,28,25,0.28)'
+        },
+        borderRadius: { '2xl': '1.25rem', '3xl': '1.75rem' }
+      }
+    }
+  }
+</script>
+
+<script>
+  (function () {
+    var theme = localStorage.getItem('oak-theme') || 'light';
+    var dir = localStorage.getItem('oak-dir') || 'ltr';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+  })();
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css?v=1">
+</head>
+<body class="bg-[#f3efe8] dark:bg-forest-900 text-ink-700 dark:text-slate-300 antialiased">
+
+<div class="dash-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="dash-sidebar" id="dash-sidebar">
+    <div class="flex items-center justify-between px-5 h-16 border-b border-white/10">
+      <a href="index.html" class="brand-logo group">
+        <span class="clay brand-icon">
+          <i class="ri-home-smile-fill"></i>
+        </span>
+        <span class="flex flex-col">
+          <span class="brand-text-main">Crest<span class="brand-text-accent">line</span></span>
+          <span class="brand-text-sub">Realty Group</span>
+        </span>
+      </a>
+      <button class="lg:hidden dash-sidebar-close w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300" aria-label="Close sidebar"><i class="ri-close-line"></i></button>
+    </div>
+
+    <nav class="p-3 space-y-1">
+      <p class="px-3 pt-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-500">Operations</p>
+      <a href="#overview" class="dash-link active" data-section="overview"><i class="ri-dashboard-line"></i> Overview</a>
+      <a href="#analytics" class="dash-link" data-section="analytics"><i class="ri-line-chart-line"></i> Analytics</a>
+      <a href="#listings" class="dash-link" data-section="listings"><i class="ri-building-2-line"></i> Manage Listings <span class="ms-auto text-xs font-bold text-brand-300 bg-brand-500/15 px-2 py-0.5 rounded-full">128</span></a>
+      <a href="#leads" class="dash-link" data-section="leads"><i class="ri-user-add-line"></i> Leads &amp; Assignment <span class="ms-auto text-xs font-bold text-ember-300 bg-ember-500/15 px-2 py-0.5 rounded-full">14</span></a>
+      <a href="#agents" class="dash-link" data-section="agents"><i class="ri-team-line"></i> Agents</a>
+      <a href="#documents" class="dash-link" data-section="documents"><i class="ri-file-shield-2-line"></i> Document Approvals <span class="ms-auto text-xs font-bold text-ember-300 bg-ember-500/15 px-2 py-0.5 rounded-full">6</span></a>
+      <a href="#offers" class="dash-link" data-section="offers"><i class="ri-auction-line"></i> Offers Overview</a>
+      <a href="#calendar" class="dash-link" data-section="calendar"><i class="ri-calendar-2-line"></i> Visit Calendar</a>
+      <a href="#content" class="dash-link" data-section="content"><i class="ri-article-line"></i> Blog &amp; Content</a>
+      <a href="#users" class="dash-link" data-section="users"><i class="ri-user-settings-line"></i> Users &amp; Roles</a>
+    </nav>
+
+    <nav class="p-3 mt-4 space-y-1 border-t border-white/10">
+      <a href="index.html" class="dash-link"><i class="ri-global-line"></i> Back to website</a>
+      <a href="login.html" class="dash-link text-ember-400 hover:text-ember-300" data-auth-action="logout" id="admin-dash-logout-btn"><i class="ri-logout-box-r-line"></i> Log out</a>
+    </nav>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="dash-main">
+    <header class="sticky top-0 z-40 bg-[#f3efe8]/90 dark:bg-forest-900/90 backdrop-blur-md border-b border-ink-100 dark:border-white/10">
+      <div class="flex items-center justify-between gap-4 px-4 sm:px-8 h-16">
+        <div class="flex items-center gap-3">
+          <button id="dash-toggle" class="lg:hidden w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300"><i class="ri-menu-2-line"></i></button>
+          <div>
+            <p class="text-sm font-bold text-ink-900 dark:text-white">Admin operations center</p>
+            <p class="text-xs text-ink-400">Signed in as System Admin · Crestline HQ</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition">
+            <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 7H4M8 3.5L4 7l4 3.5" />
+              <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
+            </svg>
+          </button>
+          <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition">
+            <i class="ri-moon-line dark:hidden"></i><i class="ri-sun-line hidden dark:inline"></i>
+          </button>
+          <button class="relative w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300" aria-label="Notifications">
+            <i class="ri-notification-3-line"></i>
+            <span class="absolute -top-1 -end-1 w-4 h-4 rounded-full bg-ember-500 text-white text-[10px] font-bold flex items-center justify-center">9</span>
+          </button>
+          <span class="mini-avatar bg-brand-600">AO</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="p-4 sm:p-8 space-y-10 max-w-[1400px]">
+
+      <!-- ============ OVERVIEW ============ -->
+      <section id="overview" class="dash-section scroll-mt-24">
+        <div class="grid grid-cols-2 xl:grid-cols-4 gap-5">
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-lg"><i class="ri-building-2-line"></i></span>
+              <span class="text-xs font-bold text-brand-700 dark:text-brand-300"><i class="ri-arrow-up-line"></i> 4.2%</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">128</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Active listings</p>
+          </div>
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 flex items-center justify-center text-lg"><i class="ri-user-add-line"></i></span>
+              <span class="text-xs font-bold text-ember-600 dark:text-ember-300"><i class="ri-arrow-up-line"></i> 12 this week</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">14</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Unassigned leads</p>
+          </div>
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-lg"><i class="ri-file-shield-2-line"></i></span>
+              <span class="text-xs font-bold text-amber-600 dark:text-amber-300"><i class="ri-time-line"></i> 3 urgent</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">6</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Docs awaiting approval</p>
+          </div>
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 flex items-center justify-center text-lg"><i class="ri-auction-line"></i></span>
+              <span class="text-xs font-bold text-brand-700 dark:text-brand-300"><i class="ri-arrow-up-line"></i> 3.8%</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">31</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Offers this month</p>
+          </div>
+        </div>
+
+        <!-- Analytics strip -->
+        <div class="mt-6 grid lg:grid-cols-2 gap-6">
+          <div class="rounded-2xl glass-card p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display text-lg font-bold text-ink-900 dark:text-white">Listings by status</h3>
+              <span class="text-xs font-bold text-ink-400">Live</span>
+            </div>
+            <div class="mt-4 space-y-4">
+              <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-ink-700 dark:text-slate-300">For sale</span><span class="font-bold"><span class="num">84</span> (66%)</span></div><div class="progress"><span class="w-[66%] bg-brand-600"></span></div></div>
+              <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-ink-700 dark:text-slate-300">For rent</span><span class="font-bold"><span class="num">31</span> (24%)</span></div><div class="progress"><span class="w-[24%] bg-brand-400"></span></div></div>
+              <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-ink-700 dark:text-slate-300">Pending / offer</span><span class="font-bold"><span class="num">13</span> (10%)</span></div><div class="progress"><span class="w-[10%] bg-ember-400"></span></div></div>
+            </div>
+          </div>
+          <div class="rounded-2xl glass-card p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display text-lg font-bold text-ink-900 dark:text-white">Leads by source</h3>
+              <span class="text-xs font-bold text-ink-400">Sep 2026</span>
+            </div>
+            <div class="mt-4 space-y-4">
+              <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-ink-700 dark:text-slate-300">Portal search</span><span class="font-bold"><span class="num">38%</span></span></div><div class="progress"><span class="w-[38%] bg-brand-600"></span></div></div>
+              <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-ink-700 dark:text-slate-300">Referrals</span><span class="font-bold"><span class="num">27%</span></span></div><div class="progress"><span class="w-[27%] bg-brand-400"></span></div></div>
+              <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-ink-700 dark:text-slate-300">Open house</span><span class="font-bold"><span class="num">19%</span></span></div><div class="progress"><span class="w-[19%] bg-ember-400"></span></div></div>
+              <div><div class="flex justify-between text-sm mb-1"><span class="font-semibold text-ink-700 dark:text-slate-300">Paid ads</span><span class="font-bold"><span class="num">16%</span></span></div><div class="progress"><span class="w-[16%] bg-ink-300"></span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Urgent action queue -->
+        <div class="mt-6 rounded-2xl glass-card overflow-hidden">
+          <div class="flex items-center justify-between px-6 py-4 border-b border-ink-100 dark:border-white/10">
+            <h3 class="font-display text-lg font-bold text-ink-900 dark:text-white">Needs attention</h3>
+            <span class="tbl-pill pill-red"><i class="ri-alarm-line"></i> 6 items</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[760px]">
+              <thead><tr><th>Item</th><th>Type</th><th>Assigned</th><th>Due</th><th class="text-end">Action</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Pre-approval — N. Patel</td><td>Document</td><td>Elena Rossi</td><td><span class="num">Today</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300 text-sm font-bold">Review</button></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Lead — "Zilker 3bd 2ba"</td><td>Lead</td><td>Unassigned</td>
+                  <td><span class="num">Today</span></td><td class="text-end"><button class="text-brand-700 dark:text-brand-300 text-sm font-bold">Assign</button></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Counter-offer #68490</td><td>Offer</td><td>Maya Bennett</td>
+                  <td><span class="num">Thu</span></td><td class="text-end"><button class="text-brand-700 dark:text-brand-300 text-sm font-bold">Open</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ANALYTICS ============ -->
+      <section id="analytics" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Analytics</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Performance across the last 6 months.</p>
+          </div>
+          <select class="px-3 py-2 rounded-lg search-field text-sm font-semibold text-ink-900 dark:text-white">
+            <option>Last 6 months</option><option>Last 30 days</option><option>Year to date</option>
+          </select>
+        </div>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-5">
+          <div class="rounded-2xl glass-card p-6">
+            <div class="flex items-center justify-between"><h3 class="font-bold text-ink-900 dark:text-white text-sm">Property views</h3><i class="ri-eye-line text-ink-300"></i></div>
+            <p class="mt-2 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">124.8K</span></p>
+            <p class="text-xs text-brand-700 dark:text-brand-300 font-bold mt-1"><i class="ri-arrow-up-line"></i> 18% vs last period</p>
+            <div class="mt-4 flex items-end gap-1.5 h-20">
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:42%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:55%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:48%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:66%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:80%"></div>
+              <div class="flex-1 bg-brand-600 rounded-t" style="height:96%"></div>
+            </div>
+          </div>
+          <div class="rounded-2xl glass-card p-6">
+            <div class="flex items-center justify-between"><h3 class="font-bold text-ink-900 dark:text-white text-sm">Enquiries received</h3><i class="ri-mail-send-line text-ink-300"></i></div>
+            <p class="mt-2 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">1,092</span></p>
+            <p class="text-xs text-brand-700 dark:text-brand-300 font-bold mt-1"><i class="ri-arrow-up-line"></i> 24% vs last period</p>
+            <div class="mt-4 flex items-end gap-1.5 h-20">
+              <div class="flex-1 bg-ember-100 dark:bg-ember-500/20 rounded-t" style="height:35%"></div>
+              <div class="flex-1 bg-ember-100 dark:bg-ember-500/20 rounded-t" style="height:48%"></div>
+              <div class="flex-1 bg-ember-100 dark:bg-ember-500/20 rounded-t" style="height:44%"></div>
+              <div class="flex-1 bg-ember-100 dark:bg-ember-500/20 rounded-t" style="height:59%"></div>
+              <div class="flex-1 bg-ember-100 dark:bg-ember-500/20 rounded-t" style="height:72%"></div>
+              <div class="flex-1 bg-ember-500 rounded-t" style="height:88%"></div>
+            </div>
+          </div>
+          <div class="rounded-2xl glass-card p-6">
+            <div class="flex items-center justify-between"><h3 class="font-bold text-ink-900 dark:text-white text-sm">Closed deals</h3><i class="ri-hand-coin-line text-ink-300"></i></div>
+            <p class="mt-2 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">96</span></p>
+            <p class="text-xs text-brand-700 dark:text-brand-300 font-bold mt-1"><i class="ri-arrow-up-line"></i> 9% vs last period</p>
+            <div class="mt-4 flex items-end gap-1.5 h-20">
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:50%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:65%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:58%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:74%"></div>
+              <div class="flex-1 bg-brand-100 dark:bg-brand-500/20 rounded-t" style="height:70%"></div>
+              <div class="flex-1 bg-brand-600 rounded-t" style="height:92%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-2xl glass-card p-8 text-center">
+          <span class="w-14 h-14 rounded-2xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-2xl mx-auto"><i class="ri-download-cloud-2-line"></i></span>
+          <h3 class="mt-3 font-bold text-ink-900 dark:text-white">Export full reports</h3>
+          <p class="mt-1 text-sm text-ink-500 dark:text-slate-400">Pull CSV or PDF exports for listings, leads, offers and revenue.</p>
+          <button class="mt-4 px-5 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition">Generate report</button>
+        </div>
+      </section>
+
+      <!-- ============ MANAGE LISTINGS ============ -->
+      <section id="listings" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Manage Listings</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">128</span> active · <span class="num">13</span> pending review</p>
+          </div>
+          <button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition"><i class="ri-add-line"></i> New listing</button>
+        </div>
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[880px]">
+              <thead><tr><th>Property</th><th>Price</th><th>Status</th><th>Agent</th><th>Views</th><th>Listed</th><th class="text-end">Actions</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="listing-detail.html" class="flex items-center gap-3 group" aria-label="Preview 16 Cedar Lane"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=120&q=80" alt="" class="w-14 h-10 rounded-lg object-cover"><span class="font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-300 transition">16 Cedar Lane</span></a></td>
+                  <td class="font-bold"><span class="num">$672,000</span></td>
+                  <td><span class="tbl-pill pill-green">Live</span></td>
+                  <td>Maya Bennett</td>
+                  <td><span class="num">4,210</span></td>
+                  <td><span class="num">Aug 02, 2026</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Edit"><i class="ri-edit-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><a href="listing-detail.html" class="flex items-center gap-3 group" aria-label="Preview 9 Olive Grove Road"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=120&q=80" alt="" class="w-14 h-10 rounded-lg object-cover"><span class="font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-300 transition">9 Olive Grove Road</span></a></td>
+                  <td class="font-bold"><span class="num">$1,249,000</span></td>
+                  <td><span class="tbl-pill pill-amber">Pending</span></td>
+                  <td>Omar Haddad</td>
+                  <td><span class="num">1,870</span></td>
+                  <td><span class="num">Aug 18, 2026</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Edit"><i class="ri-edit-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><a href="listing-detail.html" class="flex items-center gap-3 group" aria-label="Preview Meridian Tower 12F"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=120&q=80" alt="" class="w-14 h-10 rounded-lg object-cover"><span class="font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-300 transition">Meridian Tower 12F</span></a></td>
+                  <td class="font-bold"><span class="num">$1,899</span>/mo</td>
+                  <td><span class="tbl-pill pill-green">Live</span></td>
+                  <td>Daniel Osei</td>
+                  <td><span class="num">3,340</span></td>
+                  <td><span class="num">Jul 29, 2026</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Edit"><i class="ri-edit-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><a href="listing-detail.html" class="flex items-center gap-3 group" aria-label="Preview 220 Harbor View"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=120&q=80" alt="" class="w-14 h-10 rounded-lg object-cover"><span class="font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-300 transition">220 Harbor View</span></a></td>
+                  <td class="font-bold"><span class="num">$2,150</span>/mo</td>
+                  <td><span class="tbl-pill pill-slate">Under contract</span></td>
+                  <td>Daniel Osei</td>
+                  <td><span class="num">2,905</span></td>
+                  <td><span class="num">Jul 12, 2026</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Edit"><i class="ri-edit-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><a href="listing-detail.html" class="flex items-center gap-3 group" aria-label="Preview 3 BrickStone Row"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=120&q=80" alt="" class="w-14 h-10 rounded-lg object-cover"><span class="font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-300 transition">3 BrickStone Row</span></a></td>
+                  <td class="font-bold"><span class="num">$519,000</span></td>
+                  <td><span class="tbl-pill pill-red">Expired</span></td>
+                  <td>Elena Rossi</td>
+                  <td><span class="num">1,108</span></td>
+                  <td><span class="num">May 10, 2026</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Edit"><i class="ri-edit-2-line"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LEADS & ASSIGNMENT ============ -->
+      <section id="leads" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Leads &amp; Enquiry Assignment</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">14</span> unassigned — assign within 2 hours to hit SLA.</p>
+          </div>
+          <span class="text-xs font-bold text-ink-400">Avg first touch: <span class="num">9 min</span></span>
+        </div>
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[900px]">
+              <thead><tr><th>Lead</th><th>Source</th><th>Interested in</th><th>Budget</th><th>Received</th><th>Assigned to</th><th class="text-end">Assignee</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="font-semibold text-ink-900 dark:text-white">Nina Patel</div><div class="text-xs text-ink-400">nina@example.com</div></td>
+                  <td>Portal search</td><td>Zilker · 3bd 2ba</td><td class="font-bold"><span class="num">$550K</span></td>
+                  <td><span class="num">09:14</span></td><td><span class="tbl-pill pill-red">Unassigned</span></td>
+                  <td class="text-end"><select class="px-2.5 py-1.5 rounded-lg search-field text-xs font-semibold text-ink-900 dark:text-white"><option>Select agent…</option><option>Maya Bennett</option><option>Elena Rossi</option><option>Omar Haddad</option></select></td>
+                </tr>
+                <tr>
+                  <td><div class="font-semibold text-ink-900 dark:text-white">Ravi Kumar</div><div class="text-xs text-ink-400">ravi@example.com</div></td>
+                  <td>Open house</td><td>Investor · duplex</td><td class="font-bold"><span class="num">$800K</span></td>
+                  <td><span class="num">10:42</span></td><td><span class="tbl-pill pill-red">Unassigned</span></td>
+                  <td class="text-end"><select class="px-2.5 py-1.5 rounded-lg search-field text-xs font-semibold text-ink-900 dark:text-white"><option>Select agent…</option><option>Elena Rossi</option><option>Daniel Osei</option><option>Maya Bennett</option></select></td>
+                </tr>
+                <tr>
+                  <td><div class="font-semibold text-ink-900 dark:text-white">Amara Johnson</div><div class="text-xs text-ink-400">amara@example.com</div></td>
+                  <td>Referral</td><td>Round Rock · 4bd 3ba</td><td class="font-bold"><span class="num">$450K</span></td>
+                  <td><span class="num">Yesterday</span></td><td><span class="tbl-pill pill-green">Elena Rossi</span></td>
+                  <td class="text-end"><select class="px-2.5 py-1.5 rounded-lg search-field text-xs font-semibold text-ink-900 dark:text-white"><option>Elena Rossi</option><option>Maya Bennett</option><option>Omar Haddad</option></select></td>
+                </tr>
+                <tr>
+                  <td><div class="font-semibold text-ink-900 dark:text-white">Tomas Rivera</div><div class="text-xs text-ink-400">tomas@example.com</div></td>
+                  <td>Paid ads</td><td>Dripping Springs · land</td><td class="font-bold"><span class="num">$300K</span></td>
+                  <td><span class="num">2 days ago</span></td><td><span class="tbl-pill pill-amber">Maya Bennett</span></td>
+                  <td class="text-end"><select class="px-2.5 py-1.5 rounded-lg search-field text-xs font-semibold text-ink-900 dark:text-white"><option>Maya Bennett</option><option>Elena Rossi</option><option>Omar Haddad</option></select></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ AGENT MANAGEMENT ============ -->
+      <section id="agents" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Agent Management</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">14</span> active agents · <span class="num">2</span> onboarding</p>
+          </div>
+          <button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition"><i class="ri-user-add-line"></i> Invite agent</button>
+        </div>
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[860px]">
+              <thead><tr><th>Agent</th><th>Focus</th><th>Deals (2026)</th><th>Rating</th><th>Response</th><th>Status</th><th class="text-end">Actions</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=100&h=100&crop=faces&q=80" alt="Maya Bennett" class="w-9 h-9 rounded-full object-cover"><span><span class="block font-semibold text-ink-900 dark:text-white">Maya Bennett</span><span class="block text-xs text-ink-400">Buyer specialist</span></span></div></td>
+                  <td>Buying</td><td class="font-bold"><span class="num">24</span></td><td><span class="stars"><i class="ri-star-fill"></i></span> <span class="num">4.9</span></td>
+                  <td><span class="num">11 min</span></td><td><span class="tbl-pill pill-green">Active</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&crop=faces&q=80" alt="Omar Haddad" class="w-9 h-9 rounded-full object-cover"><span><span class="block font-semibold text-ink-900 dark:text-white">Omar Haddad</span><span class="block text-xs text-ink-400">Listing expert</span></span></div></td>
+                  <td>Selling</td><td class="font-bold"><span class="num">19</span></td><td><span class="stars"><i class="ri-star-fill"></i></span> <span class="num">4.8</span></td>
+                  <td><span class="num">8 min</span></td><td><span class="tbl-pill pill-green">Active</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=100&h=100&crop=faces&q=80" alt="Elena Rossi" class="w-9 h-9 rounded-full object-cover"><span><span class="block font-semibold text-ink-900 dark:text-white">Elena Rossi</span><span class="block text-xs text-ink-400">Relocation &amp; leasing</span></span></div></td>
+                  <td>Rentals</td><td class="font-bold"><span class="num">31</span></td><td><span class="stars"><i class="ri-star-fill"></i></span> <span class="num">5.0</span></td>
+                  <td><span class="num">5 min</span></td><td><span class="tbl-pill pill-green">Active</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&crop=faces&q=80" alt="Daniel Osei" class="w-9 h-9 rounded-full object-cover"><span><span class="block font-semibold text-ink-900 dark:text-white">Daniel Osei</span><span class="block text-xs text-ink-400">Rental &amp; leasing</span></span></div></td>
+                  <td>Rentals</td><td class="font-bold"><span class="num">17</span></td><td><span class="stars"><i class="ri-star-fill"></i></span> <span class="num">4.9</span></td>
+                  <td><span class="num">14 min</span></td><td><span class="tbl-pill pill-amber">On leave</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><div class="flex items-center gap-3"><span class="mini-avatar bg-ink-400">SK</span><span><span class="block font-semibold text-ink-900 dark:text-white">Sana Khan</span><span class="block text-xs text-ink-400">Trainee</span></span></div></td>
+                  <td>Buying</td><td class="font-bold">—</td><td>—</td>
+                  <td>—</td><td><span class="tbl-pill pill-slate">Onboarding</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DOCUMENT APPROVALS ============ -->
+      <section id="documents" class="dash-section scroll-mt-24">
+        <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Document Approval Queue</h2>
+        <p class="text-sm text-ink-500 dark:text-slate-400">Client uploads waiting on compliance review.</p>
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[880px]">
+              <thead><tr><th>Document</th><th>Client</th><th>Type</th><th>Uploaded</th><th>Risk</th><th class="text-end">Decision</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Pre-approval letter — Chase</td><td>Nina Patel</td><td>Financial</td>
+                  <td><span class="num">Today, 08:41</span></td><td><span class="tbl-pill pill-green">Low</span></td>
+                  <td class="text-end"><div class="flex gap-2 justify-end"><button class="px-3 py-1.5 rounded-lg bg-brand-600 text-white text-xs font-bold">Approve</button><button class="px-3 py-1.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold">Reject</button></div></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Pay stubs (2 months)</td><td>Ravi Kumar</td><td>Financial</td>
+                  <td><span class="num">Yesterday</span></td><td><span class="tbl-pill pill-amber">Medium</span></td>
+                  <td class="text-end"><div class="flex gap-2 justify-end"><button class="px-3 py-1.5 rounded-lg bg-brand-600 text-white text-xs font-bold">Approve</button><button class="px-3 py-1.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold">Reject</button></div></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Purchase agreement — 16 Cedar Ln</td><td>Elena Vance</td><td>Legal</td>
+                  <td><span class="num">Sep 01</span></td><td><span class="tbl-pill pill-green">Low</span></td>
+                  <td class="text-end"><div class="flex gap-2 justify-end"><button class="px-3 py-1.5 rounded-lg bg-brand-600 text-white text-xs font-bold">Approve</button><button class="px-3 py-1.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold">Reject</button></div></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">International ID (passport)</td><td>Tomas Rivera</td><td>ID</td>
+                  <td><span class="num">Aug 30</span></td><td><span class="tbl-pill pill-red">High</span></td>
+                  <td class="text-end"><div class="flex gap-2 justify-end"><button class="px-3 py-1.5 rounded-lg bg-brand-600 text-white text-xs font-bold">Approve</button><button class="px-3 py-1.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold">Reject</button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OFFERS OVERVIEW ============ -->
+      <section id="offers" class="dash-section scroll-mt-24">
+        <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Offers Overview</h2>
+        <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">31</span> offers this month · <span class="num">2.3%</span> average below asking.</p>
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[900px]">
+              <thead><tr><th>Property</th><th>Buyer</th><th>Offer</th><th>Asking</th><th>Status</th><th>Agent</th><th>Decision due</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">16 Cedar Lane</td><td>Elena Vance</td>
+                  <td class="font-bold"><span class="num">$672,000</span></td><td><span class="num">$684,900</span></td>
+                  <td><span class="tbl-pill pill-amber">Negotiating</span></td><td>Maya Bennett</td><td><span class="num">Sep 10</span></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">9 Olive Grove Road</td><td>Leila Rashid</td>
+                  <td class="font-bold"><span class="num">$1,210,000</span></td><td><span class="num">$1,249,000</span></td>
+                  <td><span class="tbl-pill pill-amber">Counter sent</span></td><td>Omar Haddad</td><td><span class="num">Sep 12</span></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Meridian Tower 12F</td><td>Launch &amp; Co.</td>
+                  <td class="font-bold"><span class="num">$1,850</span>/mo</td><td><span class="num">$1,899</span>/mo</td>
+                  <td><span class="tbl-pill pill-green">Accepted</span></td><td>Daniel Osei</td><td>—</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">3 BrickStone Row</td><td>Harper Family</td>
+                  <td class="font-bold"><span class="num">$508,000</span></td><td><span class="num">$519,000</span></td>
+                  <td><span class="tbl-pill pill-red">Expired</span></td><td>Elena Rossi</td><td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MASTER VISIT CALENDAR ============ -->
+      <section id="calendar" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Master Visit Calendar</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Every viewing, open house and site visit across the agency.</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="px-3 py-2 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold text-ink-700 dark:text-slate-300 transition"><i class="ri-arrow-left-s-line"></i></button>
+            <span class="px-4 py-2 rounded-lg search-field text-sm font-bold text-ink-900 dark:text-white">September 2026</span>
+            <button class="px-3 py-2 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold text-ink-700 dark:text-slate-300 transition"><i class="ri-arrow-right-s-line"></i></button>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+          <div class="min-w-[720px] grid grid-cols-7 border-b border-ink-100 dark:border-white/10 text-center text-xs font-bold uppercase tracking-wider text-ink-400">
+            <div class="py-3 border-e border-ink-100 dark:border-white/10">Mon</div>
+            <div class="py-3 border-e border-ink-100 dark:border-white/10">Tue</div>
+            <div class="py-3 border-e border-ink-100 dark:border-white/10">Wed</div>
+            <div class="py-3 border-e border-ink-100 dark:border-white/10">Thu</div>
+            <div class="py-3 border-e border-ink-100 dark:border-white/10">Fri</div>
+            <div class="py-3 border-e border-ink-100 dark:border-white/10">Sat</div>
+            <div class="py-3">Sun</div>
+          </div>
+          <div class="min-w-[720px] grid grid-cols-7 text-sm">
+            <div class="cal-cell p-2 text-ink-400"><span class="num">31</span></div>
+            <div class="cal-cell p-2"><span class="num">1</span></div>
+            <div class="cal-cell p-2"><span class="num">2</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">3</span><div class="mt-1 px-1.5 py-0.5 rounded bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 text-[10px] font-bold truncate">2 tours</div></div>
+            <div class="cal-cell p-2"><span class="num">4</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">5</span><div class="mt-1 px-1.5 py-0.5 rounded bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 text-[10px] font-bold truncate">Open house x3</div></div>
+            <div class="cal-cell p-2"><span class="num">6</span></div>
+            <div class="cal-cell p-2"><span class="num">7</span></div>
+            <div class="cal-cell p-2"><span class="num">8</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">9</span><div class="mt-1 px-1.5 py-0.5 rounded bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 text-[10px] font-bold truncate">Closing</div></div>
+            <div class="cal-cell p-2"><span class="num">10</span></div>
+            <div class="cal-cell p-2"><span class="num">11</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">12</span><div class="mt-1 px-1.5 py-0.5 rounded bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 text-[10px] font-bold truncate">6 tours</div></div>
+            <div class="cal-cell p-2"><span class="num">13</span></div>
+            <div class="cal-cell p-2"><span class="num">14</span></div>
+            <div class="cal-cell p-2"><span class="num">15</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">16</span><div class="mt-1 px-1.5 py-0.5 rounded bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 text-[10px] font-bold truncate">2 tours</div></div>
+            <div class="cal-cell p-2"><span class="num">17</span></div>
+            <div class="cal-cell p-2"><span class="num">18</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">19</span><div class="mt-1 px-1.5 py-0.5 rounded bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 text-[10px] font-bold truncate">Elena · 10:30</div></div>
+            <div class="cal-cell p-2"><span class="num">20</span></div>
+            <div class="cal-cell p-2"><span class="num">21</span></div>
+            <div class="cal-cell p-2"><span class="num">22</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">23</span><div class="mt-1 px-1.5 py-0.5 rounded bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 text-[10px] font-bold truncate">Closing</div></div>
+            <div class="cal-cell p-2"><span class="num">24</span></div>
+            <div class="cal-cell p-2"><span class="num">25</span></div>
+            <div class="cal-cell p-2 has-event"><span class="num">26</span><div class="mt-1 px-1.5 py-0.5 rounded bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 text-[10px] font-bold truncate">Open house</div></div>
+            <div class="cal-cell p-2"><span class="num">27</span></div>
+            <div class="cal-cell p-2"><span class="num">28</span></div>
+            <div class="cal-cell p-2"><span class="num">29</span></div>
+            <div class="cal-cell p-2"><span class="num">30</span></div>
+            <div class="cal-cell p-2"><span class="num">1</span></div>
+            <div class="cal-cell p-2"><span class="num">2</span></div>
+            <div class="cal-cell p-2"><span class="num">3</span></div>
+            <div class="cal-cell p-2 text-ink-400"><span class="num">4</span></div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ BLOG / CONTENT ============ -->
+      <section id="content" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Blog &amp; Content Management</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Draft, schedule and publish guides and reports.</p>
+          </div>
+          <button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition"><i class="ri-edit-2-line"></i> New article</button>
+        </div>
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[820px]">
+              <thead><tr><th>Article</th><th>Author</th><th>Status</th><th>Views</th><th>Scheduled</th><th class="text-end">Actions</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Central Texas Market Report Q3 2026</td><td>Marcus Bell</td>
+                  <td><span class="tbl-pill pill-green">Published</span></td><td><span class="num">8,410</span></td><td><span class="num">Sep 02</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">First-Time Buyer Playbook</td><td>Elena Rossi</td>
+                  <td><span class="tbl-pill pill-green">Published</span></td><td><span class="num">5,120</span></td><td><span class="num">Aug 21</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Why Mueller Families Are Staying</td><td>Maya Bennett</td>
+                  <td><span class="tbl-pill pill-amber">Scheduled</span></td><td>—</td><td><span class="num">Sep 25</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Q4 Pricing Playbook (draft)</td><td>Omar Haddad</td>
+                  <td><span class="tbl-pill pill-slate">Draft</span></td><td>—</td><td>—</td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ USERS & ROLES ============ -->
+      <section id="users" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Users &amp; Role Management</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">3</span> admins · <span class="num">14</span> agents · <span class="num">1,204</span> customers</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition"><i class="ri-user-add-line"></i> <span class="hidden sm:inline">Add user</span></button>
+            <button class="px-4 py-2.5 rounded-lg border border-ink-200 dark:border-white/20 text-sm font-bold text-ink-700 dark:text-slate-300 transition"><i class="ri-shield-user-line"></i> Roles</button>
+          </div>
+        </div>
+        <div class="mt-5 rounded-2xl glass-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[860px]">
+              <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Last active</th><th class="text-end">Actions</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="flex items-center gap-3"><span class="mini-avatar bg-brand-600">AO</span><span class="font-semibold text-ink-900 dark:text-white">Alex Osei</span></div></td>
+                  <td>alex@crestline.example</td><td><span class="tbl-pill pill-green">Admin</span></td><td><span class="tbl-pill pill-green">Active</span></td><td><span class="num">Just now</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=100&h=100&crop=faces&q=80" alt="Maya Bennett" class="w-9 h-9 rounded-full object-cover"><span class="font-semibold text-ink-900 dark:text-white">Maya Bennett</span></div></td>
+                  <td>maya@crestline.example</td><td><span class="tbl-pill pill-slate">Agent</span></td><td><span class="tbl-pill pill-green">Active</span></td><td><span class="num">12 min ago</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&crop=faces&q=80" alt="Elena Vance" class="w-9 h-9 rounded-full object-cover"><span class="font-semibold text-ink-900 dark:text-white">Elena Vance</span></div></td>
+                  <td>elena.vance@example.com</td><td><span class="tbl-pill pill-slate">Customer</span></td><td><span class="tbl-pill pill-green">Active</span></td><td><span class="num">2h ago</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&h=100&crop=faces&q=80" alt="Nina Patel" class="w-9 h-9 rounded-full object-cover"><span class="font-semibold text-ink-900 dark:text-white">Nina Patel</span></div></td>
+                  <td>nina@example.com</td><td><span class="tbl-pill pill-slate">Customer</span></td><td><span class="tbl-pill pill-amber">Pending docs</span></td><td><span class="num">Today</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Menu"><i class="ri-more-2-line"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Firebase Authentication SDK & Scripts -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/firebase-auth.js"></script>
+<script src="assets/js/main.js?v=2"></script>
+</body>
+</html>

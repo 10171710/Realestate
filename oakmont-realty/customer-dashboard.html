@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customer Client Portal | Crestline Realty Group</title>
+<meta name="description" content="Your Crestline customer dashboard — saved listings, site visits, offers &amp; negotiations, documents and direct agent messaging.">
+<meta name="theme-color" content="#18241f">
+<meta name="robots" content="noindex">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232f7d5d'/%3E%3Cpath d='M12 5l7 5.5v8h-4.5v-5h-5v5H5v-8L12 5z' fill='white'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
+          display: ['Fraunces', 'Georgia', 'serif']
+        },
+        colors: {
+          brand: {
+            50: '#eef7f0', 100: '#d9eee2', 200: '#b2dcc6', 300: '#82c3a3',
+            400: '#5bb98f', 500: '#3d9c73', 600: '#2f7d5d', 700: '#256b4e',
+            800: '#1f5740', 900: '#1a4634', 950: '#0f2b20'
+          },
+          ember: {
+            50: '#fdf3ea', 100: '#f9e0cb', 200: '#f2c3a3', 300: '#e8a76f',
+            400: '#d98a4f', 500: '#c96f4a', 600: '#b2542f', 700: '#93401f',
+            800: '#6f3018', 900: '#4e2312'
+          },
+          ink: {
+            50: '#f7f4f0', 100: '#ece6dd', 200: '#d8cdbd', 300: '#b8a993',
+            400: '#94836d', 500: '#6e6050', 600: '#54483c', 700: '#3c342c',
+            800: '#2b2622', 900: '#201c19'
+          },
+          cream: '#faf6f0',
+          forest: { 800: '#18241f', 900: '#141b17', 950: '#101713' }
+        },
+        boxShadow: {
+          soft: '0 10px 40px -12px rgba(47,125,93,0.35)',
+          card: '0 2px 10px -2px rgba(32,28,25,0.08)',
+          lift: '0 24px 50px -24px rgba(32,28,25,0.28)'
+        },
+        borderRadius: { '2xl': '1.25rem', '3xl': '1.75rem' }
+      }
+    }
+  }
+</script>
+
+<script>
+  (function () {
+    var theme = localStorage.getItem('oak-theme') || 'light';
+    var dir = localStorage.getItem('oak-dir') || 'ltr';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+  })();
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css?v=1">
+</head>
+<body class="bg-[#f3efe8] dark:bg-forest-900 text-ink-700 dark:text-slate-300 antialiased">
+
+<div class="dash-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="dash-sidebar" id="dash-sidebar">
+    <div class="flex items-center justify-between px-5 h-16 border-b border-white/10">
+      <a href="index.html" class="brand-logo group">
+        <span class="clay brand-icon">
+          <i class="ri-home-smile-fill"></i>
+        </span>
+        <span class="flex flex-col">
+          <span class="brand-text-main">Crest<span class="brand-text-accent">line</span></span>
+          <span class="brand-text-sub">Realty Group</span>
+        </span>
+      </a>
+      <button class="modal-close lg:hidden dash-sidebar-close w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300" aria-label="Close sidebar"><i class="ri-close-line"></i></button>
+    </div>
+
+    <nav class="p-3 space-y-1">
+      <p class="px-3 pt-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-500">Menu</p>
+      <a href="#overview" class="dash-link active" data-section="overview"><i class="ri-dashboard-line"></i> Overview</a>
+      <a href="#saved" class="dash-link" data-section="saved"><i class="ri-heart-3-line"></i> Saved Homes <span id="dash-sidebar-saved" class="ms-auto text-xs font-bold text-brand-300 bg-brand-500/15 px-2 py-0.5 rounded-full">0</span></a>
+      <a href="#visits" class="dash-link" data-section="visits"><i class="ri-calendar-check-line"></i> Schedule a Visit</a>
+      <a href="#offers" class="dash-link" data-section="offers"><i class="ri-hand-coin-line"></i> Offers &amp; Negotiations <span class="ms-auto text-xs font-bold text-ember-300 bg-ember-500/15 px-2 py-0.5 rounded-full">2</span></a>
+      <a href="#documents" class="dash-link" data-section="documents"><i class="ri-file-list-3-line"></i> Documents</a>
+      <a href="#messages" class="dash-link" data-section="messages"><i class="ri-chat-3-line"></i> Agent Messages <span class="ms-auto text-xs font-bold text-brand-300 bg-brand-500/15 px-2 py-0.5 rounded-full">3</span></a>
+      <a href="#profile" class="dash-link" data-section="profile"><i class="ri-user-settings-line"></i> Profile Settings</a>
+    </nav>
+
+    <nav class="p-3 mt-4 space-y-1 border-t border-white/10">
+      <a href="index.html" class="dash-link"><i class="ri-global-line"></i> Back to website</a>
+      <a href="login.html" class="dash-link text-ember-400 hover:text-ember-300" data-auth-action="logout" id="dash-logout-btn"><i class="ri-logout-box-r-line"></i> Log out</a>
+    </nav>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="dash-main">
+    <!-- Topbar -->
+    <header class="sticky top-0 z-40 bg-[#f3efe8]/90 dark:bg-forest-900/90 backdrop-blur-md border-b border-ink-100 dark:border-white/10">
+      <div class="flex items-center justify-between gap-4 px-4 sm:px-8 h-16">
+        <div class="flex items-center gap-3">
+          <button id="dash-toggle" class="dash-sidebar-close lg:hidden w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300"><i class="ri-menu-2-line"></i></button>
+          <div>
+            <p class="text-sm font-bold text-ink-900 dark:text-white" id="dash-greeting">Welcome to your Portal</p>
+            <p class="text-xs text-ink-400" id="dash-agent-info">Agent: Maya Bennett · Client Specialist</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition">
+            <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 7H4M8 3.5L4 7l4 3.5" />
+              <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
+            </svg>
+          </button>
+          <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition">
+            <i class="ri-moon-line dark:hidden"></i><i class="ri-sun-line hidden dark:inline"></i>
+          </button>
+          <button class="relative w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300" aria-label="Notifications">
+            <i class="ri-notification-3-line"></i>
+            <span class="absolute -top-1 -end-1 w-4 h-4 rounded-full bg-ember-500 text-white text-[10px] font-bold flex items-center justify-center">3</span>
+          </button>
+          <div id="dash-top-avatar" class="w-9 h-9 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center border-2 border-brand-500 shadow-sm shrink-0">CP</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="p-4 sm:p-8 space-y-8 max-w-[1400px]">
+
+      <!-- ============ OVERVIEW ============ -->
+      <section id="overview" class="dash-section scroll-mt-24">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-lg"><i class="ri-heart-3-line"></i></span>
+              <span class="tbl-pill pill-green">Synced live</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num" id="dash-stat-saved">0</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Saved homes</p>
+          </div>
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 flex items-center justify-center text-lg"><i class="ri-calendar-check-line"></i></span>
+              <span class="tbl-pill pill-amber">Tomorrow</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">2</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Upcoming viewings</p>
+          </div>
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-lg"><i class="ri-hand-coin-line"></i></span>
+              <span class="tbl-pill pill-green">Active</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">1</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Active offer</p>
+          </div>
+          <div class="stat-card">
+            <div class="flex items-center justify-between">
+              <span class="w-11 h-11 rounded-xl bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 flex items-center justify-center text-lg"><i class="ri-chat-3-line"></i></span>
+              <span class="tbl-pill pill-red">3 unread</span>
+            </div>
+            <p class="mt-4 text-3xl font-extrabold text-ink-900 dark:text-white"><span class="num">3</span></p>
+            <p class="text-sm text-ink-500 dark:text-slate-400">New messages</p>
+          </div>
+        </div>
+
+        <!-- Recent activity -->
+        <div class="mt-6 rounded-2xl glass-card p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display text-lg font-bold text-ink-900 dark:text-white">Recent activity</h3>
+            <a href="#" class="text-sm font-bold text-brand-700 dark:text-brand-300 hover:text-brand-600 transition">View all</a>
+          </div>
+          <div class="mt-4 space-y-1">
+            <div class="flex items-center gap-3 rounded-lg px-2 py-2.5 hover:bg-ink-50 dark:hover:bg-white/5 transition">
+              <span class="w-9 h-9 rounded-lg bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center"><i class="ri-send-plane-line"></i></span>
+              <p class="text-sm flex-1 text-ink-700 dark:text-slate-300"><span class="font-bold">Counter-offer received</span> on 16 Cedar Lane — <span class="num">$672,000</span></p>
+              <span class="text-xs text-ink-400">2h ago</span>
+            </div>
+            <div class="flex items-center gap-3 rounded-lg px-2 py-2.5 hover:bg-ink-50 dark:hover:bg-white/5 transition">
+              <span class="w-9 h-9 rounded-lg bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 flex items-center justify-center"><i class="ri-calendar-check-line"></i></span>
+              <p class="text-sm flex-1 text-ink-700 dark:text-slate-300"><span class="font-bold">Viewing confirmed</span> at 3 BrickStone Row — Sat 10:30</p>
+              <span class="text-xs text-ink-400">5h ago</span>
+            </div>
+            <div class="flex items-center gap-3 rounded-lg px-2 py-2.5 hover:bg-ink-50 dark:hover:bg-white/5 transition">
+              <span class="w-9 h-9 rounded-lg bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center"><i class="ri-file-upload-line"></i></span>
+              <p class="text-sm flex-1 text-ink-700 dark:text-slate-300"><span class="font-bold">Pre-approval letter</span> uploaded &amp; sent to agent</p>
+              <span class="text-xs text-ink-400">Yesterday</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SAVED HOMES ============ -->
+      <section id="saved" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Saved Homes</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Shortlisted properties — synced across all your devices.</p>
+          </div>
+          <a href="home-2.html" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition"><i class="ri-search-line"></i> Find more</a>
+        </div>
+        <div class="mt-5 grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+          <div class="card-hover rounded-2xl glass-card overflow-hidden">
+            <a href="listing-detail.html" class="img-zoom relative block" aria-label="View 16 Cedar Lane details">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="16 Cedar Lane" class="w-full aspect-[16/10] object-cover" loading="lazy">
+              <button class="absolute top-3 end-3 w-9 h-9 rounded-full bg-white/90 text-ember-500 flex items-center justify-center shadow-card" aria-label="Remove from saved"><i class="ri-heart-3-fill"></i></button>
+              <span class="absolute bottom-3 start-3 px-2.5 py-1 rounded-full text-xs font-bold bg-white/90 text-ink-900"><i class="ri-time-line text-brand-600"></i> Price dropped <span class="num">$6K</span></span>
+            </a>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2">
+                <div><h3 class="font-bold text-ink-900 dark:text-white"><a href="listing-detail.html" class="hover:text-brand-700 dark:hover:text-brand-300 transition">16 Cedar Lane</a></h3><p class="text-xs text-ink-400">Alder Ridge, Austin TX</p></div>
+                <p class="font-extrabold text-brand-700 dark:text-brand-300"><span class="num">$672,000</span></p>
+              </div>
+              <div class="listing-meta mt-3">
+                <span>4 Bed</span><span>2.5 Bath</span><span>2,340 sqft</span>
+              </div>
+              <div class="mt-4 flex gap-2">
+                <a href="#visits" class="flex-1 text-center px-3 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition">Schedule visit</a>
+                <a href="#messages" class="flex-1 text-center px-3 py-2.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold text-ink-700 dark:text-slate-300 transition">Ask agent</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-hover rounded-2xl glass-card overflow-hidden">
+            <a href="listing-detail.html" class="img-zoom relative block" aria-label="View 9 Olive Grove Road details">
+              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=80" alt="9 Olive Grove Road" class="w-full aspect-[16/10] object-cover" loading="lazy">
+              <button class="absolute top-3 end-3 w-9 h-9 rounded-full bg-white/90 text-ember-500 flex items-center justify-center shadow-card" aria-label="Remove from saved"><i class="ri-heart-3-fill"></i></button>
+            </a>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2">
+                <div><h3 class="font-bold text-ink-900 dark:text-white"><a href="listing-detail.html" class="hover:text-brand-700 dark:hover:text-brand-300 transition">9 Olive Grove Road</a></h3><p class="text-xs text-ink-400">Dripping Springs</p></div>
+                <p class="font-extrabold text-brand-700 dark:text-brand-300"><span class="num">$1,249,000</span></p>
+              </div>
+              <div class="listing-meta mt-3">
+                <span>5 Bed</span><span>4 Bath</span><span>3,920 sqft</span>
+              </div>
+              <div class="mt-4 flex gap-2">
+                <a href="#visits" class="flex-1 text-center px-3 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition">Schedule visit</a>
+                <a href="#messages" class="flex-1 text-center px-3 py-2.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold text-ink-700 dark:text-slate-300 transition">Ask agent</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-hover rounded-2xl glass-card overflow-hidden">
+            <a href="listing-detail.html" class="img-zoom relative block" aria-label="View 220 Harbor View details">
+              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80" alt="220 Harbor View" class="w-full aspect-[16/10] object-cover" loading="lazy">
+              <button class="absolute top-3 end-3 w-9 h-9 rounded-full bg-white/90 text-ember-500 flex items-center justify-center shadow-card" aria-label="Remove from saved"><i class="ri-heart-3-fill"></i></button>
+            </a>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2">
+                <div><h3 class="font-bold text-ink-900 dark:text-white"><a href="listing-detail.html" class="hover:text-brand-700 dark:hover:text-brand-300 transition">220 Harbor View</a></h3><p class="text-xs text-ink-400">Harbor Lofts, Austin TX</p></div>
+                <p class="font-extrabold text-brand-700 dark:text-brand-300"><span class="num">$2,150</span><span class="text-xs text-ink-400">/mo</span></p>
+              </div>
+              <div class="listing-meta mt-3">
+                <span>2 Bed</span><span>2 Bath</span><span>1,150 sqft</span>
+              </div>
+              <div class="mt-4 flex gap-2">
+                <a href="#visits" class="flex-1 text-center px-3 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition">Schedule visit</a>
+                <a href="#messages" class="flex-1 text-center px-3 py-2.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold text-ink-700 dark:text-slate-300 transition">Ask agent</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SCHEDULE A VISIT ============ -->
+      <section id="visits" class="dash-section scroll-mt-24">
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="rounded-2xl glass-card p-6 sm:p-7">
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Schedule a Site Visit</h2>
+            <p class="mt-1 text-sm text-ink-500 dark:text-slate-400">Pick a property, a date and a timeslot — your agent confirms in minutes.</p>
+            <form class="mt-5 space-y-4" data-validate data-success="#visit-success" novalidate>
+              <div>
+                <label for="visit-property" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Property</label>
+                <select id="visit-property" class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+                  <option>16 Cedar Lane — Tuesday · Open 2–5 PM</option>
+                  <option>9 Olive Grove Road — Thursday · Open 11–2 PM</option>
+                  <option>3 BrickStone Row — Saturday · Open 10–1 PM</option>
+                  <option>220 Harbor View — Sunday · Open 9–12</option>
+                </select>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="visit-date" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Date</label>
+                  <input id="visit-date" type="date" required class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+                </div>
+                <div>
+                  <label for="visit-time" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Time</label>
+                  <select id="visit-time" class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+                    <option>09:00 – 09:45</option><option>10:00 – 10:45</option><option>11:00 – 11:45</option><option>14:00 – 14:45</option><option>16:00 – 16:45</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="visit-note" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Notes <span class="font-normal text-ink-400">(optional)</span></label>
+                <textarea id="visit-note" rows="3" placeholder="e.g. questions about flood zone, school district…" class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white placeholder:text-ink-300 dark:placeholder:text-slate-500 focus:outline-none resize-y"></textarea>
+              </div>
+              <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition"><i class="ri-calendar-check-line"></i> Request visit</button>
+              <p id="visit-success" class="hidden text-sm font-semibold text-brand-700 dark:text-brand-300"><i class="ri-checkbox-circle-fill"></i> Visit requested — Maya will confirm by reply message.</p>
+            </form>
+          </div>
+
+          <div class="space-y-5">
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Upcoming visits</h2>
+            <div class="flex items-start gap-4 rounded-2xl glass-card p-5">
+              <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl"><i class="ri-calendar-2-line"></i></span>
+              <div class="flex-1">
+                <p class="font-bold text-ink-900 dark:text-white">3 BrickStone Row</p>
+                <p class="text-sm text-ink-500 dark:text-slate-400">Sat, Sep 19 · 10:30 AM with Maya Bennett</p>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span class="tbl-pill pill-green">Confirmed</span>
+                  <span class="tbl-pill pill-slate"><i class="ri-drinks-line"></i> Open house</span>
+                </div>
+              </div>
+              <button class="text-sm font-bold text-ember-600 hover:text-ember-500 transition">Reschedule</button>
+            </div>
+            <div class="flex items-start gap-4 rounded-2xl glass-card p-5">
+              <span class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl"><i class="ri-calendar-2-line"></i></span>
+              <div class="flex-1">
+                <p class="font-bold text-ink-900 dark:text-white">220 Harbor View</p>
+                <p class="text-sm text-ink-500 dark:text-slate-400">Sun, Sep 20 · 09:15 AM (live video tour)</p>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span class="tbl-pill pill-amber">Awaiting confirm</span>
+                </div>
+              </div>
+              <button class="text-sm font-bold text-ember-600 hover:text-ember-500 transition">Cancel</button>
+            </div>
+            <div class="rounded-2xl bg-brand-700 p-5 text-white">
+              <p class="font-bold">Tour, recorded.</p>
+              <p class="mt-1 text-sm text-brand-100">Every confirmed visit is added to your timeline so you never lose track of where you've been.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OFFERS & NEGOTIATIONS ============ -->
+      <section id="offers" class="dash-section scroll-mt-24">
+        <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Offers &amp; Negotiations</h2>
+        <p class="text-sm text-ink-500 dark:text-slate-400">Every offer, counter and deadline — captured the moment it happens.</p>
+
+        <div class="mt-5 rounded-2xl glass-card p-6 sm:p-7">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80" alt="16 Cedar Lane thumbnail" class="w-16 h-12 rounded-lg object-cover">
+              <div>
+                <h3 class="font-bold text-ink-900 dark:text-white">16 Cedar Lane</h3>
+                <p class="text-xs text-ink-400">Offer #68490 · Submitted Aug 22, 2026</p>
+              </div>
+            </div>
+            <span class="tbl-pill pill-green">Negotiating</span>
+          </div>
+
+          <div class="tline mt-6 ps-1 space-y-6">
+            <div class="relative ps-10">
+              <span class="node w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center"><i class="ri-check-line"></i></span>
+              <p class="font-bold text-ink-900 dark:text-white">Initial offer submitted</p>
+              <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">$665,000</span> · Aug 22, 2026</p>
+            </div>
+            <div class="relative ps-10">
+              <span class="node w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center"><i class="ri-check-line"></i></span>
+              <p class="font-bold text-ink-900 dark:text-white">Seller countered</p>
+              <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">$678,000</span> · Aug 26, 2026</p>
+            </div>
+            <div class="relative ps-10">
+              <span class="node w-6 h-6 rounded-full bg-brand-100 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 text-xs flex items-center justify-center border-2 border-brand-500"><i class="ri-arrow-right-line"></i></span>
+              <p class="font-bold text-ink-900 dark:text-white">Our counter — awaiting reply</p>
+              <p class="text-sm text-ink-500 dark:text-slate-400"><span class="num">$672,000</span> + <span class="num">$6K</span> closing credit · Sep 02, 2026</p>
+              <div class="mt-2 flex gap-2">
+                <button class="px-3 py-1.5 rounded-lg bg-brand-600 text-white text-xs font-bold transition hover:bg-brand-500">Approve next offer</button>
+                <button class="px-3 py-1.5 rounded-lg border border-ink-200 dark:border-white/20 text-xs font-bold text-ink-700 dark:text-slate-300 transition">Message agent</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 grid sm:grid-cols-2 gap-5">
+          <div class="rounded-2xl glass-card p-5 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-11 h-11 rounded-xl bg-ember-50 dark:bg-ember-500/10 text-ember-600 dark:text-ember-300 flex items-center justify-center text-lg"><i class="ri-close-circle-line"></i></span>
+              <div><p class="font-bold text-ink-900 dark:text-white">220 Harbor View (rental)</p><p class="text-xs text-ink-400">Application declined on Sep 01 · applicant withdrew</p></div>
+            </div>
+            <span class="tbl-pill pill-red">Closed</span>
+          </div>
+          <div class="rounded-2xl glass-card p-5 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-lg"><i class="ri-check-double-line"></i></span>
+              <div><p class="font-bold text-ink-900 dark:text-white">3 BrickStone Row</p><p class="text-xs text-ink-400">Offer accepted Jun 12 · closed Jun 30, 2026</p></div>
+            </div>
+            <span class="tbl-pill pill-green">Closed</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DOCUMENTS ============ -->
+      <section id="documents" class="dash-section scroll-mt-24">
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Documents</h2>
+            <p class="text-sm text-ink-500 dark:text-slate-400">Upload once — your agent and (with your permission) your lender see it instantly.</p>
+          </div>
+          <label class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft cursor-pointer transition">
+            <i class="ri-upload-cloud-2-line"></i> Upload document
+            <input type="file" class="hidden" multiple>
+          </label>
+        </div>
+
+        <div class="mt-5 rounded-2xl border-2 border-dashed border-ink-200 dark:border-white/15 p-8 text-center">
+          <span class="w-14 h-14 rounded-2xl bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 flex items-center justify-center text-2xl mx-auto"><i class="ri-file-add-line"></i></span>
+          <h3 class="mt-3 font-bold text-ink-900 dark:text-white">Drop your files here</h3>
+          <p class="mt-1 text-sm text-ink-500 dark:text-slate-400">PDF, JPG or PNG · up to 20 MB each. Pay stubs, pre-approvals, IDs, purchase agreements.</p>
+        </div>
+
+        <div class="mt-5 overflow-hidden rounded-2xl glass-card">
+          <div class="overflow-x-auto">
+            <table class="dash-table min-w-[640px]">
+              <thead>
+                <tr><th>Document</th><th>Type</th><th>Uploaded</th><th>Status</th><th class="text-end">Download</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Pre-approval letter — Chase</td>
+                  <td>Financial</td>
+                  <td><span class="num">Aug 28, 2026</span></td>
+                  <td><span class="tbl-pill pill-green"><i class="ri-check-line"></i> Approved</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Download"><i class="ri-download-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Driver's license (front)</td>
+                  <td>ID</td>
+                  <td><span class="num">Aug 28, 2026</span></td>
+                  <td><span class="tbl-pill pill-green"><i class="ri-check-line"></i> Approved</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Download"><i class="ri-download-2-line"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold text-ink-900 dark:text-white">Pay stubs (last 2 months)</td>
+                  <td>Financial</td>
+                  <td><span class="num">Sep 01, 2026</span></td>
+                  <td><span class="tbl-pill pill-amber"><i class="ri-time-line"></i> In review</span></td>
+                  <td class="text-end"><button class="text-brand-700 dark:text-brand-300" aria-label="Download"><i class="ri-download-2-line"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MESSAGES ============ -->
+      <section id="messages" class="dash-section scroll-mt-24">
+        <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Agent Messages</h2>
+        <p class="text-sm text-ink-500 dark:text-slate-400">Messaging with Maya Bennett — replied-to within one business day.</p>
+
+        <div class="mt-5 grid lg:grid-cols-3 gap-5">
+          <div class="rounded-2xl glass-card p-4 overflow-hidden flex flex-col">
+            <div class="space-y-4">
+              <div class="flex items-start gap-2">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">Hello — seller came back at <span class="num">$678K</span>. Want me to counter at <span class="num">$672K</span> with a closing credit? <span class="block text-[10px] text-ink-400 mt-1">Yesterday · 14:02</span></div>
+              </div>
+              <div class="flex items-start justify-end gap-2">
+                <div class="bg-brand-600 text-white px-4 py-3 rounded-2xl rounded-br-md text-sm">Yes please, keep it under <span class="num">$675K</span> total. <span class="block text-[10px] text-white/70 mt-1">Yesterday · 14:18</span></div>
+              </div>
+              <div class="flex items-start gap-2">
+                <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">Countered at <span class="num">$672K</span> + <span class="num">$6K</span> credit. Watch the offer tracker — seller replies by Thursday. <span class="block text-[10px] text-ink-400 mt-1">Today · 09:04</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 rounded-2xl glass-card p-6 flex flex-col">
+            <div class="flex items-center gap-3 pb-4 border-b border-ink-100 dark:border-white/10">
+              <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=160&h=160&crop=faces&q=80" alt="Maya Bennett" class="w-11 h-11 rounded-full object-cover border-2 border-brand-500 shadow-sm shrink-0">
+              <div>
+                <p class="font-bold text-ink-900 dark:text-white">Maya Bennett</p>
+                <p class="text-xs text-brand-600 dark:text-brand-300 font-semibold"><i class="ri-record-circle-fill"></i> Online · Buyer Specialist</p>
+              </div>
+            </div>
+            <div class="flex-1 py-5 space-y-4">
+              <div class="flex items-start gap-2">
+                <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">Quick heads-up: the olive grove villa added a home office listing. Want the tour moved earlier?</div>
+              </div>
+              <div class="flex items-start justify-end gap-2">
+                <div class="bg-brand-600 text-white px-4 py-3 rounded-2xl rounded-br-md text-sm">Yes! Friday works. Also — do they accept email offers?</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">They do — and we'll handle it digitally in the dashboard either way.</div>
+              </div>
+            </div>
+            <form class="flex gap-2" data-validate novalidate>
+              <input type="text" required placeholder="Type a message… (demo — sending is disabled)" class="flex-1 px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white placeholder:text-ink-300 dark:placeholder:text-slate-500 focus:outline-none">
+              <button type="submit" class="px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition"><i class="ri-send-plane-2-line"></i><span class="hidden xl:inline ps-1">Send</span></button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE ============ -->
+      <section id="profile" class="dash-section scroll-mt-24">
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl glass-card p-6 text-center">
+            <div id="dash-profile-avatar" class="w-24 h-24 rounded-full mx-auto bg-brand-600 text-white font-bold text-2xl flex items-center justify-center border-4 border-brand-100 dark:border-brand-500/30 shadow-md">CP</div>
+            <h2 class="mt-4 font-display text-xl font-bold text-ink-900 dark:text-white" id="dash-profile-name">Client Account</h2>
+            <p class="text-sm text-ink-400" id="dash-profile-role">Home Buyer · Client Portal</p>
+            <p class="text-xs text-ink-500 dark:text-slate-400 mt-1 font-mono" id="dash-profile-email">client@example.com</p>
+            <div class="mt-3 flex justify-center gap-2">
+              <span class="tbl-pill pill-green">Verified client</span>
+              <span class="tbl-pill pill-slate">Member since 2026</span>
+            </div>
+            <div class="mt-5 grid grid-cols-3 gap-2 text-center">
+              <div class="rounded-xl bg-ink-50 dark:bg-white/5 p-3"><p class="font-extrabold text-ink-900 dark:text-white text-lg"><span class="num" id="dash-stat-tours">2</span></p><p class="text-[11px] text-ink-400">Tours</p></div>
+              <div class="rounded-xl bg-ink-50 dark:bg-white/5 p-3"><p class="font-extrabold text-ink-900 dark:text-white text-lg"><span class="num" id="dash-stat-offers">1</span></p><p class="text-[11px] text-ink-400">Offers</p></div>
+              <div class="rounded-xl bg-ink-50 dark:bg-white/5 p-3"><p class="font-extrabold text-ink-900 dark:text-white text-lg"><span class="num" id="dash-profile-saved">0</span></p><p class="text-[11px] text-ink-400">Saved</p></div>
+            </div>
+          </div>
+
+          <form id="profile-settings-form" class="lg:col-span-2 rounded-2xl glass-card p-6 sm:p-7 space-y-5" data-validate data-success="#profile-success" novalidate>
+            <h2 class="font-display text-xl font-bold text-ink-900 dark:text-white">Profile Settings</h2>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="profile-first" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">First name</label>
+                <input id="profile-first" type="text" placeholder="First name" required class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+              </div>
+              <div>
+                <label for="profile-last" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Last name</label>
+                <input id="profile-last" type="text" placeholder="Last name" required class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+              </div>
+              <div>
+                <label for="profile-email" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Email</label>
+                <input id="profile-email" type="email" placeholder="you@example.com" required class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none bg-ink-50/50 dark:bg-white/5 cursor-not-allowed" readonly>
+              </div>
+              <div>
+                <label for="profile-phone" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Phone</label>
+                <input id="profile-phone" type="tel" placeholder="(512) 555-0100" class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+              </div>
+              <div>
+                <label for="profile-assigned" class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Assigned agent</label>
+                <select id="profile-assigned" class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+                  <option>Maya Bennett (current)</option><option>Request a change…</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-ink-700 dark:text-slate-200 mb-1.5">Buying timeline</label>
+                <select class="w-full px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none">
+                  <option>Within 3 months</option><option>3–6 months</option><option>6–12 months</option><option>Just browsing</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-4 flex-wrap">
+              <p id="profile-success" class="hidden text-sm font-semibold text-brand-700 dark:text-brand-300"><i class="ri-checkbox-circle-fill"></i> Profile updated.</p>
+              <div class="ms-auto flex gap-3">
+                <button type="button" class="px-5 py-3 rounded-xl border border-ink-200 dark:border-white/20 text-sm font-bold text-ink-700 dark:text-slate-300 transition">Cancel</button>
+                <button type="submit" class="px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition">Save changes</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Firebase Authentication SDK & Scripts -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/firebase-auth.js"></script>
+<script src="assets/js/main.js?v=2"></script>
+</body>
+</html>

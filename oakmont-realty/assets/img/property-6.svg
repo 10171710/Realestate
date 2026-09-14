@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dcefe4"/><stop offset="0.55" stop-color="#bcdccb"/>
+      <stop offset="0.58" stop-color="#c9d9b8"/>
+    </linearGradient>
+    <radialGradient id="sun2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="1" stop-color="#2f7d5d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="560" rx="24" fill="url(#sky2)"/>
+  <circle cx="672" cy="89.60000000000001" r="104" fill="url(#sun2)"/>
+  <text x="64" y="375.19999999999993" font-size="28" font-weight="700" fill="#f5f0e8" opacity="0.55">Townhouse</text>
+  <ellipse cx="400" cy="336.79999999999995" rx="336" ry="44" fill="#00000022"/>
+  <rect x="0" y="324.79999999999995" width="800" height="235.20000000000005" fill="#c9d9b8" opacity="0.9"/>
+  <g>
+    <rect x="192" y="126.39999999999995" width="416" height="198.4" rx="6" fill="#8a5a3b" opacity="0.35"/>
+    <g><rect x="200" y="134.39999999999995" width="400" height="63.46666666666667" rx="4" fill="#f4ede2"/><rect x="200" y="138.39999999999995" width="400" height="4" fill="#c9a06a" opacity="0.8"/><rect x="212" y="142.39999999999995" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/><rect x="333.3333333333333" y="142.39999999999995" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/><rect x="454.66666666666663" y="142.39999999999995" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/></g><g><rect x="200" y="197.86666666666662" width="400" height="63.46666666666667" rx="4" fill="#efe6d8"/><rect x="200" y="201.86666666666662" width="400" height="4" fill="#a97f55" opacity="0.8"/><rect x="212" y="205.86666666666662" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/><rect x="333.3333333333333" y="205.86666666666662" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/><rect x="454.66666666666663" y="205.86666666666662" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/></g><g><rect x="200" y="261.33333333333326" width="400" height="63.46666666666667" rx="4" fill="#f7f1e6"/><rect x="200" y="265.33333333333326" width="400" height="4" fill="#8a5a3b" opacity="0.8"/><rect x="212" y="269.33333333333326" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/><rect x="333.3333333333333" y="269.33333333333326" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/><rect x="454.66666666666663" y="269.33333333333326" width="113.33333333333333" height="47.46666666666667" rx="3" fill="#9cc3d8"/></g>
+  </g>
+  <g>
+    <rect x="192" y="140.39999999999995" width="7" height="180.4" rx="2" fill="#4e7a3c"/><circle cx="196" cy="132.39999999999995" r="13" fill="#6f9a53"/><rect x="182" y="150.39999999999995" width="7" height="180.4" rx="2" fill="#4e7a3c"/><circle cx="186" cy="142.39999999999995" r="13" fill="#6f9a53"/><rect x="172" y="160.39999999999995" width="7" height="180.4" rx="2" fill="#4e7a3c"/><circle cx="176" cy="152.39999999999995" r="13" fill="#6f9a53"/>
+  </g>
+</svg>

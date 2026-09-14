@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customer Login — Client Portal | Crestline Realty Group</title>
+<meta name="description" content="Log in to your Crestline Realty client account to manage saved properties, schedule private tours, submit offers, and chat with your licensed broker.">
+<meta name="theme-color" content="#18241f">
+<link rel="canonical" href="https://www.crestline-realty.example/login.html">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232f7d5d'/%3E%3Cpath d='M12 5l7 5.5v8h-4.5v-5h-5v5H5v-8L12 5z' fill='white'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
+          display: ['Fraunces', 'Georgia', 'serif']
+        },
+        colors: {
+          brand: {
+            50: '#eef7f0', 100: '#d9eee2', 200: '#b2dcc6', 300: '#82c3a3',
+            400: '#5bb98f', 500: '#3d9c73', 600: '#2f7d5d', 700: '#256b4e',
+            800: '#1f5740', 900: '#1a4634', 950: '#0f2b20'
+          },
+          ember: {
+            50: '#fdf3ea', 100: '#f9e0cb', 200: '#f2c3a3', 300: '#e8a76f',
+            400: '#d98a4f', 500: '#c96f4a', 600: '#b2542f', 700: '#93401f',
+            800: '#6f3018', 900: '#4e2312'
+          },
+          ink: {
+            50: '#f7f4f0', 100: '#ece6dd', 200: '#d8cdbd', 300: '#b8a993',
+            400: '#94836d', 500: '#6e6050', 600: '#54483c', 700: '#3c342c',
+            800: '#2b2622', 900: '#201c19'
+          },
+          cream: '#faf6f0',
+          forest: { 800: '#18241f', 900: '#141b17', 950: '#101713' }
+        },
+        boxShadow: {
+          soft: '0 10px 40px -12px rgba(47,125,93,0.35)',
+          card: '0 2px 10px -2px rgba(32,28,25,0.08)',
+          lift: '0 24px 50px -24px rgba(32,28,25,0.28)'
+        },
+        borderRadius: { '2xl': '1.25rem', '3xl': '1.75rem' }
+      }
+    }
+  }
+</script>
+
+<script>
+  (function () {
+    var theme = localStorage.getItem('oak-theme') || 'light';
+    var dir = localStorage.getItem('oak-dir') || 'ltr';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+  })();
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css?v=2">
+</head>
+<body class="bg-cream dark:bg-forest-900 text-ink-700 dark:text-slate-300 antialiased min-h-screen flex flex-col justify-between relative overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+  <!-- Ambient Glow Orbs -->
+  <div class="fixed top-[-100px] start-[-100px] w-96 h-96 rounded-full bg-brand-500/15 dark:bg-brand-500/10 blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-[-100px] end-[-100px] w-96 h-96 rounded-full bg-ember-500/15 dark:bg-ember-500/10 blur-3xl pointer-events-none"></div>
+
+  <!-- Top bar controls -->
+  <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-end relative z-10">
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold text-ink-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300 hover:bg-ink-100 dark:hover:bg-white/10 transition me-1">
+        <i class="ri-arrow-left-line"></i> Back to Site
+      </a>
+      <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-ink-700 dark:text-slate-200 hover:bg-ink-100 dark:hover:bg-white/10 transition">
+        <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7H4M8 3.5L4 7l4 3.5" />
+          <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
+        </svg>
+      </button>
+      <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-ink-700 dark:text-slate-200 hover:bg-ink-100 dark:hover:bg-white/10 transition">
+        <i class="ri-moon-line text-lg dark:hidden"></i>
+        <i class="ri-sun-line text-lg hidden dark:inline"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Login Card Section -->
+  <main class="flex-1 flex items-center justify-center px-4 py-8 relative z-10">
+    <div class="w-full max-w-md" data-aos="fade-up">
+      
+      <!-- Login Container with custom rich background color -->
+      <div class="rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/15 bg-[#15231c] text-white relative backdrop-blur-xl">
+        
+        <!-- Centered Brand Logo & Header -->
+        <div class="text-center mb-6">
+          <a href="index.html" class="brand-logo inline-flex items-center justify-center gap-3 mb-3 group hover:opacity-90 transition">
+            <span class="w-11 h-11 rounded-xl bg-white text-brand-700 flex items-center justify-center text-xl shadow-md shrink-0">
+              <i class="ri-home-smile-fill"></i>
+            </span>
+            <span class="flex flex-col text-start">
+              <span class="text-white text-2xl font-extrabold tracking-tight">Crest<span class="text-emerald-400">line</span></span>
+              <span class="text-slate-300 text-[11px] font-bold uppercase tracking-wider">Realty Group</span>
+            </span>
+          </a>
+          <h1 class="font-display text-2xl sm:text-3xl font-bold text-white" id="login-title">Customer Login</h1>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1" id="login-sub">Log in to manage saved homes, tour bookings &amp; offers.</p>
+        </div>
+
+        <!-- Form -->
+        <form data-auth="login" class="space-y-4" novalidate>
+          <input type="hidden" name="role" value="user">
+          
+          <div>
+            <label for="login-email" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">Email Address</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none text-slate-400">
+                <i class="ri-mail-line"></i>
+              </span>
+              <input type="email" id="login-email" name="email" placeholder="you@example.com" required class="w-full ps-10 pe-4 py-3 rounded-xl bg-white/10 border border-white/20 text-sm font-semibold text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15">
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="login-pass" class="block text-xs font-bold text-slate-200 uppercase tracking-wider">Password</label>
+              <a href="#" id="forgot-link" class="text-xs font-semibold text-emerald-300 hover:underline">Forgot password?</a>
+            </div>
+            <div class="relative">
+              <span class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none text-slate-400">
+                <i class="ri-lock-line"></i>
+              </span>
+              <input type="password" id="login-pass" name="pass" placeholder="••••••••" required class="w-full ps-10 pe-4 py-3 rounded-xl bg-white/10 border border-white/20 text-sm font-semibold text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15">
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs pt-1">
+            <label class="flex items-center gap-2 cursor-pointer text-slate-300">
+              <input type="checkbox" id="remember" checked class="w-4 h-4 rounded border-white/30 text-brand-600 focus:ring-emerald-400 bg-white/10">
+              <span>Keep me signed in</span>
+            </label>
+          </div>
+
+          <button type="submit" id="login-submit-btn" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-soft transition">
+            <i class="ri-login-circle-line"></i> Sign In to Portal
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="relative my-6 text-center">
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/15"></div></div>
+          <span class="relative px-3 bg-[#15231c] text-xs font-semibold text-slate-400 uppercase tracking-wider">or continue with</span>
+        </div>
+
+        <!-- Social SSO Buttons -->
+        <div class="grid grid-cols-3 gap-2.5">
+          <button type="button" id="google-login-btn" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-emerald-400 transition text-xs font-bold text-white cursor-pointer">
+            <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47a5.53 5.53 0 0 1-2.4 3.63v3.03h3.86c2.26-2.09 3.56-5.17 3.56-8.9z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3.03c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.12C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.26a7.22 7.22 0 0 1 0-4.52V6.62H1.29a12.01 12.01 0 0 0 0 10.76l3.98-3.12z"/><path fill="#EA4335" d="M12 4.78c1.76 0 3.35.6 4.6 1.79l3.42-3.42C17.94 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.12C6.22 6.89 8.87 4.78 12 4.78z"/></svg>
+            <span>Google</span>
+          </button>
+          <a href="https://www.facebook.com/login/" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-emerald-400 transition text-xs font-bold text-white">
+            <i class="ri-facebook-circle-fill text-base text-[#1877F2]"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="https://appleid.apple.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-emerald-400 transition text-xs font-bold text-white">
+            <i class="ri-apple-fill text-base text-white"></i>
+            <span>Apple</span>
+          </a>
+        </div>
+
+        <!-- Footnote Links -->
+        <div class="mt-6 pt-5 border-t border-white/15 text-center space-y-2.5 text-xs text-slate-300">
+          <p>
+            New to Crestline? <a href="register.html" class="font-bold text-emerald-300 hover:underline">Create an account</a>
+          </p>
+          <p class="pt-1">
+            <a href="admin-login.html" class="inline-flex items-center gap-1 text-slate-300 hover:text-emerald-300 font-semibold transition">
+              <i class="ri-shield-keyhole-line text-sm text-ember-400"></i> Licensed agent or broker? Admin login
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+
+
+  <!-- Firebase Authentication SDK & Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/firebase-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script>
+    (function () {
+      var forgot = document.getElementById("forgot-link");
+      if (forgot) {
+        forgot.addEventListener("click", async function (e) {
+          e.preventDefault();
+          var emailInput = document.getElementById("login-email");
+          var email = emailInput ? emailInput.value.trim() : "";
+          if (!email) {
+            if (window.CrestlineToast) {
+              window.CrestlineToast("Please type your email address first!", "error");
+            }
+            if (emailInput) emailInput.focus();
+            return;
+          }
+
+          try {
+            if (window.CrestlineAuth) {
+              var res = await window.CrestlineAuth.sendPasswordReset(email);
+              if (window.CrestlinePopup) {
+                window.CrestlinePopup({
+                  icon: '<i class="ri-mail-check-line text-emerald-500 text-3xl"></i>',
+                  title: "Password Reset Dispatched",
+                  message: res.message
+                });
+              }
+            }
+          } catch (err) {
+            if (window.CrestlineToast) {
+              window.CrestlineToast(err.message, "error");
+            }
+          }
+        });
+      }
+
+      var googleBtn = document.getElementById("google-login-btn");
+      if (googleBtn) {
+        googleBtn.addEventListener("click", async function () {
+          try {
+            if (window.CrestlineAuth) {
+              if (window.CrestlineToast) window.CrestlineToast("Connecting to Google...", "info");
+              var user = await window.CrestlineAuth.signInGoogle("user");
+              if (window.CrestlineToast) window.CrestlineToast("Welcome back, " + user.name + "!");
+              setTimeout(function () {
+                window.location.href = "customer-dashboard.html";
+              }, 600);
+            }
+          } catch (err) {
+            if (window.CrestlineToast) {
+              window.CrestlineToast(err.message, "error");
+            }
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
