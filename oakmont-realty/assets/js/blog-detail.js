@@ -38,19 +38,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Travis County</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Travis County</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">$610,000</span>
-            <span class="text-xs text-ink-400">Median Price · 24 DOM</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Median Price · 24 DOM</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Williamson County</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Williamson County</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">$438,000</span>
-            <span class="text-xs text-ink-400">Median Price · 32 DOM</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Median Price · 32 DOM</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Hays County</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Hays County</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">$485,000</span>
-            <span class="text-xs text-ink-400">Median Price · 36 DOM</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Median Price · 36 DOM</span>
           </div>
         </div>
 
@@ -108,19 +108,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Credit Optimization</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Credit Optimization</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">680+ FICO</span>
-            <span class="text-xs text-ink-400">Unlocks Best Tier Rates</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Unlocks Best Tier Rates</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Debt-to-Income</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Debt-to-Income</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">&le; 43% DTI</span>
-            <span class="text-xs text-ink-400">Ideal Lending Threshold</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Ideal Lending Threshold</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Texas TSAHC Grant</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Texas TSAHC Grant</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">Up to 5%</span>
-            <span class="text-xs text-ink-400">Forgivable Down Payment</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Forgivable Down Payment</span>
           </div>
         </div>
 
@@ -194,19 +194,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Park System</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Park System</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">140+ Acres</span>
-            <span class="text-xs text-ink-400">Open Green Space</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Open Green Space</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Trail Network</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Trail Network</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">5+ Miles</span>
-            <span class="text-xs text-ink-400">Hike & Bike Trails</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Hike & Bike Trails</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Walk Score</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Walk Score</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">94 / 100</span>
-            <span class="text-xs text-ink-400">Walker's Paradise</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Walker's Paradise</span>
           </div>
         </div>
 
@@ -267,19 +267,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Kitchen Refresh</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Kitchen Refresh</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">142% ROI</span>
-            <span class="text-xs text-ink-400">Avg Cost: $8,500</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Avg Cost: $8,500</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Curb & Garage</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Curb & Garage</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">135% ROI</span>
-            <span class="text-xs text-ink-400">Avg Cost: $4,200</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Avg Cost: $4,200</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Hardwood / LVP</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Hardwood / LVP</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">124% ROI</span>
-            <span class="text-xs text-ink-400">Avg Cost: $6,800</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Avg Cost: $6,800</span>
           </div>
         </div>
 
@@ -344,19 +344,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">30-Year Fixed Benchmark</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">30-Year Fixed Benchmark</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">5.85%</span>
-            <span class="text-xs text-ink-400">Monthly Avg Trend</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Monthly Avg Trend</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">2-1 Buydown Year 1</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">2-1 Buydown Year 1</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">3.85%</span>
-            <span class="text-xs text-ink-400">$620/mo Savings</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">$620/mo Savings</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Float-Down Trigger</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Float-Down Trigger</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">0.25% Drop</span>
-            <span class="text-xs text-ink-400">One-Time Re-Lock</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">One-Time Re-Lock</span>
           </div>
         </div>
 
@@ -415,19 +415,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Security Deposit Accounting</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Security Deposit Accounting</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">30 Days</span>
-            <span class="text-xs text-ink-400">Statutory Refund Window</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Statutory Refund Window</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Rekeying Mandate</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Rekeying Mandate</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">7 Days</span>
-            <span class="text-xs text-ink-400">Post-Turnover Rekey</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Post-Turnover Rekey</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Income Ratio Standard</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Income Ratio Standard</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">3.0x Rent</span>
-            <span class="text-xs text-ink-400">Verified Gross Income</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Verified Gross Income</span>
           </div>
         </div>
 
@@ -486,19 +486,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Escalation Formula</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Escalation Formula</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">+$2,000</span>
-            <span class="text-xs text-ink-400">Over Highest Valid Bid</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Over Highest Valid Bid</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Earnest Money Deposit</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Earnest Money Deposit</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">3% to 5%</span>
-            <span class="text-xs text-ink-400">Strong Proof of Funds</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Strong Proof of Funds</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Seller Leaseback</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Seller Leaseback</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">14–30 Days</span>
-            <span class="text-xs text-ink-400">Complimentary Occupancy</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Complimentary Occupancy</span>
           </div>
         </div>
 
@@ -557,19 +557,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Senior Tax Ceiling</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Senior Tax Ceiling</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">Age 65+</span>
-            <span class="text-xs text-ink-400">Locks School Tax Forever</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Locks School Tax Forever</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Utility & Upkeep</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Utility & Upkeep</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">-45%</span>
-            <span class="text-xs text-ink-400">Monthly Operating Cost</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Monthly Operating Cost</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Freed Home Equity</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Freed Home Equity</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">$250K+</span>
-            <span class="text-xs text-ink-400">Liquid Wealth Released</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Liquid Wealth Released</span>
           </div>
         </div>
 
@@ -628,19 +628,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Apple West Parmer</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Apple West Parmer</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">12–18 Mins</span>
-            <span class="text-xs text-ink-400">From Cedar Park / Domain</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">From Cedar Park / Domain</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Tesla Giga Texas</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Tesla Giga Texas</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">22–30 Mins</span>
-            <span class="text-xs text-ink-400">From East Austin / Mueller</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">From East Austin / Mueller</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Samsung Taylor</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Samsung Taylor</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">25–35 Mins</span>
-            <span class="text-xs text-ink-400">From Round Rock / Hutto</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">From Round Rock / Hutto</span>
           </div>
         </div>
 
@@ -699,19 +699,19 @@
         
         <div class="my-8 grid sm:grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Austin Core Duplexes</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Austin Core Duplexes</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">5.4% – 5.9%</span>
-            <span class="text-xs text-ink-400">High Appreciation Focus</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">High Appreciation Focus</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">Suburban Triplexes</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">Suburban Triplexes</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">6.2% – 6.8%</span>
-            <span class="text-xs text-ink-400">Balanced Yield & Equity</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Balanced Yield & Equity</span>
           </div>
           <div class="rounded-2xl glass-card p-5 border border-ink-100 dark:border-white/10">
-            <span class="text-xs uppercase font-bold text-ink-400 block">I-35 South Fourplexes</span>
+            <span class="text-xs uppercase font-bold text-ink-400 dark:text-slate-400 block">I-35 South Fourplexes</span>
             <span class="font-display text-2xl font-bold text-brand-700 dark:text-brand-300 mt-1 block">7.0% – 7.6%</span>
-            <span class="text-xs text-ink-400">Maximum Cash Flow</span>
+            <span class="text-xs text-ink-400 dark:text-slate-400">Maximum Cash Flow</span>
           </div>
         </div>
 
@@ -844,7 +844,7 @@
                 <i class="${relPost.categoryIcon || 'ri-article-line'}"></i> ${relPost.category}
               </span>
               <h4 class="font-bold text-base text-ink-900 dark:text-white mt-2 group-hover:text-brand-700 dark:group-hover:text-brand-300 transition">${relPost.title}</h4>
-              <p class="text-xs text-ink-400 mt-1.5 flex items-center gap-2">
+              <p class="text-xs text-ink-400 dark:text-slate-400 mt-1.5 flex items-center gap-2">
                 <span>${relPost.author.name}</span> &bull; <span>${relPost.publishedText.split('·')[1] || '6 min read'}</span>
               </p>
             </a>

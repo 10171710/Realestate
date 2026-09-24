@@ -128,9 +128,20 @@
         throw new Error('Please enter a valid email and password.');
       }
 
+      var domain = (email.split('@')[1] || '');
+      if (/[A-Z]/.test(domain)) {
+        throw new Error('Email domain must be in lowercase only (e.g. name@gmail.com).');
+      }
+
+      if (displayName && displayName.trim().length < 2) {
+        throw new Error('Name must be at least 2 characters long.');
+      }
+
       if (password.length < 6) {
         throw new Error('Password must be at least 6 characters.');
       }
+
+      email = email.toLowerCase().trim();
 
       // Try live Firebase Auth if available
       if (this.auth && this.isLive) {

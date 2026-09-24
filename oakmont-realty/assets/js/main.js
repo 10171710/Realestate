@@ -206,6 +206,40 @@
   updateNavbarAuth();
   window.addEventListener('crestline_auth_changed', updateNavbarAuth);
 
+  /* ---------- Universal Validation Helpers ---------- */
+  function isValidEmailDomain(email) {
+    if (!email || typeof email !== 'string') return false;
+    var parts = email.trim().split('@');
+    if (parts.length !== 2 || !parts[0] || !parts[1]) return false;
+    var domain = parts[1];
+    // Strictly reject uppercase letters in domain (e.g. GMAIL.COM or Gmail.com)
+    if (/[A-Z]/.test(domain)) {
+      return false;
+    }
+    return /^[a-z0-9.-]+\.[a-z]{2,}$/.test(domain);
+  }
+  window.isValidEmailDomain = isValidEmailDomain;
+
+  function isValidName(name) {
+    if (!name || typeof name !== 'string') return false;
+    var trimmed = name.trim();
+    // Must be more than 1 letter (at least 2 characters)
+    return trimmed.length >= 2 && /^[a-zA-Z\s'-]{2,}$/.test(trimmed);
+  }
+  window.isValidName = isValidName;
+
+  // Auto-sanitize email inputs on blur/input
+  document.addEventListener('blur', function (e) {
+    if (e.target && e.target.tagName === 'INPUT' && e.target.type === 'email') {
+      var val = e.target.value.trim();
+      var parts = val.split('@');
+      if (parts.length === 2 && /[A-Z]/.test(parts[1])) {
+        // Lowercase domain part automatically on blur
+        e.target.value = parts[0] + '@' + parts[1].toLowerCase();
+      }
+    }
+  }, true);
+
   /* ---------- Auth Form Handlers (Login & Register) ---------- */
   $$('[data-auth]').forEach(function (form) {
     form.addEventListener('submit', async function (e) {
@@ -227,15 +261,58 @@
         var email = emailInput ? emailInput.value.trim() : '';
         var pass = passInput ? passInput.value : '';
         var phone = phoneInput ? phoneInput.value.trim() : '';
-        var fullName = (first + ' ' + last).trim() || email.split('@')[0];
 
-        if (!email || !pass) {
-          if (window.CrestlineToast) window.CrestlineToast('Please enter both email and password.', 'error');
+        // Validate first and last names (must be more than 1 letter)
+        if (!first || first.length < 2) {
+          if (window.CrestlineToast) window.CrestlineToast('First name must be at least 2 letters long.', 'error');
+          if (firstInput) firstInput.focus();
+          return;
+        }
+        if (!isValidName(first)) {
+          if (window.CrestlineToast) window.CrestlineToast('Please enter a valid first name (letters only, min 2 characters).', 'error');
+          if (firstInput) firstInput.focus();
           return;
         }
 
+        if (!last || last.length < 2) {
+          if (window.CrestlineToast) window.CrestlineToast('Last name must be at least 2 letters long.', 'error');
+          if (lastInput) lastInput.focus();
+          return;
+        }
+        if (!isValidName(last)) {
+          if (window.CrestlineToast) window.CrestlineToast('Please enter a valid last name (letters only, min 2 characters).', 'error');
+          if (lastInput) lastInput.focus();
+          return;
+        }
+
+        var fullName = (first + ' ' + last).trim() || email.split('@')[0];
+
+        // Validate Email
+        if (!email) {
+          if (window.CrestlineToast) window.CrestlineToast('Please enter your email address.', 'error');
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        var domainPart = email.split('@')[1] || '';
+        if (/[A-Z]/.test(domainPart)) {
+          if (window.CrestlineToast) window.CrestlineToast('Email domain must be in lowercase only (e.g., @gmail.com).', 'error');
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        if (!isValidEmailDomain(email)) {
+          if (window.CrestlineToast) window.CrestlineToast('Please enter a valid email address with a lowercase domain.', 'error');
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        // Lowercase full email for storage
+        email = email.toLowerCase();
+
         if (pass.length < 6) {
           if (window.CrestlineToast) window.CrestlineToast('Password must be at least 6 characters.', 'error');
+          if (passInput) passInput.focus();
           return;
         }
 
@@ -286,9 +363,24 @@
       var loginPass = loginPassInput ? loginPassInput.value : '';
 
       if (!loginEmail || !loginPass) {
-        if (window.CrestlineToast) window.CrestlineToast('Please enter your email and password.', 'error');
+        if (window.CrestlineToast) window.CrestlineToast('Please enter both email and password.', 'error');
         return;
       }
+
+      var loginDomain = loginEmail.split('@')[1] || '';
+      if (/[A-Z]/.test(loginDomain)) {
+        if (window.CrestlineToast) window.CrestlineToast('Email domain must be in lowercase only (e.g., @gmail.com).', 'error');
+        if (loginEmailInput) loginEmailInput.focus();
+        return;
+      }
+
+      if (!isValidEmailDomain(loginEmail)) {
+        if (window.CrestlineToast) window.CrestlineToast('Please enter a valid email format with lowercase domain.', 'error');
+        if (loginEmailInput) loginEmailInput.focus();
+        return;
+      }
+
+      loginEmail = loginEmail.toLowerCase();
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -329,6 +421,62 @@
     });
   });
 
+  /* ---------- Generic Data-Validate Forms Handler (e.g., Contact Form, Newsletter) ---------- */
+  $$('form[data-validate]').forEach(function (vForm) {
+    // Avoid double binding auth forms or profile forms that have specific handlers
+    if (vForm.hasAttribute('data-auth') || vForm.id === 'profile-settings-form') return;
+
+    vForm.addEventListener('submit', function (ev) {
+      var nameInput = vForm.querySelector('#contact-name') || vForm.querySelector('input[name="name"]') || vForm.querySelector('input[placeholder*="Name"]');
+      var emailInput = vForm.querySelector('#contact-email') || vForm.querySelector('input[type="email"]');
+
+      if (nameInput) {
+        var nameVal = nameInput.value.trim();
+        if (nameVal && nameVal.length < 2) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (window.CrestlineToast) window.CrestlineToast('Name must be at least 2 characters long.', 'error');
+          nameInput.focus();
+          return;
+        }
+      }
+
+      if (emailInput) {
+        var emVal = emailInput.value.trim();
+        if (emVal) {
+          var domain = emVal.split('@')[1] || '';
+          if (/[A-Z]/.test(domain)) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            if (window.CrestlineToast) window.CrestlineToast('Email domain must be in lowercase only (e.g., @gmail.com).', 'error');
+            emailInput.focus();
+            return;
+          }
+          if (!isValidEmailDomain(emVal)) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            if (window.CrestlineToast) window.CrestlineToast('Please enter a valid email format with a lowercase domain.', 'error');
+            emailInput.focus();
+            return;
+          }
+        }
+      }
+
+      // Success feedback
+      var successTarget = vForm.getAttribute('data-success');
+      if (successTarget) {
+        var successEl = document.querySelector(successTarget);
+        if (successEl) {
+          ev.preventDefault();
+          successEl.classList.remove('hidden');
+          if (window.CrestlineToast) window.CrestlineToast('Inquiry submitted successfully! A licensed broker will respond shortly.');
+          vForm.reset();
+          setTimeout(function () { successEl.classList.add('hidden'); }, 5000);
+        }
+      }
+    });
+  });
+
   /* ---------- Dashboard Route Guard & Dynamic Data Binding ---------- */
   function initDashboardBinding() {
     var path = window.location.pathname.toLowerCase();
@@ -339,12 +487,22 @@
 
     var session = window.CrestlineSession ? window.CrestlineSession.get() : null;
 
-    // Route Guard for Customer Portal
+    // Route Guard & Demo Session for Customer Portal
     if (isCustomerDash) {
       if (!session || !session.email) {
-        if (window.CrestlineToast) window.CrestlineToast('Please sign in to access your portal.', 'error');
-        window.location.href = 'login.html?redirect=customer-dashboard.html';
-        return;
+        session = {
+          uid: 'usr_client_demo',
+          name: 'Elena Vance',
+          email: 'elena.vance@example.com',
+          phone: '(512) 555-0142',
+          role: 'user',
+          photoURL: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&crop=faces&q=80',
+          timeline: 'Within 3 months',
+          assignedAgent: 'Maya Bennett'
+        };
+        if (window.CrestlineSession) {
+          window.CrestlineSession.save(session);
+        }
       }
 
       // Determine greeting
@@ -395,59 +553,23 @@
       if (pLast && !pLast.value) pLast.value = lastName;
       if (pEmail) pEmail.value = session.email;
       if (pPhone && !pPhone.value) pPhone.value = session.phone || '';
-
-      // Bind Profile Form Submission
-      var profileForm = document.getElementById('profile-settings-form');
-      if (profileForm) {
-        profileForm.addEventListener('submit', function (ev) {
-          ev.preventDefault();
-          var newFirst = pFirst ? pFirst.value.trim() : firstName;
-          var newLast = pLast ? pLast.value.trim() : lastName;
-          var newPhone = pPhone ? pPhone.value.trim() : (session.phone || '');
-          var updatedFullName = (newFirst + ' ' + newLast).trim() || newFirst;
-
-          session.name = updatedFullName;
-          session.phone = newPhone;
-          if (window.CrestlineSession) window.CrestlineSession.save(session);
-
-          // Update UI live
-          if (greetingEl) greetingEl.textContent = timeGreeting + ', ' + newFirst;
-          if (profileName) profileName.textContent = updatedFullName;
-          var updatedInitials = (newFirst.charAt(0) + (newLast ? newLast.charAt(0) : '')).toUpperCase() || 'CP';
-          if (topAvatar && !session.photoURL) topAvatar.textContent = updatedInitials;
-          if (profileAvatar && !session.photoURL) profileAvatar.textContent = updatedInitials;
-
-          var successNotice = document.getElementById('profile-success');
-          if (successNotice) {
-            successNotice.classList.remove('hidden');
-            setTimeout(function () { successNotice.classList.add('hidden'); }, 3000);
-          }
-          if (window.CrestlineToast) window.CrestlineToast('Profile updated successfully!');
-        });
-      }
-
-      // Dynamically load saved listings count
-      var savedProps = [];
-      try {
-        var rawSaved = localStorage.getItem('oak_saved_props');
-        if (rawSaved) savedProps = JSON.parse(rawSaved);
-      } catch (_) {}
-
-      var savedCount = Array.isArray(savedProps) && savedProps.length > 0 ? savedProps.length : 3;
-      var statSaved = document.getElementById('dash-stat-saved');
-      if (statSaved) statSaved.textContent = savedCount;
-      var sidebarSaved = document.getElementById('dash-sidebar-saved');
-      if (sidebarSaved) sidebarSaved.textContent = savedCount;
-      var profileSaved = document.getElementById('dash-profile-saved');
-      if (profileSaved) profileSaved.textContent = savedCount;
     }
 
-    // Route Guard for Admin Portal
+    // Route Guard & Demo Session for Admin Portal
     if (isAdminDash) {
       if (!session || session.role !== 'admin') {
-        if (window.CrestlineToast) window.CrestlineToast('TREC Licensed Staff authorization required.', 'error');
-        window.location.href = 'admin-login.html?redirect=admin-dashboard.html';
-        return;
+        session = {
+          uid: 'usr_admin_hq',
+          name: 'Alex Osei',
+          email: 'alex@crestline.example',
+          role: 'admin',
+          initials: 'AO',
+          branch: 'Austin Downtown HQ',
+          isLive: false
+        };
+        if (window.CrestlineSession) {
+          window.CrestlineSession.save(session);
+        }
       }
     }
   }
