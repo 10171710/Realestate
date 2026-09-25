@@ -504,16 +504,141 @@ a.brand-logo,
   box-shadow: 0 0 16px -2px rgba(110, 231, 183, 0.45) !important;
 }
 
-#mobile-menu .nav-active {
+/* ---------- Mobile Menu & Navigation Text Colors (Light & Dark Theme Visibility) ---------- */
+#mobile-menu {
+  background-color: #142019 !important;
+  color: #f1f5f9 !important;
+}
+.dark #mobile-menu {
+  background-color: #0c1510 !important;
+  color: #f8fafc !important;
+  border-top-color: rgba(255, 255, 255, 0.12) !important;
+}
+#mobile-menu a,
+#mobile-menu button {
+  color: #e2e8f0 !important;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.dark #mobile-menu a,
+.dark #mobile-menu button {
+  color: #f1f5f9 !important;
+}
+#mobile-menu a:hover,
+#mobile-menu button:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+.dark #mobile-menu a:hover,
+.dark #mobile-menu button:hover {
+  color: #6ee7b7 !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+#mobile-menu .nav-active,
+#mobile-menu a.nav-active,
+#mobile-menu button.nav-active {
   color: #34d399 !important;
-  background: rgba(47, 125, 93, 0.25) !important;
+  background: rgba(47, 125, 93, 0.3) !important;
   border-inline-start: 3px solid #34d399 !important;
   font-weight: 700 !important;
 }
-.dark #mobile-menu .nav-active {
+.dark #mobile-menu .nav-active,
+.dark #mobile-menu a.nav-active,
+.dark #mobile-menu button.nav-active {
   color: #6ee7b7 !important;
-  background: rgba(47, 125, 93, 0.35) !important;
+  background: rgba(47, 125, 93, 0.45) !important;
   border-inline-start: 3px solid #6ee7b7 !important;
+  font-weight: 700 !important;
+}
+#mobile-menu #mobile-home a {
+  color: #cbd5e1 !important;
+}
+.dark #mobile-menu #mobile-home a {
+  color: #cbd5e1 !important;
+}
+#mobile-menu #mobile-home a:hover,
+.dark #mobile-menu #mobile-home a:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+#mobile-menu #login-btn-mobile {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+#mobile-menu #login-btn-mobile:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+#mobile-menu #dashboard-btn-mobile {
+  color: #ffffff !important;
+  background-color: #2f7d5d !important;
+}
+#mobile-menu #dashboard-btn-mobile:hover {
+  background-color: #256b4e !important;
+}
+#mobile-menu #dir-toggle-mobile {
+  color: #f1f5f9 !important;
+}
+
+/* Hamburger Icon & Header Controls Responsiveness (360px, 768px, 1024px) */
+#mobile-menu-btn {
+  color: #f1f5f9 !important;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+#mobile-menu-btn i {
+  color: #ffffff !important;
+  line-height: 1;
+}
+#mobile-menu-btn:hover,
+#mobile-menu-btn:focus-visible {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(52, 211, 153, 0.5) !important;
+}
+.dark #mobile-menu-btn {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.dark #mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: #6ee7b7 !important;
+}
+
+@media (max-width: 639px) {
+  #site-header .brand-logo .brand-icon {
+    width: 2.125rem !important;
+    height: 2.125rem !important;
+  }
+  #site-header .brand-logo .brand-text-main {
+    font-size: 1.125rem !important;
+  }
+  #site-header .brand-logo .brand-text-sub {
+    font-size: 7.5px !important;
+  }
+  #dir-toggle, #theme-toggle, #mobile-menu-btn {
+    width: 2.125rem !important;
+    height: 2.125rem !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  #dir-toggle, #theme-toggle, #mobile-menu-btn {
+    width: 2.375rem !important;
+    height: 2.375rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  #mobile-menu-btn,
+  #mobile-menu {
+    display: none !important;
+  }
 }
 
 .dropdown a.dropdown-active {
@@ -1161,15 +1286,38 @@ html.dark [class*="absolute"][class*="tbl-pill"] {
 }
 
 .mobile-dash-toggle { transition: all .2s ease; }
-.dash-sidebar.open { transform: translateX(0); }
 
 @media (max-width: 1023px) {
   .dash-sidebar {
-    position: fixed; inset-inline-start: 0; inset-block-start: 0; z-index: 90;
+    position: fixed !important;
+    inset-inline-start: 0 !important;
+    inset-block-start: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    width: 280px !important;
+    max-width: 85vw !important;
+    z-index: 100 !important;
     transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5);
   }
-  html[dir="rtl"] .dash-sidebar { transform: translateX(100%); }
-  .dash-sidebar.open { transform: translateX(0) !important; }
+  html[dir="rtl"] .dash-sidebar {
+    transform: translateX(100%);
+  }
+  .dash-sidebar.open {
+    transform: translateX(0) !important;
+  }
+}
+
+#dash-backdrop,
+#admin-dash-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(12, 21, 16, 0.7) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 90 !important;
+  transition: opacity 0.25s ease;
 }
 
 /* Calendar cells */

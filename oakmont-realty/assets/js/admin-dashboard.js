@@ -139,11 +139,12 @@
       function openSidebar() {
         if (!sidebar) return;
         sidebar.classList.add('open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
         var existing = $('#admin-dash-backdrop');
         if (!existing) {
           var backdrop = document.createElement('div');
           backdrop.id = 'admin-dash-backdrop';
-          backdrop.className = 'fixed inset-0 bg-forest-950/60 backdrop-blur-xs z-40 lg:hidden transition-opacity duration-300';
+          backdrop.className = 'fixed inset-0 bg-forest-950/70 backdrop-blur-xs z-40 lg:hidden transition-opacity duration-300';
           backdrop.addEventListener('click', closeSidebar);
           document.body.appendChild(backdrop);
         }
@@ -152,23 +153,45 @@
       function closeSidebar() {
         if (!sidebar) return;
         sidebar.classList.remove('open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
         var backdrop = $('#admin-dash-backdrop');
         if (backdrop) backdrop.remove();
       }
 
       if (toggleBtn) {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.setAttribute('aria-controls', 'dash-sidebar');
         toggleBtn.addEventListener('click', function (e) {
           e.preventDefault();
-          if (sidebar.classList.contains('open')) closeSidebar();
-          else openSidebar();
+          e.stopPropagation();
+          if (sidebar && sidebar.classList.contains('open')) {
+            closeSidebar();
+          } else {
+            openSidebar();
+          }
         });
       }
 
       closeBtns.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           e.preventDefault();
+          e.stopPropagation();
           closeSidebar();
         });
+      });
+
+      // Close on resize past desktop
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024 && sidebar && sidebar.classList.contains('open')) {
+          closeSidebar();
+        }
+      });
+
+      // Escape key to close
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+          closeSidebar();
+        }
       });
     },
 

@@ -44,13 +44,36 @@
   const mobileBtn = $('#mobile-menu-btn');
   const mobileMenu = $('#mobile-menu');
   if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('hidden');
-      // toggle icon
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      const isExpanded = !isHidden;
+      mobileBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
       const i = $('i', mobileBtn);
-      if (i) i.className = open ? 'ri-menu-3-line text-2xl' : 'ri-close-line text-2xl';
+      if (i) i.className = isHidden ? 'ri-menu-3-line text-xl sm:text-2xl' : 'ri-close-line text-xl sm:text-2xl';
     });
-    // collapse sub-toggles inside mobile
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        const i = $('i', mobileBtn);
+        if (i) i.className = 'ri-menu-3-line text-xl sm:text-2xl';
+      }
+    });
+
+    // Close on resize past desktop breakpoint
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        const i = $('i', mobileBtn);
+        if (i) i.className = 'ri-menu-3-line text-xl sm:text-2xl';
+      }
+    });
+
+    // Collapse sub-toggles inside mobile
     $$('[data-mobile-toggle]', mobileMenu).forEach(btn => {
       btn.addEventListener('click', () => {
         const target = document.getElementById(btn.getAttribute('data-mobile-toggle'));
@@ -901,16 +924,7 @@
     }
   });
 
-  /* ---------- Dashboard sidebar toggle (mobile) ---------- */
-  const dashToggle = $('#dash-toggle');
-  const dashSide = $('.dash-sidebar');
-  if (dashToggle && dashSide) {
-    dashToggle.addEventListener('click', () => dashSide.classList.toggle('open'));
-    document.addEventListener('click', e => {
-      if (dashSide.classList.contains('open') && !dashSide.contains(e.target) && e.target !== dashToggle)
-        dashSide.classList.remove('open');
-    });
-  }
+
 
   /* ---------- Services page tabs ---------- */
   const tabBtns = $$('.tab-btn[data-tab]');
