@@ -167,44 +167,55 @@
     });
   };
 
-  /* ---------- Update Navbar Login buttons based on active session ---------- */
+  /* ---------- Update Navbar CTA buttons based on active session ---------- */
   function updateNavbarAuth() {
     var session = window.CrestlineSession ? window.CrestlineSession.get() : null;
-    var desktopBtn = $('#login-btn');
-    var mobileBtn = $('#login-btn-mobile');
+    var dashBtn = $('#dashboard-btn');
+    var dashMobileBtn = $('#dashboard-btn-mobile');
+    var loginBtn = $('#login-btn');
+    var loginMobileBtn = $('#login-btn-mobile');
 
-    if (session && session.email) {
-      var isAdmin = session.role === 'admin';
-      var label = isAdmin ? 'Admin Hub' : 'My Portal';
-      var icon = isAdmin ? 'ri-shield-user-line' : 'ri-user-smile-line';
-      var targetUrl = isAdmin ? 'admin-dashboard.html' : 'customer-dashboard.html';
-      var bgClass = isAdmin ? 'bg-ember-600 hover:bg-ember-500' : 'bg-brand-600 hover:bg-brand-500';
+    var isAdmin = session && session.role === 'admin';
+    var dashLabel = isAdmin ? 'Admin Dashboard' : 'Dashboard';
+    var dashTargetUrl = isAdmin ? 'admin-dashboard.html' : 'customer-dashboard.html';
+    var dashBgClass = isAdmin ? 'bg-ember-600 hover:bg-ember-500' : 'bg-brand-600 hover:bg-brand-500';
 
-      if (desktopBtn) {
-        desktopBtn.href = targetUrl;
-        desktopBtn.className = 'hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white ' + bgClass + ' shadow-soft transition';
-        desktopBtn.innerHTML = '<i class="' + icon + '"></i><span>' + label + '</span>';
-      }
-      if (mobileBtn) {
-        mobileBtn.href = targetUrl;
-        mobileBtn.className = 'flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-white text-sm font-semibold ' + bgClass + ' shadow-soft transition';
-        mobileBtn.innerHTML = '<i class="' + icon + '"></i> ' + label;
-      }
-    } else {
-      if (desktopBtn) {
-        desktopBtn.href = 'login.html';
-        desktopBtn.className = 'hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 shadow-soft transition';
-        desktopBtn.innerHTML = '<i class="ri-user-line"></i><span>Login</span>';
-      }
-      if (mobileBtn) {
-        mobileBtn.href = 'login.html';
-        mobileBtn.className = 'flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft transition';
-        mobileBtn.innerHTML = '<i class="ri-user-line"></i> Login';
-      }
+    if (dashBtn) {
+      dashBtn.href = dashTargetUrl;
+      dashBtn.className = 'hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white ' + dashBgClass + ' shadow-soft transition cursor-pointer';
+      dashBtn.innerHTML = '<i class="ri-dashboard-line"></i><span>' + dashLabel + '</span>';
+    }
+    if (dashMobileBtn) {
+      dashMobileBtn.href = dashTargetUrl;
+      dashMobileBtn.className = 'flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-white text-sm font-semibold ' + dashBgClass + ' shadow-soft transition';
+      dashMobileBtn.innerHTML = '<i class="ri-dashboard-line"></i> ' + dashLabel;
+    }
+    if (loginBtn) {
+      loginBtn.href = 'login.html';
+    }
+    if (loginMobileBtn) {
+      loginMobileBtn.href = 'login.html';
     }
   }
   updateNavbarAuth();
   window.addEventListener('crestline_auth_changed', updateNavbarAuth);
+
+  /* ---------- Social SSO Handlers (Google, Apple, Facebook, Microsoft) ---------- */
+  document.addEventListener('click', function (e) {
+    var target = e.target.closest('#google-login-btn, #facebook-login-btn, #apple-login-btn, #admin-google-login-btn, #admin-ms-login-btn, #admin-apple-login-btn, [data-social-provider]');
+    if (target) {
+      e.preventDefault();
+      e.stopPropagation();
+      var provider = target.getAttribute('data-social-provider') ||
+        (target.id.indexOf('google') !== -1 ? 'Google' :
+        (target.id.indexOf('facebook') !== -1 ? 'Facebook' :
+        (target.id.indexOf('apple') !== -1 ? 'Apple' :
+        (target.id.indexOf('ms') !== -1 ? 'Microsoft' : 'Social SSO'))));
+      if (window.CrestlineToast) {
+        window.CrestlineToast(provider + ' login is not configured.', 'info');
+      }
+    }
+  });
 
   /* ---------- Universal Validation Helpers ---------- */
   function isValidEmailDomain(email) {
@@ -330,17 +341,18 @@
             if (window.CrestlineSession) window.CrestlineSession.save(user);
           }
 
+          var regSuccessMsg = role === 'admin' ? 'Staff credentials registered successfully!' : 'Account created successfully!';
           if (window.CrestlineToast) {
-            window.CrestlineToast(role === 'admin' ? 'Staff credentials registered! Welcome, ' + fullName + '.' : 'Welcome to Crestline Realty, ' + (first || fullName) + '!');
+            window.CrestlineToast(regSuccessMsg, 'success');
           }
 
-          setTimeout(function () {
-            var redirectParam = new URLSearchParams(window.location.search).get('redirect');
-            var targetUrl = (redirectParam && redirectParam.indexOf('login') === -1 && redirectParam.indexOf('register') === -1)
-              ? redirectParam
-              : (role === 'admin' ? 'admin-dashboard.html' : 'customer-dashboard.html');
-            window.location.href = targetUrl;
-          }, 300);
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="ri-checkbox-circle-line"></i> ' + (role === 'admin' ? 'Account Created Successfully' : 'Account Created Successfully');
+            setTimeout(function () {
+              if (submitBtn) submitBtn.innerHTML = originalBtnHtml;
+            }, 2500);
+          }
 
         } catch (err) {
           if (submitBtn) {
@@ -397,17 +409,18 @@
           if (window.CrestlineSession) window.CrestlineSession.save(loggedUser);
         }
 
+        var loginSuccessMsg = loginRole === 'admin' ? 'Admin login successful' : 'Login successful';
         if (window.CrestlineToast) {
-          window.CrestlineToast('Welcome back, ' + (loggedUser.name || 'Client') + '!');
+          window.CrestlineToast(loginSuccessMsg, 'success');
         }
 
-        setTimeout(function () {
-          var redirectParam = new URLSearchParams(window.location.search).get('redirect');
-          var targetUrl = (redirectParam && redirectParam.indexOf('login') === -1 && redirectParam.indexOf('register') === -1)
-            ? redirectParam
-            : (loggedUser.role === 'admin' ? 'admin-dashboard.html' : 'customer-dashboard.html');
-          window.location.href = targetUrl;
-        }, 300);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="ri-checkbox-circle-line"></i> ' + (loginRole === 'admin' ? 'Admin Login Successful' : 'Login Successful');
+          setTimeout(function () {
+            if (submitBtn) submitBtn.innerHTML = originalBtnHtml;
+          }, 2500);
+        }
 
       } catch (err) {
         if (submitBtn) {
@@ -489,14 +502,14 @@
 
     // Route Guard & Demo Session for Customer Portal
     if (isCustomerDash) {
-      if (!session || !session.email) {
+      if (!session || !session.email || session.name === 'Elena Vance' || session.email === 'elena.vance@example.com') {
         session = {
           uid: 'usr_client_demo',
-          name: 'Elena Vance',
-          email: 'elena.vance@example.com',
+          name: 'Demo',
+          email: 'demo@example.com',
           phone: '(512) 555-0142',
           role: 'user',
-          photoURL: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&crop=faces&q=80',
+          photoURL: '',
           timeline: 'Within 3 months',
           assignedAgent: 'Maya Bennett'
         };
@@ -510,22 +523,13 @@
       var timeGreeting = hour < 12 ? 'Good morning' : (hour < 18 ? 'Good afternoon' : 'Good evening');
       var fullName = session.name || session.email.split('@')[0];
       var nameParts = fullName.trim().split(/\s+/);
-      var firstName = nameParts[0] || 'Client';
+      var firstName = nameParts[0] || 'Demo';
       var lastName = nameParts.slice(1).join(' ') || '';
-      var initials = (firstName.charAt(0) + (lastName ? lastName.charAt(0) : (nameParts[0].length > 1 ? nameParts[0].charAt(1) : ''))).toUpperCase() || 'CP';
+      var initials = (firstName.charAt(0) + (lastName ? lastName.charAt(0) : (nameParts[0].length > 1 ? nameParts[0].charAt(1) : ''))).toUpperCase() || 'D';
 
       // Update Topbar
       var greetingEl = document.getElementById('dash-greeting');
       if (greetingEl) greetingEl.textContent = timeGreeting + ', ' + firstName;
-
-      var topAvatar = document.getElementById('dash-top-avatar');
-      if (topAvatar) {
-        if (session.photoURL) {
-          topAvatar.innerHTML = '<img src="' + session.photoURL + '" alt="' + fullName + '" class="w-full h-full object-cover rounded-full">';
-        } else {
-          topAvatar.textContent = initials;
-        }
-      }
 
       // Update Profile Card
       var profileName = document.getElementById('dash-profile-name');
@@ -533,15 +537,6 @@
 
       var profileEmail = document.getElementById('dash-profile-email');
       if (profileEmail) profileEmail.textContent = session.email;
-
-      var profileAvatar = document.getElementById('dash-profile-avatar');
-      if (profileAvatar) {
-        if (session.photoURL) {
-          profileAvatar.innerHTML = '<img src="' + session.photoURL + '" alt="' + fullName + '" class="w-full h-full object-cover rounded-full">';
-        } else {
-          profileAvatar.textContent = initials;
-        }
-      }
 
       // Populate Profile Form Fields
       var pFirst = document.getElementById('profile-first');

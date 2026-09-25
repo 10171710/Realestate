@@ -329,9 +329,9 @@
       var googleDemoUser = {
         uid: 'goog_' + Date.now().toString(36),
         email: role === 'admin' ? 'broker.google@crestline-realty.example' : 'client.google@gmail.com',
-        name: role === 'admin' ? 'Alex Rivera (Google Workspace)' : 'Elena Vasquez',
+        name: role === 'admin' ? 'Alex Rivera (Google Workspace)' : 'Demo',
         role: role,
-        photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+        photoURL: '',
         isLive: false
       };
 

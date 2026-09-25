@@ -79,9 +79,6 @@
   <!-- Top bar controls -->
   <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-end relative z-10">
     <div class="flex items-center gap-2">
-      <a href="index.html" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold text-ink-700 dark:text-slate-300 hover:text-ember-600 dark:hover:text-ember-400 hover:bg-ink-100 dark:hover:bg-white/10 transition me-1">
-        <i class="ri-arrow-left-line"></i> Back to Site
-      </a>
       <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-ink-700 dark:text-slate-200 hover:bg-ink-100 dark:hover:bg-white/10 transition">
         <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 7H4M8 3.5L4 7l4 3.5" />
@@ -168,14 +165,14 @@
             <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47a5.53 5.53 0 0 1-2.4 3.63v3.03h3.86c2.26-2.09 3.56-5.17 3.56-8.9z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3.03c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.12C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.26a7.22 7.22 0 0 1 0-4.52V6.62H1.29a12.01 12.01 0 0 0 0 10.76l3.98-3.12z"/><path fill="#EA4335" d="M12 4.78c1.76 0 3.35.6 4.6 1.79l3.42-3.42C17.94 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.12C6.22 6.89 8.87 4.78 12 4.78z"/></svg>
             <span>Workspace</span>
           </button>
-          <a href="https://login.microsoftonline.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-ember-400 transition text-xs font-bold text-white">
+          <button type="button" id="admin-ms-login-btn" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-ember-400 transition text-xs font-bold text-white cursor-pointer">
             <svg class="w-4 h-4" viewBox="0 0 21 21"><path fill="#f25022" d="M1 1h9v9H1z"/><path fill="#00a4ef" d="M1 11h9v9H1z"/><path fill="#7fba00" d="M11 1h9v9h-9z"/><path fill="#ffb900" d="M11 11h9v9h-9z"/></svg>
             <span>Microsoft</span>
-          </a>
-          <a href="https://appleid.apple.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-ember-400 transition text-xs font-bold text-white">
+          </button>
+          <button type="button" id="admin-apple-login-btn" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-ember-400 transition text-xs font-bold text-white cursor-pointer">
             <i class="ri-apple-fill text-base text-white"></i>
             <span>Apple</span>
-          </a>
+          </button>
         </div>
 
         <!-- Footnote Links -->
@@ -241,21 +238,20 @@
 
       var googleBtn = document.getElementById("admin-google-login-btn");
       if (googleBtn) {
-        googleBtn.addEventListener("click", async function () {
-          try {
-            if (window.CrestlineAuth) {
-              if (window.CrestlineToast) window.CrestlineToast("Connecting to Google Workspace...", "info");
-              var user = await window.CrestlineAuth.signInGoogle("admin");
-              if (window.CrestlineToast) window.CrestlineToast("Welcome back, " + user.name + "!");
-              setTimeout(function () {
-                window.location.href = "admin-dashboard.html";
-              }, 600);
-            }
-          } catch (err) {
-            if (window.CrestlineToast) {
-              window.CrestlineToast(err.message, "error");
-            }
-          }
+        googleBtn.addEventListener("click", function () {
+          if (window.CrestlineToast) window.CrestlineToast("Google Workspace sign-in is not configured.", "info");
+        });
+      }
+      var msBtn = document.getElementById("admin-ms-login-btn");
+      if (msBtn) {
+        msBtn.addEventListener("click", function () {
+          if (window.CrestlineToast) window.CrestlineToast("Microsoft SSO is not configured.", "info");
+        });
+      }
+      var appleBtn = document.getElementById("admin-apple-login-btn");
+      if (appleBtn) {
+        appleBtn.addEventListener("click", function () {
+          if (window.CrestlineToast) window.CrestlineToast("Apple sign-in is not configured.", "info");
         });
       }
     })();

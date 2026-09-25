@@ -44,15 +44,15 @@
     // 1. Session & Auth Management
     initSession: function () {
       var session = window.CrestlineSession ? window.CrestlineSession.get() : null;
-      if (!session || !session.email) {
+      if (!session || !session.email || session.name === 'Elena Vance' || session.email === 'elena.vance@example.com') {
         // Fallback demo client profile if accessing directly without sign-in
         session = {
           uid: 'usr_client_demo',
-          name: 'Elena Vance',
-          email: 'elena.vance@example.com',
+          name: 'Demo',
+          email: 'demo@example.com',
           phone: '(512) 555-0142',
           role: 'user',
-          photoURL: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&crop=faces&q=80',
+          photoURL: '',
           timeline: 'Within 3 months',
           assignedAgent: 'Maya Bennett'
         };
@@ -68,9 +68,9 @@
       if (!this.user) return;
       var fullName = this.user.name || this.user.email.split('@')[0];
       var nameParts = fullName.trim().split(/\s+/);
-      var firstName = nameParts[0] || 'Client';
+      var firstName = nameParts[0] || 'Demo';
       var lastName = nameParts.slice(1).join(' ') || '';
-      var initials = (firstName.charAt(0) + (lastName ? lastName.charAt(0) : (nameParts[0].length > 1 ? nameParts[0].charAt(1) : ''))).toUpperCase() || 'CP';
+      var initials = (firstName.charAt(0) + (lastName ? lastName.charAt(0) : (nameParts[0].length > 1 ? nameParts[0].charAt(1) : ''))).toUpperCase() || 'D';
 
       var hour = new Date().getHours();
       var timeGreeting = hour < 12 ? 'Good morning' : (hour < 18 ? 'Good afternoon' : 'Good evening');
@@ -79,28 +79,11 @@
       var greeting = $('#dash-greeting');
       if (greeting) greeting.textContent = timeGreeting + ', ' + firstName;
 
-      var topAvatar = $('#dash-top-avatar');
-      if (topAvatar) {
-        if (this.user.photoURL) {
-          topAvatar.innerHTML = '<img src="' + this.user.photoURL + '" alt="' + fullName + '" class="w-full h-full object-cover rounded-full">';
-        } else {
-          topAvatar.textContent = initials;
-        }
-      }
-
       // Profile Card
       var pName = $('#dash-profile-name');
       if (pName) pName.textContent = fullName;
       var pEmail = $('#dash-profile-email');
       if (pEmail) pEmail.textContent = this.user.email;
-      var pAvatar = $('#dash-profile-avatar');
-      if (pAvatar) {
-        if (this.user.photoURL) {
-          pAvatar.innerHTML = '<img src="' + this.user.photoURL + '" alt="' + fullName + '" class="w-full h-full object-cover rounded-full">';
-        } else {
-          pAvatar.textContent = initials;
-        }
-      }
 
       // Profile Form Fields
       var pFirst = $('#profile-first');
@@ -844,9 +827,8 @@
           var pPhone = $('#profile-phone');
           var pAssigned = $('#profile-assigned');
 
-          var first = pFirst ? pFirst.value.trim() : 'Elena';
-          var last = pLast ? pLast.value.trim() : 'Vance';
-          var phone = pPhone ? pPhone.value.trim() : '';
+          var first = pFirst ? pFirst.value.trim() : 'Demo';
+          var last = pLast ? pLast.value.trim() : '';
 
           if (first.length < 2) {
             if (window.CrestlineToast) window.CrestlineToast('First name must be at least 2 characters long.', 'error');
@@ -854,8 +836,8 @@
             return;
           }
 
-          if (last.length < 2) {
-            if (window.CrestlineToast) window.CrestlineToast('Last name must be at least 2 characters long.', 'error');
+          if (last.length > 0 && last.length < 2) {
+            if (window.CrestlineToast) window.CrestlineToast('Last name must be at least 2 characters long if provided.', 'error');
             if (pLast) pLast.focus();
             return;
           }

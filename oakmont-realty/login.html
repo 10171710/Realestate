@@ -164,14 +164,14 @@
             <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47a5.53 5.53 0 0 1-2.4 3.63v3.03h3.86c2.26-2.09 3.56-5.17 3.56-8.9z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3.03c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.12C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.26a7.22 7.22 0 0 1 0-4.52V6.62H1.29a12.01 12.01 0 0 0 0 10.76l3.98-3.12z"/><path fill="#EA4335" d="M12 4.78c1.76 0 3.35.6 4.6 1.79l3.42-3.42C17.94 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.12C6.22 6.89 8.87 4.78 12 4.78z"/></svg>
             <span>Google</span>
           </button>
-          <a href="https://www.facebook.com/login/" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-emerald-400 transition text-xs font-bold text-white">
+          <button type="button" id="facebook-login-btn" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-emerald-400 transition text-xs font-bold text-white cursor-pointer">
             <i class="ri-facebook-circle-fill text-base text-[#1877F2]"></i>
             <span>Facebook</span>
-          </a>
-          <a href="https://appleid.apple.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-emerald-400 transition text-xs font-bold text-white">
+          </button>
+          <button type="button" id="apple-login-btn" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-emerald-400 transition text-xs font-bold text-white cursor-pointer">
             <i class="ri-apple-fill text-base text-white"></i>
             <span>Apple</span>
-          </a>
+          </button>
         </div>
 
         <!-- Footnote Links -->
@@ -237,21 +237,20 @@
 
       var googleBtn = document.getElementById("google-login-btn");
       if (googleBtn) {
-        googleBtn.addEventListener("click", async function () {
-          try {
-            if (window.CrestlineAuth) {
-              if (window.CrestlineToast) window.CrestlineToast("Connecting to Google...", "info");
-              var user = await window.CrestlineAuth.signInGoogle("user");
-              if (window.CrestlineToast) window.CrestlineToast("Welcome back, " + user.name + "!");
-              setTimeout(function () {
-                window.location.href = "customer-dashboard.html";
-              }, 600);
-            }
-          } catch (err) {
-            if (window.CrestlineToast) {
-              window.CrestlineToast(err.message, "error");
-            }
-          }
+        googleBtn.addEventListener("click", function () {
+          if (window.CrestlineToast) window.CrestlineToast("Google sign-in is not configured.", "info");
+        });
+      }
+      var fbBtn = document.getElementById("facebook-login-btn");
+      if (fbBtn) {
+        fbBtn.addEventListener("click", function () {
+          if (window.CrestlineToast) window.CrestlineToast("Facebook sign-in is not configured.", "info");
+        });
+      }
+      var appleBtn = document.getElementById("apple-login-btn");
+      if (appleBtn) {
+        appleBtn.addEventListener("click", function () {
+          if (window.CrestlineToast) window.CrestlineToast("Apple sign-in is not configured.", "info");
         });
       }
     })();
