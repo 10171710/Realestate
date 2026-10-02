@@ -91,9 +91,9 @@
         </span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1 font-medium text-sm">
+      <nav class="hidden lg:flex items-center gap-0.5 xl:gap-1 font-medium text-xs xl:text-sm shrink">
         <div class="relative group">
-          <button class="nav-link flex items-center gap-1 px-3 py-2 rounded-lg font-semibold hover:text-white hover:bg-white/10 transition">
+          <button class="nav-link flex items-center gap-1 px-2.5 xl:px-3 py-2 rounded-lg font-semibold hover:text-white hover:bg-white/10 transition whitespace-nowrap">
             Home <i class="ri-arrow-down-s-line text-base transition group-hover:rotate-180"></i>
           </button>
           <div class="dropdown absolute start-0 top-full mt-1 w-64 rounded-xl bg-white dark:bg-forest-900 border border-ink-100 dark:border-white/10 shadow-xl p-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all">
@@ -106,36 +106,37 @@
           </div>
         </div>
 
-        <a href="about.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">About</a>
-        <a href="services.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Services</a>
-        <a href="pricing.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Pricing</a>
-        <a href="blog.html" class="nav-link nav-active px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Blog</a>
-        <a href="contact.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Contact</a>
+        <a href="about.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">About</a>
+        <a href="services.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Services</a>
+        <a href="pricing.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Pricing</a>
+        <a href="blog.html" class="nav-link nav-active px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Blog</a>
+        <a href="contact.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Contact</a>
+        <a href="customer-dashboard.html" id="nav-dash-link" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Dashboard</a>
       </nav>
 
-      <div class="flex items-center gap-1.5 sm:gap-2">
-        <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition">
+      <div class="flex items-center gap-1 sm:gap-1.5 xl:gap-2 shrink-0">
+        <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="hidden sm:inline-flex w-10 h-10 items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition shrink-0">
           <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 7H4M8 3.5L4 7l4 3.5" />
             <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
           </svg>
         </button>
-        <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition">
+        <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-10 h-10 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition shrink-0">
           <i class="ri-moon-line text-lg dark:hidden"></i>
           <i class="ri-sun-line text-lg hidden dark:inline"></i>
         </button>
-        <a href="customer-dashboard.html#saved" id="header-saved-btn" title="View Saved Homes" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-lg neu-icon text-slate-200 hover:bg-white/10 text-xs sm:text-sm font-semibold transition cursor-pointer">
+        <a href="customer-dashboard.html#saved" id="header-saved-btn" title="View Saved Homes" class="inline-flex items-center justify-center gap-1.5 px-2.5 xl:px-3 h-10 rounded-lg neu-icon text-slate-200 hover:bg-white/10 text-xs xl:text-sm font-semibold transition cursor-pointer shrink-0">
           <i class="ri-heart-3-fill text-ember-400 text-sm"></i>
-          <span class="hidden sm:inline">Saved</span>
+          <span class="hidden xl:inline">Saved</span>
           <span id="header-saved-count" class="px-1.5 py-0.5 rounded-full bg-ember-500 text-white text-[11px] font-bold leading-none min-w-[1.25rem] text-center">0</span>
         </a>
-        <a href="login.html" id="login-btn" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/10 transition cursor-pointer">
+        <a href="login.html" id="login-btn" class="hidden lg:inline-flex items-center justify-center gap-1.5 px-2.5 xl:px-3.5 h-10 rounded-lg neu-icon text-slate-200 hover:text-white hover:bg-white/10 text-xs xl:text-sm font-semibold transition cursor-pointer shrink-0 whitespace-nowrap">
           <i class="ri-user-line"></i><span>Login</span>
         </a>
-        <a href="customer-dashboard.html" id="dashboard-btn" class="hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 shadow-soft transition cursor-pointer">
-          <i class="ri-dashboard-line"></i><span>Dashboard</span>
+        <a href="contact.html" id="header-cta-btn" class="hidden lg:inline-flex items-center justify-center gap-1.5 px-3 xl:px-4 h-10 rounded-lg text-xs xl:text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 shadow-soft transition cursor-pointer shrink-0 whitespace-nowrap">
+          <i class="ri-calendar-check-line"></i><span>Schedule Tour</span>
         </a>
-        <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-100 hover:bg-white/10 shrink-0">
+        <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden w-10 h-10 inline-flex items-center justify-center rounded-lg neu-icon text-slate-100 hover:bg-white/10 shrink-0">
           <i class="ri-menu-3-line text-xl sm:text-2xl"></i>
         </button>
       </div>
@@ -145,9 +146,12 @@
   <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 bg-forest-800 max-h-[85vh] overflow-y-auto">
     <nav class="px-4 py-3 space-y-1 text-sm font-medium">
       <div class="grid grid-cols-2 gap-2 mb-2">
-        <a href="login.html" id="login-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/15 transition"><i class="ri-user-line"></i> Login</a>
-        <a href="customer-dashboard.html" id="dashboard-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft transition"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="login.html" id="login-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg neu-icon text-white text-sm font-semibold hover:bg-white/15 transition"><i class="ri-user-line"></i> Login</a>
+        <a href="customer-dashboard.html" id="dashboard-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/15 transition"><i class="ri-dashboard-line"></i> Dashboard</a>
       </div>
+      <a href="contact.html" id="header-cta-btn-mobile" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 mb-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition">
+        <i class="ri-calendar-check-line text-base"></i> <span>Schedule Tour</span>
+      </a>
       <button data-mobile-toggle="mobile-home" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5">
         Home <i class="ri-arrow-down-s-line text-base transition"></i>
       </button>
@@ -161,6 +165,7 @@
       <a href="pricing.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Pricing</a>
       <a href="blog.html" class="block px-3 py-2.5 rounded-lg bg-white/5 nav-active">Blog</a>
       <a href="contact.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Contact</a>
+      <a href="customer-dashboard.html" id="nav-dash-link-mobile" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Dashboard</a>
       <div class="flex gap-2 pt-3 border-t border-white/10 mt-2">
         <button id="dir-toggle-mobile" class="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg neu-icon text-slate-200 text-sm font-semibold">
           <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -180,50 +185,18 @@
 <!-- ============================================================
   PAGE HERO
 ============================================================ -->
-<section class="page-hero relative overflow-hidden pt-16 pb-16 sm:pt-20 sm:pb-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-    <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-      <span class="eyebrow bg-white/10 border-white/15 text-brand-200"><i class="ri-article-line"></i> Market Intelligence</span>
-      <h1 class="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.08]">Real Estate Insights &amp; Market Guides</h1>
-      <p class="mt-5 text-lg text-slate-300 max-w-2xl mx-auto">Quarterly housing analytics, buyer strategies, seller ROI playbooks, and neighborhood deep dives written directly by licensed Texas brokers.</p>
-    </div>
+<section class="page-hero">
+  <!-- Hero Background Image & High-Contrast Overlay -->
+  <div class="hero-bg-wrapper">
+    <img src="https://images.unsplash.com/photo-1531218150217-54595bc2b934?auto=format&fit=crop&w=1920&q=80" alt="Austin Texas skyline and architectural perspectives at golden hour" class="hero-bg-img">
+    <div class="hero-bg-overlay"></div>
   </div>
-</section>
 
-<!-- ============================================================
-  REAL ESTATE MARKET PULSE BAR
-============================================================ -->
-<section class="bg-forest-950 text-white py-6 border-y border-white/10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="border-e border-white/10 last:border-0 pe-4">
-        <span class="text-xs uppercase font-bold tracking-wider text-brand-300 block">Median Sold Price</span>
-        <span class="text-2xl font-extrabold font-display mt-1 block">
-          <span data-counter="542500" data-prefix="$" data-format="comma" data-duration="1800">$542,500</span>
-          <span class="text-xs text-brand-300 font-sans font-semibold">+2.4% YoY</span>
-        </span>
-      </div>
-      <div class="border-e border-white/10 last:border-0 pe-4">
-        <span class="text-xs uppercase font-bold tracking-wider text-brand-300 block">Avg. Days on Market</span>
-        <span class="text-2xl font-extrabold font-display mt-1 block">
-          <span data-counter="29" data-suffix=" Days" data-duration="1800">29 Days</span>
-          <span class="text-xs text-brand-300 font-sans font-semibold">-4 days</span>
-        </span>
-      </div>
-      <div class="border-e border-white/10 last:border-0 pe-4">
-        <span class="text-xs uppercase font-bold tracking-wider text-brand-300 block">30-Yr Fixed Mortgage</span>
-        <span class="text-2xl font-extrabold font-display mt-1 block">
-          <span data-counter="5.85" data-suffix="%" data-decimals="2" data-duration="1800">5.85%</span>
-          <span class="text-xs text-brand-300 font-sans font-semibold">Weekly Avg</span>
-        </span>
-      </div>
-      <div>
-        <span class="text-xs uppercase font-bold tracking-wider text-brand-300 block">Active Inventory</span>
-        <span class="text-2xl font-extrabold font-display mt-1 block">
-          <span data-counter="3.8" data-suffix=" Months" data-decimals="1" data-duration="1800">3.8 Months</span>
-          <span class="text-xs text-brand-300 font-sans font-semibold">Balanced</span>
-        </span>
-      </div>
+  <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+      <span class="eyebrow"><i class="ri-article-line"></i> Market Intelligence</span>
+      <h1 class="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.08]">Real Estate Insights &amp; Market Guides</h1>
+      <p class="hero-subtitle mt-5 text-lg text-slate-100 max-w-2xl mx-auto">Quarterly housing analytics, buyer strategies, seller ROI playbooks, and neighborhood deep dives written directly by licensed Texas brokers.</p>
     </div>
   </div>
 </section>
@@ -276,165 +249,165 @@
     </div>
 
     <!-- Article Cards Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
       
       <!-- Article 1 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="buyer" data-aos="fade-up">
-        <div>
-          <a href="blog-detail.html?id=first-time-homebuyer" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="buyer" data-aos="fade-up">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=first-time-homebuyer" class="img-zoom block relative shrink-0">
             <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=800&q=80" alt="First-time homebuyers holding keys in front of their new home" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-amber font-bold text-xs"><i class="ri-compass-3-line"></i> Buyer Guide</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=first-time-homebuyer" class="hover:text-brand-700 dark:hover:text-brand-300 transition">The First-Time Homebuyer Playbook: 12 Steps to Keys</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">From credit pull and pre-approval to earnest money deposits and appraisal contingencies — a battle-tested roadmap for smooth closings.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=first-time-homebuyer" class="hover:text-brand-700 dark:hover:text-brand-300 transition">The First-Time Homebuyer Playbook: 12 Steps to Keys</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">From credit pull and pre-approval to earnest money deposits and appraisal contingencies — a battle-tested roadmap for smooth closings.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Elena Rossi · Aug 21, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">9 min read</span>
         </div>
       </article>
 
       <!-- Article 2 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="neighborhood" data-aos="fade-up" data-aos-delay="75">
-        <div>
-          <a href="blog-detail.html?id=mueller-spotlight" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="neighborhood" data-aos="fade-up" data-aos-delay="75">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=mueller-spotlight" class="img-zoom block relative shrink-0">
             <img src="https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=800&q=80" alt="Mueller Austin modern architectural sustainable residential street" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-green font-bold text-xs"><i class="ri-map-pin-5-line"></i> Neighborhood</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=mueller-spotlight" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Neighborhood Spotlight: Why Mueller Families Stay Long-Term</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">93% resident retention, a 30-acre park system, walkable elementary schools, and solar design standards in Central East Austin.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=mueller-spotlight" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Neighborhood Spotlight: Why Mueller Families Stay Long-Term</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">93% resident retention, a 30-acre park system, walkable elementary schools, and solar design standards in Central East Austin.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Maya Bennett · Aug 08, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">7 min read</span>
         </div>
       </article>
 
       <!-- Article 3 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="seller" data-aos="fade-up" data-aos-delay="150">
-        <div>
-          <a href="blog-detail.html?id=high-roi-upgrades" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="seller" data-aos="fade-up" data-aos-delay="150">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=high-roi-upgrades" class="img-zoom block relative shrink-0">
             <img src="assets/img/high-roi-upgrades.png" alt="9 High-ROI Upgrades That Actually Boost Appraisal Value" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-green font-bold text-xs"><i class="ri-home-gear-line"></i> Seller Advisory</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=high-roi-upgrades" class="hover:text-brand-700 dark:hover:text-brand-300 transition">9 High-ROI Upgrades That Actually Boost Appraisal Value</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">Not every remodel pays off. Learn which cosmetic refreshes, curb appeal tweaks, and energy upgrades yielded 140%+ returns at resale.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=high-roi-upgrades" class="hover:text-brand-700 dark:hover:text-brand-300 transition">9 High-ROI Upgrades That Actually Boost Appraisal Value</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">Not every remodel pays off. Learn which cosmetic refreshes, curb appeal tweaks, and energy upgrades yielded 140%+ returns at resale.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Omar Haddad · Jul 25, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">5 min read</span>
         </div>
       </article>
 
       <!-- Article 4 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="market" data-aos="fade-up">
-        <div>
-          <a href="blog-detail.html?id=mortgage-rate-drops" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="market" data-aos="fade-up">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=mortgage-rate-drops" class="img-zoom block relative shrink-0">
             <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Mortgage interest rate financial calculations and loan paperwork" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-green font-bold text-xs"><i class="ri-percent-line"></i> Rates &amp; Finance</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=mortgage-rate-drops" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Navigating Mortgage Rate Drops: Should You Lock or Float?</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">With benchmark 30-year fixed rates easing under 6%, here is how rate buydowns, adjustable loans, and refinancing clauses impact your monthly payment.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=mortgage-rate-drops" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Navigating Mortgage Rate Drops: Should You Lock or Float?</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">With benchmark 30-year fixed rates easing under 6%, here is how rate buydowns, adjustable loans, and refinancing clauses impact your monthly payment.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Marcus Bell · Jul 14, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">8 min read</span>
         </div>
       </article>
 
       <!-- Article 5 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="investment" data-aos="fade-up" data-aos-delay="75">
-        <div>
-          <a href="blog-detail.html?id=landlord-screening-guide" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="investment" data-aos="fade-up" data-aos-delay="75">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=landlord-screening-guide" class="img-zoom block relative shrink-0">
             <img src="assets/img/landlord-screening-guide.png" alt="The Landlord's Guide to Tenant Screening &amp; Texas Property Codes" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-slate font-bold text-xs"><i class="ri-key-line"></i> Property Management</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=landlord-screening-guide" class="hover:text-brand-700 dark:hover:text-brand-300 transition">The Landlord's Guide to Tenant Screening &amp; Texas Property Codes</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">Essential legal protections, security deposit escrow rules, fair housing guidelines, and digital lease templates for Texas rental owners.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=landlord-screening-guide" class="hover:text-brand-700 dark:hover:text-brand-300 transition">The Landlord's Guide to Tenant Screening &amp; Texas Property Codes</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">Essential legal protections, security deposit escrow rules, fair housing guidelines, and digital lease templates for Texas rental owners.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Daniel Osei · Jun 30, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">6 min read</span>
         </div>
       </article>
 
       <!-- Article 6 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="buyer" data-aos="fade-up" data-aos-delay="150">
-        <div>
-          <a href="blog-detail.html?id=bidding-war-strategies" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="buyer" data-aos="fade-up" data-aos-delay="150">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=bidding-war-strategies" class="img-zoom block relative shrink-0">
             <img src="assets/img/bidding-war-strategies.jpg" alt="How to Win a Multiple-Offer Bidding War Without Overpaying" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-amber font-bold text-xs"><i class="ri-trophy-line"></i> Buyer Strategy</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=bidding-war-strategies" class="hover:text-brand-700 dark:hover:text-brand-300 transition">How to Win a Multiple-Offer Bidding War Without Overpaying</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">Escalation clauses, appraisal gap guarantees, flexible leasebacks, and earnest money levers that sellers prioritize over raw price.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=bidding-war-strategies" class="hover:text-brand-700 dark:hover:text-brand-300 transition">How to Win a Multiple-Offer Bidding War Without Overpaying</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">Escalation clauses, appraisal gap guarantees, flexible leasebacks, and earnest money levers that sellers prioritize over raw price.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Maya Bennett · Jun 18, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">7 min read</span>
         </div>
       </article>
 
       <!-- Article 7 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="seller" data-aos="fade-up">
-        <div>
-          <a href="blog-detail.html?id=downsizing-retirement" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="seller" data-aos="fade-up">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=downsizing-retirement" class="img-zoom block relative shrink-0">
             <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=800&q=80" alt="Single-story luxury patio home with outdoor terrace and garden" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-green font-bold text-xs"><i class="ri-home-smile-line"></i> Lifestyle</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=downsizing-retirement" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Downsizing in Retirement: Finding Single-Story Low-Maintenance Homes</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">How empty nesters are unlocking home equity, reducing property tax burdens, and transitioning to luxury lock-and-leave patio homes.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=downsizing-retirement" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Downsizing in Retirement: Finding Single-Story Low-Maintenance Homes</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">How empty nesters are unlocking home equity, reducing property tax burdens, and transitioning to luxury lock-and-leave patio homes.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Elena Rossi · Jun 02, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">5 min read</span>
         </div>
       </article>
 
       <!-- Article 8 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="neighborhood" data-aos="fade-up" data-aos-delay="75">
-        <div>
-          <a href="blog-detail.html?id=austin-relocation" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="neighborhood" data-aos="fade-up" data-aos-delay="75">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=austin-relocation" class="img-zoom block relative shrink-0">
             <img src="assets/img/austin-relocation.png" alt="Austin Tech Corridor Relocation: School Districts &amp; Commute Math" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-green font-bold text-xs"><i class="ri-road-map-line"></i> Relocation</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=austin-relocation" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Austin Tech Corridor Relocation: School Districts &amp; Commute Math</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">Comparing North Austin, Cedar Park, Round Rock, and Westlake Hills for families relocating from out-of-state for tech and healthcare careers.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=austin-relocation" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Austin Tech Corridor Relocation: School Districts &amp; Commute Math</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">Comparing North Austin, Cedar Park, Round Rock, and Westlake Hills for families relocating from out-of-state for tech and healthcare careers.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Omar Haddad · May 19, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">10 min read</span>
         </div>
       </article>
 
       <!-- Article 9 -->
-      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between" data-category="investment" data-aos="fade-up" data-aos-delay="150">
-        <div>
-          <a href="blog-detail.html?id=cap-rates-multifamily" class="img-zoom block relative">
+      <article class="card-hover rounded-3xl glass-card overflow-hidden flex flex-col justify-between h-full" data-category="investment" data-aos="fade-up" data-aos-delay="150">
+        <div class="flex flex-col flex-1">
+          <a href="blog-detail.html?id=cap-rates-multifamily" class="img-zoom block relative shrink-0">
             <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=800&q=80" alt="Modern multi-family residential duplex and apartment investment property" class="w-full aspect-[16/10] object-cover" loading="lazy">
             <span class="absolute top-3 start-3 tbl-pill pill-slate font-bold text-xs"><i class="ri-line-chart-line"></i> Capital &amp; Yields</span>
           </a>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white"><a href="blog-detail.html?id=cap-rates-multifamily" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Cap Rates &amp; Cash Flow: Texas Residential Multi-Family in 2026</a></h3>
-            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed">Analyzing duplex, triplex, and fourplex returns across the I-35 corridor. Tax advantages, cost segregation, and 1031 like-kind exchange tactics.</p>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-display text-xl font-bold text-ink-900 dark:text-white leading-snug line-clamp-2 min-h-[3.5rem]"><a href="blog-detail.html?id=cap-rates-multifamily" class="hover:text-brand-700 dark:hover:text-brand-300 transition">Cap Rates &amp; Cash Flow: Texas Residential Multi-Family in 2026</a></h3>
+            <p class="mt-2.5 text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1">Analyzing duplex, triplex, and fourplex returns across the I-35 corridor. Tax advantages, cost segregation, and 1031 like-kind exchange tactics.</p>
           </div>
         </div>
-        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400">
+        <div class="px-6 pb-6 pt-4 border-t border-ink-100 dark:border-white/10 flex items-center justify-between text-xs text-ink-400 dark:text-slate-400 mt-auto">
           <span>Marcus Bell · May 04, 2026</span>
           <span class="font-semibold text-brand-700 dark:text-brand-300">11 min read</span>
         </div>
@@ -447,7 +420,7 @@
 <!-- ============================================================
   LEAD MAGNET & FREE REAL ESTATE GUIDE DOWNLOAD
 ============================================================ -->
-<section class="py-16 bg-cream dark:bg-forest-900">
+<section class="py-16 sm:py-20 bg-cream dark:bg-forest-900">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="rounded-3xl glass-card p-8 sm:p-12 border-2 border-brand-500/30 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-lift" data-aos="zoom-in">
       <div class="max-w-2xl">
@@ -472,7 +445,7 @@
 
 </main>
 
-<footer class="site-footer text-slate-300 pt-16 pb-8 mt-24 border-t border-white/15 bg-[#0d1712]">
+<footer class="site-footer text-slate-300 pt-16 pb-8 border-t border-white/15 bg-[#0d1712]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/15">
       <div class="lg:col-span-2">

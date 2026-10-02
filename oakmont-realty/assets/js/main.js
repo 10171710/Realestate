@@ -41,46 +41,68 @@
   }
 
   /* ---------- Mobile menu ---------- */
-  const mobileBtn = $('#mobile-menu-btn');
-  const mobileMenu = $('#mobile-menu');
-  if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isHidden = mobileMenu.classList.toggle('hidden');
-      const isExpanded = !isHidden;
-      mobileBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-      const i = $('i', mobileBtn);
-      if (i) i.className = isHidden ? 'ri-menu-3-line text-xl sm:text-2xl' : 'ri-close-line text-xl sm:text-2xl';
-    });
+  function toggleMobileMenu(forceClose) {
+    const mobileBtn = $('#mobile-menu-btn');
+    const mobileMenu = $('#mobile-menu');
+    if (!mobileMenu) return;
 
-    // Close on click outside
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
+    const shouldClose = forceClose === true || !mobileMenu.classList.contains('hidden');
+    if (shouldClose) {
+      mobileMenu.classList.add('hidden');
+      if (mobileBtn) {
         mobileBtn.setAttribute('aria-expanded', 'false');
-        const i = $('i', mobileBtn);
+        mobileBtn.setAttribute('aria-label', 'Open menu');
+        const i = mobileBtn.querySelector('i');
         if (i) i.className = 'ri-menu-3-line text-xl sm:text-2xl';
       }
-    });
-
-    // Close on resize past desktop breakpoint
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        mobileBtn.setAttribute('aria-expanded', 'false');
-        const i = $('i', mobileBtn);
-        if (i) i.className = 'ri-menu-3-line text-xl sm:text-2xl';
+    } else {
+      mobileMenu.classList.remove('hidden');
+      if (mobileBtn) {
+        mobileBtn.setAttribute('aria-expanded', 'true');
+        mobileBtn.setAttribute('aria-label', 'Close menu');
+        const i = mobileBtn.querySelector('i');
+        if (i) i.className = 'ri-close-line text-xl sm:text-2xl';
       }
-    });
-
-    // Collapse sub-toggles inside mobile
-    $$('[data-mobile-toggle]', mobileMenu).forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = document.getElementById(btn.getAttribute('data-mobile-toggle'));
-        if (target) target.classList.toggle('hidden');
-      });
-    });
+    }
   }
+
+  document.addEventListener('click', (e) => {
+    const mobileBtn = e.target.closest('#mobile-menu-btn');
+    const mobileMenu = $('#mobile-menu');
+
+    if (mobileBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileMenu();
+      return;
+    }
+
+    const subToggle = e.target.closest('[data-mobile-toggle]');
+    if (subToggle) {
+      e.preventDefault();
+      const targetId = subToggle.getAttribute('data-mobile-toggle');
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.classList.toggle('hidden');
+        const arrow = subToggle.querySelector('i.ri-arrow-down-s-line, i.ri-arrow-up-s-line');
+        if (arrow) arrow.classList.toggle('rotate-180');
+      }
+      return;
+    }
+
+    // Close mobile menu if clicked outside
+    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      if (!mobileMenu.contains(e.target)) {
+        toggleMobileMenu(true);
+      }
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      toggleMobileMenu(true);
+    }
+  });
 
   /* ---------- Toast notification helper ---------- */
   function showToast(msg, icon = 'ri-information-line', dur = 3200) {
@@ -195,6 +217,8 @@
     var session = window.CrestlineSession ? window.CrestlineSession.get() : null;
     var dashBtn = $('#dashboard-btn');
     var dashMobileBtn = $('#dashboard-btn-mobile');
+    var navDashLink = $('#nav-dash-link');
+    var navDashLinkMobile = $('#nav-dash-link-mobile');
     var loginBtn = $('#login-btn');
     var loginMobileBtn = $('#login-btn-mobile');
 
@@ -205,8 +229,16 @@
 
     if (dashBtn) {
       dashBtn.href = dashTargetUrl;
-      dashBtn.className = 'hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white ' + dashBgClass + ' shadow-soft transition cursor-pointer';
+      dashBtn.className = 'hidden lg:inline-flex items-center gap-1.5 px-4 h-10 rounded-lg text-sm font-semibold text-white ' + dashBgClass + ' shadow-soft transition cursor-pointer';
       dashBtn.innerHTML = '<i class="ri-dashboard-line"></i><span>' + dashLabel + '</span>';
+    }
+    if (navDashLink) {
+      navDashLink.href = dashTargetUrl;
+      navDashLink.textContent = dashLabel;
+    }
+    if (navDashLinkMobile) {
+      navDashLinkMobile.href = dashTargetUrl;
+      navDashLinkMobile.textContent = dashLabel;
     }
     if (dashMobileBtn) {
       dashMobileBtn.href = dashTargetUrl;
@@ -1248,10 +1280,10 @@
     const input1 = $('#search-input-1');
     const label1 = $('#label-text-1');
     const icon1 = $('#search-icon-1');
-    const select2 = $('#search-select-2');
+    const input2 = $('#search-input-2');
     const label2 = $('#label-text-2');
     const icon2 = $('#search-icon-2');
-    const select3 = $('#search-select-3');
+    const input3 = $('#search-input-3');
     const label3 = $('#label-text-3');
     const icon3 = $('#search-icon-3');
     const submitText = $('#hero-submit-text');
@@ -1265,26 +1297,13 @@
         action: 'home-2.html',
         label1: 'Location',
         icon1: 'ri-map-pin-2-line',
-        placeholder1: 'Austin, Westlake, Round Rock, ZIP',
+        placeholder1: 'Enter location, city, or ZIP...',
         label2: 'Property Type',
         icon2: 'ri-home-5-line',
-        options2: [
-          { val: 'single-family', text: 'Single-Family Home' },
-          { val: 'villa', text: 'Luxury Villa' },
-          { val: 'condo', text: 'Downtown Condo' },
-          { val: 'townhouse', text: 'Modern Townhouse' },
-          { val: 'multi-family', text: 'Multi-Family / Duplex' },
-          { val: 'land', text: 'Land & Lot' }
-        ],
+        placeholder2: 'Enter property type (e.g. Single Family, Villa, Condo)...',
         label3: 'Price Range',
         icon3: 'ri-money-dollar-circle-line',
-        options3: [
-          { val: 'any', text: 'Any Price' },
-          { val: '300k-600k', text: '$300K – $600K' },
-          { val: '600k-1.2m', text: '$600K – $1.2M' },
-          { val: '1.2m-2.5m', text: '$1.2M – $2.5M' },
-          { val: '2.5m+', text: '$2.5M+' }
-        ],
+        placeholder3: 'Enter price range (e.g. $400k – $800k)...',
         submitText: 'Search 4,120+ Homes',
         submitIcon: 'ri-search-line',
         tags: [
@@ -1299,25 +1318,13 @@
         action: 'home-2.html',
         label1: 'Rental City / Area',
         icon1: 'ri-building-line',
-        placeholder1: 'Downtown, South Congress, Domain, ZIP',
+        placeholder1: 'Enter rental area, city, or ZIP...',
         label2: 'Lease Type',
         icon2: 'ri-home-wifi-line',
-        options2: [
-          { val: 'luxury-apartment', text: 'Luxury Apartment' },
-          { val: 'single-family-rental', text: 'Single-Family Home' },
-          { val: 'furnished-condo', text: 'Furnished Condo' },
-          { val: 'townhouse-rental', text: 'Townhome' },
-          { val: 'corporate-suite', text: 'Corporate Short-Term' }
-        ],
+        placeholder2: 'Enter lease type (e.g. Apartment, Furnished Condo)...',
         label3: 'Monthly Budget',
         icon3: 'ri-bank-card-line',
-        options3: [
-          { val: 'any', text: 'Any Budget' },
-          { val: '1500-2500', text: '$1,500 – $2,500/mo' },
-          { val: '2500-4000', text: '$2,500 – $4,000/mo' },
-          { val: '4000-7000', text: '$4,000 – $7,000/mo' },
-          { val: '7000+', text: '$7,000+/mo' }
-        ],
+        placeholder3: 'Enter monthly budget (e.g. $2,000 – $3,500)...',
         submitText: 'Search Rentals (840+ Units)',
         submitIcon: 'ri-building-2-line',
         tags: [
@@ -1332,22 +1339,13 @@
         action: 'pricing.html#seller-plans',
         label1: 'Property Address',
         icon1: 'ri-map-pin-user-line',
-        placeholder1: 'Enter your Texas street address',
+        placeholder1: 'Enter property street address...',
         label2: 'Target Timeline',
         icon2: 'ri-calendar-event-line',
-        options2: [
-          { val: 'immediate', text: 'Sell Immediately (1-30 days)' },
-          { val: '1-3mo', text: 'In 1 to 3 Months' },
-          { val: '3-6mo', text: 'In 3 to 6 Months' },
-          { val: 'exploring', text: 'Just Exploring Market Value' }
-        ],
+        placeholder2: 'Enter timeline (e.g. Within 30 days, 1-3 months)...',
         label3: 'Preferred Listing Plan',
         icon3: 'ri-shield-star-line',
-        options3: [
-          { val: 'flat-fee', text: '$299 Flat-Fee MLS Plan' },
-          { val: 'full-service', text: '2.5% Full-Service Brokerage' },
-          { val: 'vip-luxury', text: 'VIP Luxury Advisory' }
-        ],
+        placeholder3: 'Enter listing plan (e.g. Flat-Fee MLS, Full-Service)...',
         submitText: 'Get Seller Listing Proposal',
         submitIcon: 'ri-price-tag-3-line',
         tags: [
@@ -1362,23 +1360,13 @@
         action: '#modal-free-valuation',
         label1: 'Home Address',
         icon1: 'ri-home-search-line',
-        placeholder1: 'Enter Texas address for Instant CMA',
+        placeholder1: 'Enter address for instant CMA valuation...',
         label2: 'Beds & Baths',
         icon2: 'ri-door-open-line',
-        options2: [
-          { val: '3b2b', text: '3 Beds / 2 Baths' },
-          { val: '4b3b', text: '4 Beds / 3 Baths' },
-          { val: '5b4b', text: '5+ Beds / 4+ Baths' },
-          { val: '2b2b', text: '2 Beds / 2 Baths' }
-        ],
+        placeholder2: 'Enter beds & baths (e.g. 3 Beds / 2 Baths)...',
         label3: 'Square Footage',
         icon3: 'ri-ruler-2-line',
-        options3: [
-          { val: '1500-2200', text: '1,500 – 2,200 sqft' },
-          { val: '2200-3200', text: '2,200 – 3,200 sqft' },
-          { val: '3200-4500', text: '3,200 – 4,500 sqft' },
-          { val: '4500+', text: '4,500+ sqft' }
-        ],
+        placeholder3: 'Enter square footage (e.g. 2,400 sqft)...',
         submitText: 'Calculate Instant Valuation',
         submitIcon: 'ri-calculator-line',
         tags: [
@@ -1412,14 +1400,14 @@
 
       if (label2) label2.textContent = cfg.label2;
       if (icon2) icon2.className = cfg.icon2 + ' text-brand-600';
-      if (select2) {
-        select2.innerHTML = cfg.options2.map(o => `<option value="${o.val}">${o.text}</option>`).join('');
+      if (input2) {
+        input2.placeholder = cfg.placeholder2;
       }
 
       if (label3) label3.textContent = cfg.label3;
       if (icon3) icon3.className = cfg.icon3 + ' text-brand-600';
-      if (select3) {
-        select3.innerHTML = cfg.options3.map(o => `<option value="${o.val}">${o.text}</option>`).join('');
+      if (input3) {
+        input3.placeholder = cfg.placeholder3;
       }
 
       if (submitText) submitText.textContent = cfg.submitText;
@@ -1462,12 +1450,14 @@
           if (targetAddrEl) targetAddrEl.textContent = addr;
 
           // Compute dynamic estimate based on address & sqft
-          const sqftVal = select3 ? select3.value : '2200-3200';
+          const sqftText = (input3 && input3.value) ? input3.value.trim() : '';
+          const sqftNum = parseInt(sqftText.replace(/\D/g, ''), 10) || 2400;
           let low = 580000;
           let high = 640000;
-          if (sqftVal === '2200-3200') { low = 645000; high = 695000; }
-          else if (sqftVal === '3200-4500') { low = 780000; high = 850000; }
-          else if (sqftVal === '4500+') { low = 1150000; high = 1350000; }
+          if (sqftNum >= 4500) { low = 1150000; high = 1350000; }
+          else if (sqftNum >= 3200) { low = 780000; high = 850000; }
+          else if (sqftNum >= 2200) { low = 645000; high = 695000; }
+          else if (sqftNum > 0) { low = Math.round(sqftNum * 265); high = Math.round(sqftNum * 315); }
           
           const valRangeEl = $('#valuation-price-range');
           if (valRangeEl) {
@@ -1927,8 +1917,8 @@
   function initHome2Filter() {
     const form = document.getElementById('home2-search-form');
     const queryInput = document.getElementById('home2-search-query');
-    const typeSelect = document.getElementById('home2-search-type');
-    const bedsSelect = document.getElementById('home2-search-beds');
+    const typeInput = document.getElementById('home2-search-type');
+    const bedsInput = document.getElementById('home2-search-beds');
     const countBadge = document.getElementById('home2-results-count');
     const noResults = document.getElementById('home2-no-results');
     const resetBtn = document.getElementById('home2-reset-filter');
@@ -1941,8 +1931,10 @@
 
     function updateCategoryTabs(activeType) {
       categoryTabs.forEach(tab => {
-        const tabType = tab.getAttribute('data-home2-tab');
-        const isActive = (tabType === activeType);
+        const tabType = (tab.getAttribute('data-home2-tab') || '').toLowerCase();
+        const normActive = (activeType || '').toLowerCase().trim();
+        const isActive = (tabType === 'all' && (!normActive || normActive === 'all')) ||
+                         (tabType !== 'all' && normActive && (normActive.includes(tabType) || tabType.includes(normActive)));
         if (isActive) {
           tab.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand-600 text-white shadow-soft cursor-pointer';
         } else {
@@ -1953,8 +1945,17 @@
 
     function applyFilter(isSubmit = false) {
       const q = (queryInput ? queryInput.value.trim().toLowerCase() : '');
-      const type = (typeSelect ? typeSelect.value : 'all');
-      const minBeds = (bedsSelect ? parseInt(bedsSelect.value, 10) || 0 : 0);
+      const typeRaw = (typeInput ? typeInput.value.trim().toLowerCase() : '');
+      const bedsRaw = (bedsInput ? bedsInput.value.trim().toLowerCase() : '');
+
+      // Parse bedrooms number if user types "3", "3+", "3 beds", etc.
+      let minBeds = 0;
+      if (bedsRaw && bedsRaw !== 'any' && bedsRaw !== 'all') {
+        const match = bedsRaw.match(/\d+/);
+        if (match) {
+          minBeds = parseInt(match[0], 10) || 0;
+        }
+      }
 
       let visibleCount = 0;
 
@@ -1964,7 +1965,23 @@
         const cardLoc = (card.getAttribute('data-location') || '').toLowerCase();
         const cardText = card.textContent.toLowerCase();
 
-        const matchesType = (type === 'all' || cardType === type);
+        // Type match logic
+        let matchesType = true;
+        if (typeRaw && typeRaw !== 'all' && typeRaw !== 'any') {
+          if (typeRaw.includes('sale') || typeRaw.includes('buy')) {
+            matchesType = (cardType === 'sale');
+          } else if (typeRaw.includes('rent') || typeRaw.includes('lease')) {
+            matchesType = (cardType === 'rent');
+          } else if (typeRaw.includes('comm') || typeRaw.includes('office')) {
+            matchesType = (cardType === 'commercial');
+          } else if (typeRaw.includes('land') || typeRaw.includes('lot')) {
+            matchesType = (cardType === 'land');
+          } else {
+            // General text match (e.g. "villa", "condo", "townhouse", "duplex")
+            matchesType = cardType.includes(typeRaw) || cardText.includes(typeRaw) || cardLoc.includes(typeRaw);
+          }
+        }
+
         const matchesBeds = (minBeds === 0 || cardBeds >= minBeds);
         const matchesQuery = (!q || cardLoc.includes(q) || cardText.includes(q) || cardType.includes(q));
 
@@ -1991,9 +2008,9 @@
         noResults.classList.toggle('hidden', visibleCount > 0);
       }
 
-      updateCategoryTabs(type);
+      updateCategoryTabs(typeRaw);
 
-      const hasActiveFilters = q !== '' || type !== 'all' || minBeds !== 0;
+      const hasActiveFilters = q !== '' || (typeRaw !== '' && typeRaw !== 'all') || (bedsRaw !== '' && bedsRaw !== 'any' && bedsRaw !== '0');
       if (resetBtn) {
         resetBtn.style.display = hasActiveFilters ? 'inline-flex' : 'none';
         resetBtn.classList.toggle('hidden', !hasActiveFilters);
@@ -2015,23 +2032,19 @@
 
     function resetFilters() {
       if (queryInput) queryInput.value = '';
-      if (typeSelect) typeSelect.value = 'all';
-      if (bedsSelect) bedsSelect.value = '0';
+      if (typeInput) typeInput.value = '';
+      if (bedsInput) bedsInput.value = '';
       applyFilter(false);
     }
 
-    // Input & select events for instant real-time responsiveness
-    if (queryInput) {
-      ['input', 'keyup', 'change', 'search'].forEach(evt => {
-        queryInput.addEventListener(evt, () => applyFilter(false));
-      });
-    }
-    if (typeSelect) {
-      typeSelect.addEventListener('change', () => applyFilter(false));
-    }
-    if (bedsSelect) {
-      bedsSelect.addEventListener('change', () => applyFilter(false));
-    }
+    // Input events for instant real-time responsiveness
+    [queryInput, typeInput, bedsInput].forEach(inp => {
+      if (inp) {
+        ['input', 'keyup', 'change', 'search'].forEach(evt => {
+          inp.addEventListener(evt, () => applyFilter(false));
+        });
+      }
+    });
 
     if (form) {
       form.addEventListener('submit', (e) => {
@@ -2048,9 +2061,9 @@
       tab.addEventListener('click', (e) => {
         e.preventDefault();
         const tabType = tab.getAttribute('data-home2-tab') || 'all';
-        if (typeSelect) typeSelect.value = tabType;
+        if (typeInput) typeInput.value = (tabType === 'all' ? '' : (tabType.charAt(0).toUpperCase() + tabType.slice(1)));
         if (queryInput) queryInput.value = '';
-        if (bedsSelect) bedsSelect.value = '0';
+        if (bedsInput) bedsInput.value = '';
         applyFilter(false);
       });
     });
@@ -2062,14 +2075,29 @@
         const val = tag.getAttribute('data-home2-quick-tag');
         if (val === 'all') {
           resetFilters();
-        } else if (val === 'sale' || val === 'rent' || val === 'commercial' || val === 'land') {
-          if (typeSelect) typeSelect.value = val;
+        } else if (val === 'sale') {
+          if (typeInput) typeInput.value = 'For Sale';
           if (queryInput) queryInput.value = '';
-          if (bedsSelect) bedsSelect.value = '0';
+          if (bedsInput) bedsInput.value = '';
+          applyFilter(true);
+        } else if (val === 'rent') {
+          if (typeInput) typeInput.value = 'For Rent';
+          if (queryInput) queryInput.value = '';
+          if (bedsInput) bedsInput.value = '';
+          applyFilter(true);
+        } else if (val === 'commercial') {
+          if (typeInput) typeInput.value = 'Commercial';
+          if (queryInput) queryInput.value = '';
+          if (bedsInput) bedsInput.value = '';
+          applyFilter(true);
+        } else if (val === 'land') {
+          if (typeInput) typeInput.value = 'Land';
+          if (queryInput) queryInput.value = '';
+          if (bedsInput) bedsInput.value = '';
           applyFilter(true);
         } else if (val === 'austin') {
           if (queryInput) queryInput.value = 'Austin';
-          if (typeSelect) typeSelect.value = 'all';
+          if (typeInput) typeInput.value = '';
           applyFilter(true);
         }
       });
@@ -2082,55 +2110,52 @@
       const filterParam = (urlParams.get('filter') || '').toLowerCase();
       const modeParam = (urlParams.get('mode') || '').toLowerCase();
       const locParam = urlParams.get('location') || urlParams.get('q') || '';
-      const typeParam = (urlParams.get('property_type') || urlParams.get('type') || '').toLowerCase();
-      const bedsParam = urlParams.get('beds') || '';
+      const typeParam = urlParams.get('property_type') || urlParams.get('type') || '';
+      const bedsParam = urlParams.get('beds') || urlParams.get('bedrooms') || '';
       const tagParam = (urlParams.get('tag') || '').toLowerCase();
 
       if (locParam && queryInput) queryInput.value = locParam;
-      if (bedsParam && bedsSelect) bedsSelect.value = bedsParam;
+      if (bedsParam && bedsInput) bedsInput.value = bedsParam;
 
-      if (modeParam === 'rent' && typeSelect) typeSelect.value = 'rent';
-      else if (modeParam === 'buy' && typeSelect) typeSelect.value = 'sale';
+      if (modeParam === 'rent' && typeInput) typeInput.value = 'For Rent';
+      else if (modeParam === 'buy' && typeInput) typeInput.value = 'For Sale';
 
-      if (typeParam) {
-        if (typeParam.includes('rent') && typeSelect) typeSelect.value = 'rent';
-        else if (typeParam.includes('commercial') && typeSelect) typeSelect.value = 'commercial';
-        else if (typeParam.includes('land') && typeSelect) typeSelect.value = 'land';
-        else if ((typeParam.includes('sale') || typeParam.includes('single') || typeParam.includes('villa')) && typeSelect) typeSelect.value = 'sale';
+      if (typeParam && typeInput) {
+        typeInput.value = typeParam;
       }
 
       if (tagParam) {
         if (tagParam.includes('villa') || tagParam.includes('westlake')) {
-          if (typeSelect) typeSelect.value = 'sale';
+          if (typeInput) typeInput.value = 'For Sale';
         } else if (tagParam.includes('condo')) {
           if (queryInput) queryInput.value = 'Harbor';
         } else if (tagParam.includes('land')) {
-          if (typeSelect) typeSelect.value = 'land';
+          if (typeInput) typeInput.value = 'Land';
         }
       }
 
       if (catParam) {
-        if (catParam.includes('rent') && typeSelect) typeSelect.value = 'rent';
+        if (catParam.includes('rent') && typeInput) typeInput.value = 'For Rent';
         else if (catParam.includes('villa') || catParam.includes('luxury')) {
-          if (typeSelect) typeSelect.value = 'sale';
+          if (typeInput) typeInput.value = 'For Sale';
           if (queryInput) queryInput.value = 'Dripping Springs';
         } else if (catParam.includes('condo') && queryInput) {
           queryInput.value = 'Harbor';
-        } else if (catParam.includes('land') && typeSelect) {
-          typeSelect.value = 'land';
+        } else if (catParam.includes('land') && typeInput) {
+          typeInput.value = 'Land';
         }
       }
 
-      if (filterParam === 'family' && bedsSelect) bedsSelect.value = '3';
+      if (filterParam === 'family' && bedsInput) bedsInput.value = '3+ Beds';
     } catch (_) {}
 
     // Initialize filter state
     applyFilter(false);
 
     window.filterHome2Category = function(catType) {
-      if (typeSelect) typeSelect.value = catType;
+      if (typeInput) typeInput.value = (catType === 'all' ? '' : (catType.charAt(0).toUpperCase() + catType.slice(1)));
       if (queryInput) queryInput.value = '';
-      if (bedsSelect) bedsSelect.value = '0';
+      if (bedsInput) bedsInput.value = '';
       applyFilter(false);
     };
   }

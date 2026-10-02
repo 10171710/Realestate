@@ -91,9 +91,9 @@
         </span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1 font-medium text-sm">
+      <nav class="hidden lg:flex items-center gap-0.5 xl:gap-1 font-medium text-xs xl:text-sm shrink">
         <div class="relative group">
-          <button class="nav-link nav-active flex items-center gap-1 px-3 py-2 rounded-lg font-semibold hover:text-white hover:bg-white/10 transition">
+          <button class="nav-link nav-active flex items-center gap-1 px-2.5 xl:px-3 py-2 rounded-lg font-semibold hover:text-white hover:bg-white/10 transition whitespace-nowrap">
             Home <i class="ri-arrow-down-s-line text-base transition group-hover:rotate-180"></i>
           </button>
           <div class="dropdown absolute start-0 top-full mt-1 w-64 rounded-xl bg-white dark:bg-forest-900 border border-ink-100 dark:border-white/10 shadow-xl p-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all">
@@ -106,36 +106,37 @@
           </div>
         </div>
 
-        <a href="about.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">About</a>
-        <a href="services.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Services</a>
-        <a href="pricing.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Pricing</a>
-        <a href="blog.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Blog</a>
-        <a href="contact.html" class="nav-link px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">Contact</a>
+        <a href="about.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">About</a>
+        <a href="services.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Services</a>
+        <a href="pricing.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Pricing</a>
+        <a href="blog.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Blog</a>
+        <a href="contact.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Contact</a>
+        <a href="customer-dashboard.html" id="nav-dash-link" class="nav-link px-2.5 xl:px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition whitespace-nowrap">Dashboard</a>
       </nav>
 
-      <div class="flex items-center gap-1.5 sm:gap-2">
-        <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition">
+      <div class="flex items-center gap-1 sm:gap-1.5 xl:gap-2 shrink-0">
+        <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="hidden sm:inline-flex w-10 h-10 items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition shrink-0">
           <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 7H4M8 3.5L4 7l4 3.5" />
             <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
           </svg>
         </button>
-        <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition">
+        <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-10 h-10 inline-flex items-center justify-center rounded-lg neu-icon text-slate-200 hover:bg-white/10 transition shrink-0">
           <i class="ri-moon-line text-lg dark:hidden"></i>
           <i class="ri-sun-line text-lg hidden dark:inline"></i>
         </button>
-        <a href="customer-dashboard.html#saved" id="header-saved-btn" title="View Saved Homes" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-lg neu-icon text-slate-200 hover:bg-white/10 text-xs sm:text-sm font-semibold transition cursor-pointer">
+        <a href="customer-dashboard.html#saved" id="header-saved-btn" title="View Saved Homes" class="inline-flex items-center justify-center gap-1.5 px-2.5 xl:px-3 h-10 rounded-lg neu-icon text-slate-200 hover:bg-white/10 text-xs xl:text-sm font-semibold transition cursor-pointer shrink-0">
           <i class="ri-heart-3-fill text-ember-400 text-sm"></i>
-          <span class="hidden sm:inline">Saved</span>
+          <span class="hidden xl:inline">Saved</span>
           <span id="header-saved-count" class="px-1.5 py-0.5 rounded-full bg-ember-500 text-white text-[11px] font-bold leading-none min-w-[1.25rem] text-center">0</span>
         </a>
-        <a href="login.html" id="login-btn" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/10 transition cursor-pointer">
+        <a href="login.html" id="login-btn" class="hidden lg:inline-flex items-center justify-center gap-1.5 px-2.5 xl:px-3.5 h-10 rounded-lg neu-icon text-slate-200 hover:text-white hover:bg-white/10 text-xs xl:text-sm font-semibold transition cursor-pointer shrink-0 whitespace-nowrap">
           <i class="ri-user-line"></i><span>Login</span>
         </a>
-        <a href="customer-dashboard.html" id="dashboard-btn" class="hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 shadow-soft transition cursor-pointer">
-          <i class="ri-dashboard-line"></i><span>Dashboard</span>
+        <a href="contact.html" id="header-cta-btn" class="hidden lg:inline-flex items-center justify-center gap-1.5 px-3 xl:px-4 h-10 rounded-lg text-xs xl:text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 shadow-soft transition cursor-pointer shrink-0 whitespace-nowrap">
+          <i class="ri-calendar-check-line"></i><span>Schedule Tour</span>
         </a>
-        <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden w-9 h-9 inline-flex items-center justify-center rounded-lg neu-icon text-slate-100 hover:bg-white/10 shrink-0">
+        <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden w-10 h-10 inline-flex items-center justify-center rounded-lg neu-icon text-slate-100 hover:bg-white/10 shrink-0">
           <i class="ri-menu-3-line text-xl sm:text-2xl"></i>
         </button>
       </div>
@@ -145,9 +146,12 @@
   <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 bg-forest-800 max-h-[85vh] overflow-y-auto">
     <nav class="px-4 py-3 space-y-1 text-sm font-medium">
       <div class="grid grid-cols-2 gap-2 mb-2">
-        <a href="login.html" id="login-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/15 transition"><i class="ri-user-line"></i> Login</a>
-        <a href="customer-dashboard.html" id="dashboard-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft transition"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="login.html" id="login-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg neu-icon text-white text-sm font-semibold hover:bg-white/15 transition"><i class="ri-user-line"></i> Login</a>
+        <a href="customer-dashboard.html" id="dashboard-btn-mobile" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/15 transition"><i class="ri-dashboard-line"></i> Dashboard</a>
       </div>
+      <a href="contact.html" id="header-cta-btn-mobile" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 mb-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition">
+        <i class="ri-calendar-check-line text-base"></i> <span>Schedule Tour</span>
+      </a>
       <button data-mobile-toggle="mobile-home" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5 nav-active">
         Home <i class="ri-arrow-down-s-line text-base transition"></i>
       </button>
@@ -161,6 +165,7 @@
       <a href="pricing.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Pricing</a>
       <a href="blog.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Blog</a>
       <a href="contact.html" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Contact</a>
+      <a href="customer-dashboard.html" id="nav-dash-link-mobile" class="block px-3 py-2.5 rounded-lg hover:bg-white/5">Dashboard</a>
       <div class="flex gap-2 pt-3 border-t border-white/10 mt-2">
         <button id="dir-toggle-mobile" class="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg neu-icon text-slate-200 text-sm font-semibold">
           <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -197,24 +202,11 @@
           </div>
           <div class="search-field rounded-xl px-3.5 py-2.5">
             <label class="flex items-center gap-1.5 text-xs font-bold text-ink-400 dark:text-slate-500"><i class="ri-swap-box-line"></i> <span>For sale / rent</span></label>
-            <select id="home2-search-type" class="w-full bg-transparent text-sm font-semibold text-ink-900 dark:text-white focus:outline-none mt-0.5 cursor-pointer">
-              <option value="all" selected>All Properties</option>
-              <option value="sale">For Sale</option>
-              <option value="rent">For Rent</option>
-              <option value="commercial">Commercial</option>
-              <option value="land">Land</option>
-            </select>
+            <input type="text" id="home2-search-type" placeholder="For Sale, Rent, Commercial" class="w-full bg-transparent text-sm font-semibold text-ink-900 dark:text-white placeholder:text-ink-300 dark:placeholder:text-slate-500 focus:outline-none mt-0.5">
           </div>
           <div class="search-field rounded-xl px-3.5 py-2.5">
             <label class="flex items-center gap-1.5 text-xs font-bold text-ink-400 dark:text-slate-500"><i class="ri-sliders-3-line"></i> <span>Bedrooms</span></label>
-            <select id="home2-search-beds" class="w-full bg-transparent text-sm font-semibold text-ink-900 dark:text-white focus:outline-none mt-0.5 cursor-pointer">
-              <option value="0" selected>Any</option>
-              <option value="1">1+ Bed</option>
-              <option value="2">2+ Beds</option>
-              <option value="3">3+ Beds</option>
-              <option value="4">4+ Beds</option>
-              <option value="5">5+ Beds</option>
-            </select>
+            <input type="text" id="home2-search-beds" placeholder="Any, 1+ Bed, 2+ Beds" class="w-full bg-transparent text-sm font-semibold text-ink-900 dark:text-white placeholder:text-ink-300 dark:placeholder:text-slate-500 focus:outline-none mt-0.5">
           </div>
           <div class="flex items-end">
             <button type="submit" id="home2-search-btn" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-soft transition">

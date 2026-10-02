@@ -456,24 +456,24 @@
         <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white">Agent Messages</h2>
         <p class="text-sm text-ink-500 dark:text-slate-400">Messaging with Maya Bennett — replied-to within one business day.</p>
 
-        <div class="mt-5 grid lg:grid-cols-3 gap-5">
-          <div class="rounded-2xl glass-card p-4 overflow-hidden flex flex-col">
+        <div class="mt-5 grid grid-cols-1 xl:grid-cols-3 gap-5">
+          <div class="rounded-2xl glass-card p-5 overflow-hidden flex flex-col">
             <div class="space-y-4">
               <div class="flex items-start gap-2">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50 shrink-0">
                 <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">Hello — seller came back at <span class="num">$678K</span>. Want me to counter at <span class="num">$672K</span> with a closing credit? <span class="block text-[10px] text-ink-500 dark:text-slate-400 mt-1">Yesterday · 14:02</span></div>
               </div>
               <div class="flex items-start justify-end gap-2">
                 <div class="bg-brand-600 text-white px-4 py-3 rounded-2xl rounded-br-md text-sm">Yes please, keep it under <span class="num">$675K</span> total. <span class="block text-[10px] text-white/70 mt-1">Yesterday · 14:18</span></div>
               </div>
               <div class="flex items-start gap-2">
-                <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50 shrink-0">
                 <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">Countered at <span class="num">$672K</span> + <span class="num">$6K</span> credit. Watch the offer tracker — seller replies by Thursday. <span class="block text-[10px] text-ink-500 dark:text-slate-400 mt-1">Today · 09:04</span></div>
               </div>
             </div>
           </div>
 
-          <div class="lg:col-span-2 rounded-2xl glass-card p-6 flex flex-col">
+          <div class="xl:col-span-2 rounded-2xl glass-card p-6 flex flex-col">
             <div class="flex items-center gap-3 pb-4 border-b border-ink-100 dark:border-white/10">
               <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=160&h=160&crop=faces&q=80" alt="Maya Bennett" class="w-11 h-11 rounded-full object-cover border-2 border-brand-500 shadow-sm shrink-0">
               <div>
@@ -483,14 +483,14 @@
             </div>
             <div class="flex-1 py-5 space-y-4">
               <div class="flex items-start gap-2">
-                <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50 shrink-0">
                 <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">Quick heads-up: the olive grove villa added a home office listing. Want the tour moved earlier?</div>
               </div>
               <div class="flex items-start justify-end gap-2">
                 <div class="bg-brand-600 text-white px-4 py-3 rounded-2xl rounded-br-md text-sm">Yes! Friday works. Also — do they accept email offers?</div>
               </div>
               <div class="flex items-start gap-2">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&crop=faces&q=80" alt="Agent avatar" class="w-8 h-8 rounded-full object-cover mt-1 border border-brand-500/50 shrink-0">
                 <div class="msg-bubble px-4 py-3 rounded-2xl text-sm text-ink-700 dark:text-slate-200">They do — and we'll handle it digitally in the dashboard either way.</div>
               </div>
             </div>
@@ -504,23 +504,25 @@
 
       <!-- ============ PROFILE ============ -->
       <section id="profile" class="dash-section scroll-mt-24">
-        <div class="grid lg:grid-cols-3 gap-6">
-          <div class="rounded-2xl glass-card p-6 text-center">
-            <h2 class="font-display text-xl font-bold text-ink-900 dark:text-white" id="dash-profile-name">Demo</h2>
-            <p class="text-sm text-ink-500 dark:text-slate-400" id="dash-profile-role">Home Buyer · Client Portal</p>
-            <p class="text-xs text-ink-500 dark:text-slate-400 mt-1 font-mono" id="dash-profile-email">demo@example.com</p>
-            <div class="mt-3 flex justify-center gap-2">
-              <span class="tbl-pill pill-green">Verified client</span>
-              <span class="tbl-pill pill-slate">Member since 2026</span>
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div class="rounded-2xl glass-card p-6 text-center flex flex-col justify-between">
+            <div>
+              <h2 class="font-display text-2xl font-bold text-ink-900 dark:text-white" id="dash-profile-name">Demo</h2>
+              <p class="text-sm font-medium text-ink-600 dark:text-slate-300 mt-0.5" id="dash-profile-role">Home Buyer · Client Portal</p>
+              <p class="text-xs text-ink-400 dark:text-slate-400 mt-1 font-mono" id="dash-profile-email">demo@example.com</p>
+              <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+                <span class="tbl-pill pill-green whitespace-nowrap"><i class="ri-checkbox-circle-fill"></i> Verified client</span>
+                <span class="tbl-pill pill-slate whitespace-nowrap"><i class="ri-calendar-line"></i> Member since 2026</span>
+              </div>
             </div>
-            <div class="mt-5 grid grid-cols-3 gap-2 text-center">
-              <div class="rounded-xl bg-ink-50 dark:bg-white/5 p-3"><p class="font-extrabold text-ink-900 dark:text-white text-lg"><span class="num" id="dash-stat-tours">2</span></p><p class="text-[11px] text-ink-500 dark:text-slate-400">Tours</p></div>
-              <div class="rounded-xl bg-ink-50 dark:bg-white/5 p-3"><p class="font-extrabold text-ink-900 dark:text-white text-lg"><span class="num" id="dash-stat-offers">1</span></p><p class="text-[11px] text-ink-500 dark:text-slate-400">Offers</p></div>
-              <div class="rounded-xl bg-ink-50 dark:bg-white/5 p-3"><p class="font-extrabold text-ink-900 dark:text-white text-lg"><span class="num" id="dash-profile-saved">0</span></p><p class="text-[11px] text-ink-500 dark:text-slate-400">Saved</p></div>
+            <div class="mt-6 grid grid-cols-3 gap-2.5 sm:gap-3 text-center">
+              <div class="rounded-xl bg-ink-50/80 dark:bg-white/5 p-3 min-w-0 border border-ink-100/60 dark:border-white/5 shadow-xs"><p class="font-extrabold text-ink-900 dark:text-white text-xl"><span class="num" id="dash-stat-tours">2</span></p><p class="text-xs font-semibold text-ink-500 dark:text-slate-400 mt-0.5 truncate">Tours</p></div>
+              <div class="rounded-xl bg-ink-50/80 dark:bg-white/5 p-3 min-w-0 border border-ink-100/60 dark:border-white/5 shadow-xs"><p class="font-extrabold text-ink-900 dark:text-white text-xl"><span class="num" id="dash-stat-offers">1</span></p><p class="text-xs font-semibold text-ink-500 dark:text-slate-400 mt-0.5 truncate">Offers</p></div>
+              <div class="rounded-xl bg-ink-50/80 dark:bg-white/5 p-3 min-w-0 border border-ink-100/60 dark:border-white/5 shadow-xs"><p class="font-extrabold text-ink-900 dark:text-white text-xl"><span class="num" id="dash-profile-saved">0</span></p><p class="text-xs font-semibold text-ink-500 dark:text-slate-400 mt-0.5 truncate">Saved</p></div>
             </div>
           </div>
 
-          <form id="profile-settings-form" class="lg:col-span-2 rounded-2xl glass-card p-6 sm:p-7 space-y-5" data-validate data-success="#profile-success" novalidate>
+          <form id="profile-settings-form" class="xl:col-span-2 rounded-2xl glass-card p-6 sm:p-7 space-y-5" data-validate data-success="#profile-success" novalidate>
             <h2 class="font-display text-xl font-bold text-ink-900 dark:text-white">Profile Settings</h2>
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
