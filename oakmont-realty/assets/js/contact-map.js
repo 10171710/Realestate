@@ -102,41 +102,50 @@
 
   let mapInstance = null;
   let currentLayer = null;
-  let labelLayer = null;
+  let labelLayers = [];
   let activeTileKey = null;
   let activeOfficeId = 'austin';
   const markers = {};
 
-  // Reliable, high-performance, 100% free un-watermarked tile providers powered by Esri ArcGIS Online
+  // 100% Free, Zero-API-Key, Non-Watermarked Tile Providers powered by Esri & OpenStreetMap
   const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/';
   const ESRI_ATTR = 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, METI, NRCAN';
+  const OSM_FR_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &bull; Tiles courtesy of <a href="https://www.openstreetmap.fr">OSM France</a>';
 
   const TILE_LAYERS = {
-    // Street — Esri World Street Map (Crisp, complete street grid with zero watermark/key)
+    // Street / Light — Esri World Street Map (Crisp, high-res, zero keys, zero watermark)
     street: {
       url: ESRI + 'World_Street_Map/MapServer/tile/{z}/{y}/{x}',
       options: { attribution: ESRI_ATTR, maxZoom: 19 }
     },
-    // Street / Light alias
     light: {
       url: ESRI + 'World_Street_Map/MapServer/tile/{z}/{y}/{x}',
       options: { attribution: ESRI_ATTR, maxZoom: 19 }
     },
-    // Dark — Esri Dark Gray Canvas (Sleek dark theme)
+    // Dark — Esri Canvas World Dark Gray Base (with dark road & reference overlays)
     dark: {
       url: ESRI + 'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-      options: { attribution: ESRI_ATTR, maxZoom: 16 }
+      options: { attribution: ESRI_ATTR, maxZoom: 19 }
     },
     // Topo — Esri World Topographic Map
     topo: {
       url: ESRI + 'World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
       options: { attribution: ESRI_ATTR, maxZoom: 19 }
     },
-    // Satellite — Esri World Imagery (High-res aerial)
+    // Satellite — Esri World Imagery (High-res aerial photography)
     satellite: {
       url: ESRI + 'World_Imagery/MapServer/tile/{z}/{y}/{x}',
       options: {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        maxZoom: 19
+      }
+    },
+    // OpenStreetMap Humanitarian mirror (100% free fallback)
+    osmhot: {
+      url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+      options: {
+        attribution: OSM_FR_ATTR,
+        subdomains: 'abc',
         maxZoom: 19
       }
     },
@@ -145,20 +154,7 @@
       url: ESRI + 'NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
       options: { attribution: ESRI_ATTR, maxZoom: 16 }
     },
-    // Fallback Light Gray
-    gray: {
-      url: ESRI + 'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-      options: { attribution: ESRI_ATTR, maxZoom: 16 }
-    },
-    // OpenStreetMap standard tiles — a completely different CDN host
-    osm: {
-      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-      options: {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors',
-        maxZoom: 19
-      }
-    },
-    // OpenTopoMap — independent CDN host, different rendering again
+    // OpenTopoMap
     topoopen: {
       url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
       options: {
@@ -166,38 +162,35 @@
         subdomains: 'abc',
         maxZoom: 17
       }
-    },
-    // OpenStreetMap Germany mirror — another independent CDN host
-    osmde: {
-      url: 'https://tile.openstreetmap.de/{z}/{x}/{y}.png',
-      options: {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors',
-        maxZoom: 18
-      }
     }
   };
 
-  // Road and place-name label overlays for dark, satellite, and gray styles
+  // High-visibility Road & Place-Name Label Overlays for Dark and Satellite modes
   const LABEL_LAYERS = {
-    dark: {
-      url: ESRI + 'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
-      options: { attribution: '', maxZoom: 16, pane: 'shadowPane' }
-    },
-    satellite: {
-      url: ESRI + 'Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
-      options: { attribution: '', maxZoom: 19, pane: 'shadowPane' }
-    },
-    gray: {
-      url: ESRI + 'Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
-      options: { attribution: '', maxZoom: 16, pane: 'shadowPane' }
-    }
+    dark: [
+      {
+        url: ESRI + 'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+        options: { attribution: '', maxZoom: 19, pane: 'overlayPane' }
+      },
+      {
+        url: ESRI + 'Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
+        options: { attribution: '', maxZoom: 19, pane: 'overlayPane', opacity: 0.85 }
+      }
+    ],
+    satellite: [
+      {
+        url: ESRI + 'Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+        options: { attribution: '', maxZoom: 19, pane: 'overlayPane' }
+      },
+      {
+        url: ESRI + 'Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
+        options: { attribution: '', maxZoom: 19, pane: 'overlayPane', opacity: 0.8 }
+      }
+    ]
   };
 
-  // Tried in order when the requested style cannot load any tiles.
-  // The last two are on separate CDNs, so a block on the Esri host
-  // (or a network that blocks it) still leaves the map working.
-  const TILE_FALLBACKS = ['street', 'osm', 'osmde', 'topo', 'dark', 'natgeo', 'gray', 'topoopen'];
-
+  // Fallback chain in case of network restriction
+  const TILE_FALLBACKS = ['dark', 'street', 'osmhot', 'topo', 'satellite', 'natgeo', 'topoopen'];
 
   function createMarkerIcon(office, isActive) {
     return L.divIcon({
@@ -219,17 +212,23 @@
 
   function getPopupContent(office) {
     return `
-      <div class="p-4 max-w-[280px]">
-        <img src="${office.image}" alt="${office.name}" class="w-full h-28 object-cover rounded-xl mb-3 border border-ink-100 dark:border-white/10">
+      <div class="p-4 max-w-[300px]">
+        <img src="${office.image}" alt="${office.name}" class="w-full h-32 object-cover rounded-xl mb-3 border border-ink-100 dark:border-white/10 shadow-sm">
         <span class="tbl-pill ${office.tagClass} text-[10px] font-bold uppercase">${office.tag}</span>
-        <h4 class="font-bold text-base text-ink-900 dark:text-white mt-1">${office.name}</h4>
-        <p class="text-xs text-ink-500 dark:text-slate-300 mt-1"><i class="ri-map-pin-line text-brand-600"></i> ${office.address}</p>
-        <p class="text-xs text-ink-500 dark:text-slate-300 mt-1"><i class="ri-phone-line text-brand-600"></i> ${office.phone}</p>
-        <div class="mt-3 pt-3 border-t border-ink-100 dark:border-white/10 flex items-center justify-between gap-2">
-          <a href="${office.googleMapsUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-bold text-brand-700 dark:text-brand-300 hover:underline">
+        <h4 class="font-bold text-base text-ink-900 dark:text-white mt-1.5">${office.name}</h4>
+        <p class="text-xs text-ink-700 dark:text-slate-200 mt-1.5 flex items-start gap-1.5">
+          <i class="ri-map-pin-2-fill text-brand-600 dark:text-emerald-400 mt-0.5 shrink-0"></i> 
+          <span>${office.address}</span>
+        </p>
+        <p class="text-xs text-ink-700 dark:text-slate-200 mt-1.5 flex items-center gap-1.5">
+          <i class="ri-phone-fill text-brand-600 dark:text-emerald-400 shrink-0"></i> 
+          <a href="tel:${office.phoneRaw}" class="hover:underline font-bold text-ink-900 dark:text-white">${office.phone}</a>
+        </p>
+        <div class="mt-3.5 pt-3 border-t border-ink-100 dark:border-white/10 flex items-center justify-between gap-2">
+          <a href="${office.googleMapsUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-bold text-brand-700 dark:text-emerald-400 hover:text-emerald-300 transition">
             Directions <i class="ri-external-link-line"></i>
           </a>
-          <button type="button" class="px-2.5 py-1 rounded-lg bg-brand-600 text-white text-xs font-bold hover:bg-brand-500 transition" onclick="window.selectCrestlineOffice('${office.id}')">
+          <button type="button" class="px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-soft transition cursor-pointer" onclick="window.selectCrestlineOffice('${office.id}')">
             Select
           </button>
         </div>
@@ -284,10 +283,16 @@
   }
 
   function clearLayers() {
-    if (currentLayer && mapInstance) mapInstance.removeLayer(currentLayer);
-    if (labelLayer && mapInstance) mapInstance.removeLayer(labelLayer);
+    if (currentLayer && mapInstance) {
+      mapInstance.removeLayer(currentLayer);
+    }
+    if (labelLayers && labelLayers.length) {
+      labelLayers.forEach(l => {
+        if (mapInstance && l) mapInstance.removeLayer(l);
+      });
+    }
     currentLayer = null;
-    labelLayer = null;
+    labelLayers = [];
   }
 
   function hideMapStatus() {
@@ -358,8 +363,12 @@
       activeTileKey = key;
 
       if (LABEL_LAYERS[key]) {
-        labelLayer = L.tileLayer(LABEL_LAYERS[key].url, LABEL_LAYERS[key].options);
-        labelLayer.addTo(mapInstance);
+        const configs = Array.isArray(LABEL_LAYERS[key]) ? LABEL_LAYERS[key] : [LABEL_LAYERS[key]];
+        configs.forEach(lCfg => {
+          const lLayer = L.tileLayer(lCfg.url, lCfg.options);
+          lLayer.addTo(mapInstance);
+          labelLayers.push(lLayer);
+        });
       }
     };
 

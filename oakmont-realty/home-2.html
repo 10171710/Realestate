@@ -74,7 +74,7 @@
   })();
 </script>
 
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link rel="stylesheet" href="assets/css/style.css?v=10">
 </head>
 <body class="bg-cream dark:bg-forest-900 text-ink-700 dark:text-slate-300 antialiased">
 
@@ -186,11 +186,17 @@
   1. HERO — image-forward featured listing
 ============================================================ -->
 <section class="page-hero relative overflow-hidden pt-14 pb-16 sm:pt-16 sm:pb-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+  <!-- Hero Background Image & Theme-Reactive Overlay -->
+  <div class="hero-bg-wrapper absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85" alt="Texas Luxury Real Estate Portfolio" class="hero-bg-img w-full h-full object-cover object-center scale-105" loading="eager">
+    <div class="hero-bg-overlay"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
-      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-brand-500/20 text-brand-200 mb-4"><i class="ri-home-4-line"></i> Live Now — 4,120+ Verified Listings</span>
-      <h1 class="font-display mt-4 text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] text-white">This week's most-loved homes</h1>
-      <p class="mt-5 text-lg text-slate-300 max-w-xl mx-auto">Updated daily with live availability and open-house times — the shortlist starts here.</p>
+      <span class="eyebrow inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4"><i class="ri-home-4-line text-emerald-600 dark:text-emerald-400"></i> Live Now — 4,120+ Verified Listings</span>
+      <h1 class="font-display mt-4 text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] text-ink-900 dark:text-white drop-shadow-sm">This week's most-loved homes</h1>
+      <p class="hero-subtitle mt-5 text-lg text-ink-700 dark:text-slate-200 max-w-xl mx-auto">Updated daily with live availability and open-house times — the shortlist starts here.</p>
     </div>
 
     <div class="mt-10 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="100">
@@ -1031,7 +1037,7 @@
 </button>
 
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="assets/js/main.js?v=6"></script>
+<script src="assets/js/main.js?v=8"></script>
 
 <!-- Standalone Real-Time Featured Listings & Favorites Engine -->
 <script>

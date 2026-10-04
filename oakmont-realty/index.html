@@ -74,7 +74,7 @@
   })();
 </script>
 
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link rel="stylesheet" href="assets/css/style.css?v=10">
 
 <script type="application/ld+json">
 {
@@ -207,38 +207,40 @@
 <!-- ============================================================
   1. HERO — REAL ESTATE MLS PORTAL SEARCH & VALUE PROPS
 ============================================================ -->
-<section class="hero-animated relative overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-20">
-  <div class="blob-bg" aria-hidden="true">
-    <span class="w-96 h-96 -top-20 -start-20 bg-brand-500"></span>
-    <span class="w-96 h-96 top-40 end-0 bg-ember-400"></span>
+<section class="hero-animated relative overflow-hidden pt-14 pb-16 sm:pt-16 sm:pb-20">
+  <!-- Hero Background Image (Westlake Hills Modern • $1.85M) with Theme-Reactive Overlay -->
+  <div class="hero-bg-wrapper absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85" alt="Westlake Hills Modern luxury property in Central Texas" class="hero-bg-img w-full h-full object-cover object-center scale-105" loading="eager">
+    <div class="hero-bg-overlay"></div>
   </div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
       
       <!-- Left Hero Column -->
       <div class="lg:col-span-7" data-aos="fade-up">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-500/15 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30">
-          <i class="ri-verified-badge-fill text-brand-600"></i> Licensed Texas Real Estate Brokerage &bull; TREC #9004812
+        <div class="eyebrow inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold shadow-md">
+          <i class="ri-verified-badge-fill text-emerald-600 dark:text-emerald-400"></i> Licensed Texas Real Estate Brokerage &bull; TREC #9004812
         </div>
         
-        <h1 class="font-display mt-4 text-4xl sm:text-5xl lg:text-[3.35rem] font-bold leading-[1.08] text-ink-900 dark:text-white">
+        <h1 class="font-display mt-4 text-4xl sm:text-5xl lg:text-[3.35rem] font-bold leading-[1.08] text-ink-900 dark:text-white drop-shadow-sm">
           Find, Buy &amp; Sell Real Estate with Texas's Premier Agency
         </h1>
         
-        <p class="mt-5 text-lg text-ink-600 dark:text-slate-300 max-w-xl leading-relaxed">
+        <p class="hero-subtitle mt-5 text-lg text-ink-700 dark:text-slate-200 max-w-xl leading-relaxed">
           Search 4,120+ verified MLS listings, calculate real-time savings with transparent fees, and partner with top 1% licensed agents across Texas.&lrm;
         </p>
 
         <!-- Quick Value Props -->
-        <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-bold text-ink-700 dark:text-slate-300">
-          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-brand-600"></i> 0% Buyer Commission</span>
-          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-brand-600"></i> List from $299 or 2.5%</span>
-          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-brand-600"></i> 8% Full Property Mgmt</span>
-          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-brand-600"></i> 18 Avg Days to Close</span>
+        <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-bold text-ink-800 dark:text-slate-100">
+          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-emerald-600 dark:text-emerald-400"></i> 0% Buyer Commission</span>
+          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-emerald-600 dark:text-emerald-400"></i> List from $299 or 2.5%</span>
+          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-emerald-600 dark:text-emerald-400"></i> 8% Full Property Mgmt</span>
+          <span class="inline-flex items-center gap-1.5"><i class="ri-checkbox-circle-fill text-emerald-600 dark:text-emerald-400"></i> 18 Avg Days to Close</span>
         </div>
 
         <!-- Property Portal Multi-Tab Search Engine -->
-        <div class="mt-8 search-panel rounded-2xl p-4 sm:p-5 shadow-lift bg-white/90 dark:bg-forest-800/90 backdrop-blur-md border border-ink-100 dark:border-white/10" id="hero-search-portal">
+        <div class="mt-8 search-panel rounded-2xl p-4 sm:p-5 shadow-2xl bg-white/95 dark:bg-forest-800/95 backdrop-blur-md border border-ink-100 dark:border-white/10" id="hero-search-portal">
           <div class="flex flex-wrap gap-1.5 p-1 rounded-xl bg-ink-50 dark:bg-forest-900 w-fit" role="tablist" aria-label="Search Mode Tabs">
             <button type="button" class="search-mode-btn active px-4 py-2 rounded-lg text-xs sm:text-sm font-bold bg-white dark:bg-forest-800 text-brand-700 dark:text-brand-300 shadow-card flex items-center gap-1.5 transition-all cursor-pointer" data-mode="buy" role="tab" aria-selected="true">
               <i class="ri-home-4-line"></i> Buy Homes
@@ -303,13 +305,13 @@
         </div>
 
         <!-- Brokerage Performance Metrics -->
-        <div class="mt-10 grid grid-cols-3 gap-4 max-w-lg border-t border-ink-100 dark:border-white/10 pt-6">
+        <div class="mt-10 grid grid-cols-3 gap-4 max-w-lg border-t border-ink-300/40 dark:border-white/15 pt-6">
           <div>
             <p class="text-2xl sm:text-3xl font-extrabold text-ink-900 dark:text-white font-display">
               <span data-counter="1.2" data-prefix="$" data-suffix="B+" data-decimals="1">$1.2B+</span>
             </p>
-            <p class="mt-0.5 text-xs text-ink-500 dark:text-slate-400 font-medium flex items-center gap-1.5">
-              <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <p class="mt-0.5 text-xs text-ink-600 dark:text-slate-300 font-medium flex items-center gap-1.5">
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
               <span>Volume Closed</span>
             </p>
           </div>
@@ -317,27 +319,55 @@
             <p class="text-2xl sm:text-3xl font-extrabold text-ink-900 dark:text-white font-display">
               <span data-counter="3400" data-suffix="+" data-format="comma">3,400+</span>
             </p>
-            <p class="mt-0.5 text-xs text-ink-500 dark:text-slate-400 font-medium">Families Moved</p>
+            <p class="mt-0.5 text-xs text-ink-600 dark:text-slate-300 font-medium">Families Moved</p>
           </div>
           <div>
             <p class="text-2xl sm:text-3xl font-extrabold text-ink-900 dark:text-white font-display">
               <span data-counter="4.9" data-suffix="/5.0" data-decimals="1">4.9/5.0</span>
             </p>
-            <p class="mt-0.5 text-xs text-ink-500 dark:text-slate-400 font-medium">Client Rating (850+)</p>
+            <p class="mt-0.5 text-xs text-ink-600 dark:text-slate-300 font-medium">Client Rating (850+)</p>
           </div>
         </div>
       </div>
 
-      <!-- Right Hero Visual Card (Centered) -->
+      <!-- Right Hero Visual Spotlight Card (Centered) -->
       <div class="lg:col-span-5 flex items-center justify-center self-center" data-aos="fade-up" data-aos-delay="150">
-        <div class="relative w-full max-w-lg mx-auto rounded-3xl overflow-hidden shadow-lift border border-ink-100 dark:border-white/10 group flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Luxury modern home in Central Texas" class="w-full aspect-[4/3] object-cover object-center group-hover:scale-105 transition-transform duration-700 mx-auto block" loading="eager">
-          <div class="absolute bottom-4 start-4 end-4 p-3 rounded-2xl bg-forest-900/80 backdrop-blur-md border border-white/15 text-white flex items-center justify-between gap-3 shadow-lg">
-            <div class="flex items-center gap-2.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span class="text-xs font-bold font-display">Westlake Hills Modern • $1.85M</span>
+        <div class="hero-spotlight-card relative w-full max-w-lg mx-auto rounded-3xl overflow-hidden shadow-2xl border border-ink-200/80 dark:border-white/20 group flex flex-col bg-white/95 dark:bg-forest-900/85 backdrop-blur-xl text-ink-900 dark:text-white p-5 sm:p-6 transition-all hover:border-emerald-500/40">
+          <div class="relative rounded-2xl overflow-hidden mb-4 aspect-[16/10] group-hover:shadow-lg transition-all">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Westlake Hills Modern Luxury Home" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-3 start-3">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-forest-950/80 backdrop-blur-md text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span> MLS Verified
+              </span>
             </div>
-            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-brand-600 text-white">MLS Verified</span>
+            <div class="absolute bottom-3 end-3">
+              <span class="px-3 py-1.5 rounded-xl bg-brand-600/90 backdrop-blur-md text-white font-extrabold text-sm shadow">
+                $1,850,000
+              </span>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <h3 class="font-display text-lg sm:text-xl font-bold text-ink-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-emerald-300 transition">Westlake Hills Modern</h3>
+              <span class="text-xs text-ink-500 dark:text-slate-300 font-semibold flex items-center gap-1"><i class="ri-map-pin-2-fill text-brand-500"></i> Austin, TX</span>
+            </div>
+            <p class="text-xs text-ink-600 dark:text-slate-300 line-clamp-2 leading-relaxed mb-3">Custom architectural estate with hill country panoramas, private infinity pool, and smart-home integration.</p>
+            
+            <div class="grid grid-cols-3 gap-2 py-2.5 px-3 rounded-xl bg-ink-50 dark:bg-white/5 border border-ink-100 dark:border-white/10 text-center text-xs font-semibold text-ink-700 dark:text-slate-200 mb-4">
+              <div><span class="block text-ink-900 dark:text-white font-bold">4</span> Beds</div>
+              <div><span class="block text-ink-900 dark:text-white font-bold">4.5</span> Baths</div>
+              <div><span class="block text-ink-900 dark:text-white font-bold">4,820</span> Sq Ft</div>
+            </div>
+            
+            <div class="flex items-center gap-2.5">
+              <a href="listing-detail.html" class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-soft transition">
+                <i class="ri-eye-line"></i> View Listing
+              </a>
+              <a href="contact.html" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-ink-100 hover:bg-ink-200 dark:bg-white/10 dark:hover:bg-white/20 text-ink-800 dark:text-white font-bold text-xs border border-ink-200 dark:border-white/15 transition">
+                <i class="ri-calendar-check-line text-brand-600 dark:text-brand-400"></i> Tour
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1365,6 +1395,6 @@
 </button>
 
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/main.js?v=8"></script>
 </body>
 </html>

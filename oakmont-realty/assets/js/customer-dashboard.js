@@ -852,6 +852,7 @@
 
           var first = pFirst ? pFirst.value.trim() : 'Demo';
           var last = pLast ? pLast.value.trim() : '';
+          var phone = pPhone ? pPhone.value.trim() : '';
 
           if (first.length < 2) {
             if (window.CrestlineToast) window.CrestlineToast('First name must be at least 2 characters long.', 'error');

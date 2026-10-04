@@ -2482,4 +2482,219 @@
 
   initCarousels();
 
+  /* ---------- Accessible In-DOM Custom Select System ---------- */
+  function initCustomSelects() {
+    const selects = $$('select:not([data-no-custom])');
+    selects.forEach(select => {
+      if (select.closest('.custom-select-wrapper') || select.classList.contains('custom-select-enhanced')) return;
+      select.classList.add('custom-select-enhanced');
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'custom-select-wrapper relative w-full';
+      if (select.className.includes('w-auto') || select.className.includes('search-field-sm')) {
+        wrapper.className = 'custom-select-wrapper relative inline-block';
+      }
+
+      select.parentNode.insertBefore(wrapper, select);
+      wrapper.appendChild(select);
+      select.classList.add('sr-only');
+      select.style.position = 'absolute';
+      select.style.width = '1px';
+      select.style.height = '1px';
+      select.style.padding = '0';
+      select.style.margin = '-1px';
+      select.style.overflow = 'hidden';
+      select.style.clip = 'rect(0, 0, 0, 0)';
+      select.style.whiteSpace = 'nowrap';
+      select.style.borderWidth = '0';
+      select.style.opacity = '0';
+      select.style.pointerEvents = 'none';
+
+      const getSelectedOption = () => select.options[select.selectedIndex] || select.options[0];
+      
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'custom-select-trigger w-full flex items-center justify-between px-4 py-3 rounded-xl search-field text-sm font-semibold text-ink-900 dark:text-white focus:outline-none transition cursor-pointer select-none';
+      
+      if (select.classList.contains('search-field-sm') || select.classList.contains('text-xs')) {
+        trigger.className = 'custom-select-trigger w-full flex items-center justify-between px-3 py-1.5 rounded-lg search-field text-xs font-semibold text-ink-900 dark:text-white focus:outline-none transition cursor-pointer select-none';
+      }
+
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'truncate text-start flex-1 me-2';
+      labelSpan.textContent = getSelectedOption() ? getSelectedOption().text : '';
+
+      const arrowIcon = document.createElement('i');
+      arrowIcon.className = 'ri-arrow-down-s-line text-ink-400 dark:text-slate-400 text-lg transition-transform duration-200 shrink-0';
+
+      trigger.appendChild(labelSpan);
+      trigger.appendChild(arrowIcon);
+      wrapper.appendChild(trigger);
+
+      const panel = document.createElement('div');
+      panel.className = 'custom-select-panel hidden absolute z-50 top-[calc(100%+0.35rem)] start-0 w-full min-w-[180px] rounded-xl bg-white dark:bg-[#141b17] border border-ink-100 dark:border-white/10 shadow-2xl p-1.5 max-h-60 overflow-y-auto';
+      
+      function renderOptions() {
+        panel.innerHTML = '';
+        Array.from(select.options).forEach((opt, idx) => {
+          const optDiv = document.createElement('div');
+          const isSelected = idx === select.selectedIndex;
+          const isSm = select.classList.contains('search-field-sm') || select.classList.contains('text-xs');
+          optDiv.className = `custom-select-option ${isSm ? 'px-2.5 py-1.5 text-xs' : 'px-3 py-2.5 text-sm'} rounded-lg font-semibold cursor-pointer flex items-center justify-between transition ${
+            isSelected
+              ? 'bg-brand-500/10 text-brand-700 dark:text-brand-300 font-bold'
+              : 'text-ink-700 dark:text-slate-200 hover:bg-ink-50 dark:hover:bg-white/5 hover:text-ink-900 dark:hover:text-white'
+          }`;
+
+          const optText = document.createElement('span');
+          optText.className = 'truncate me-2';
+          optText.textContent = opt.text;
+          optDiv.appendChild(optText);
+
+          if (isSelected) {
+            const check = document.createElement('i');
+            check.className = 'ri-check-line text-brand-600 dark:text-brand-400 shrink-0';
+            optDiv.appendChild(check);
+          }
+
+          optDiv.addEventListener('click', (e) => {
+            e.stopPropagation();
+            select.selectedIndex = idx;
+            labelSpan.textContent = opt.text;
+            closeDropdown();
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            select.dispatchEvent(new Event('input', { bubbles: true }));
+            renderOptions();
+          });
+
+          panel.appendChild(optDiv);
+        });
+      }
+
+      renderOptions();
+      wrapper.appendChild(panel);
+
+      function openDropdown() {
+        $$('.custom-select-panel').forEach(p => {
+          if (p !== panel) p.classList.add('hidden');
+        });
+        $$('.custom-select-trigger i').forEach(icon => {
+          if (icon !== arrowIcon) icon.classList.remove('rotate-180');
+        });
+        panel.classList.remove('hidden');
+        arrowIcon.classList.add('rotate-180');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDropdown() {
+        panel.classList.add('hidden');
+        arrowIcon.classList.remove('rotate-180');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (panel.classList.contains('hidden')) {
+          openDropdown();
+        } else {
+          closeDropdown();
+        }
+      });
+
+      select.addEventListener('change', () => {
+        const cur = getSelectedOption();
+        if (cur) labelSpan.textContent = cur.text;
+        renderOptions();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.custom-select-wrapper')) {
+        $$('.custom-select-panel').forEach(p => p.classList.add('hidden'));
+        $$('.custom-select-trigger i').forEach(icon => icon.classList.remove('rotate-180'));
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        $$('.custom-select-panel').forEach(p => p.classList.add('hidden'));
+        $$('.custom-select-trigger i').forEach(icon => icon.classList.remove('rotate-180'));
+      }
+    });
+  }
+
+  /* ---------- Hero Background Interactive Reaction (Mouse Parallax & Ambient Motion) ---------- */
+  function initHeroInteractiveReaction() {
+    const heroes = $$('.hero-animated, .page-hero');
+    if (!heroes.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    heroes.forEach(hero => {
+      const bgImg = hero.querySelector('.hero-bg-img, img.hero-bg');
+      if (!bgImg) return;
+
+      let rafId = null;
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isHovering = false;
+
+      function renderFrame() {
+        currentX += (targetX - currentX) * 0.07;
+        currentY += (targetY - currentY) * 0.07;
+
+        const scale = isHovering ? 1.06 : 1.04;
+        bgImg.style.transform = `scale(${scale}) translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+
+        if (Math.abs(targetX - currentX) > 0.02 || Math.abs(targetY - currentY) > 0.02 || isHovering) {
+          rafId = requestAnimationFrame(renderFrame);
+        } else {
+          bgImg.style.transform = `scale(1.04) translate3d(0, 0, 0)`;
+          rafId = null;
+        }
+      }
+
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const xPercent = (e.clientX - rect.left) / rect.width - 0.5;
+        const yPercent = (e.clientY - rect.top) / rect.height - 0.5;
+
+        targetX = -xPercent * 24;
+        targetY = -yPercent * 16;
+        isHovering = true;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(renderFrame);
+        }
+      }, { passive: true });
+
+      hero.addEventListener('mouseleave', () => {
+        targetX = 0;
+        targetY = 0;
+        isHovering = false;
+        if (!rafId) {
+          rafId = requestAnimationFrame(renderFrame);
+        }
+      });
+    });
+  }
+
+  window.initCustomSelects = initCustomSelects;
+  window.initHeroInteractiveReaction = initHeroInteractiveReaction;
+
+  function initAll() {
+    initCustomSelects();
+    initHeroInteractiveReaction();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+
 })();

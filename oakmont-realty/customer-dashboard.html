@@ -66,7 +66,7 @@
   })();
 </script>
 
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link rel="stylesheet" href="assets/css/style.css?v=10">
 </head>
 <body class="bg-[#f3efe8] dark:bg-forest-900 text-ink-700 dark:text-slate-300 antialiased">
 
@@ -108,25 +108,25 @@
   <div class="dash-main">
     <!-- Topbar -->
     <header class="sticky top-0 z-40 bg-[#f3efe8]/90 dark:bg-forest-900/90 backdrop-blur-md border-b border-ink-100 dark:border-white/10">
-      <div class="flex items-center justify-between gap-4 px-4 sm:px-8 h-16">
-        <div class="flex items-center gap-3">
+      <div class="flex items-center justify-between gap-3 px-4 sm:px-8 h-16 max-w-full">
+        <div class="flex items-center gap-3 min-w-0">
           <button id="dash-toggle" class="lg:hidden w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 hover:bg-ink-50 dark:hover:bg-white/10 transition shrink-0" aria-label="Toggle sidebar menu" aria-expanded="false" aria-controls="dash-sidebar"><i class="ri-menu-2-line"></i></button>
-          <div>
-            <p class="text-sm font-bold text-ink-900 dark:text-white" id="dash-greeting">Welcome to your Portal</p>
-            <p class="text-xs text-ink-500 dark:text-slate-400" id="dash-agent-info">Agent: Maya Bennett · Client Specialist</p>
+          <div class="min-w-0">
+            <p class="text-sm font-bold text-ink-900 dark:text-white truncate" id="dash-greeting">Welcome to your Portal</p>
+            <p class="text-xs text-ink-500 dark:text-slate-400 truncate" id="dash-agent-info">Agent: Maya Bennett · Client Specialist</p>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition">
+        <div class="flex items-center gap-2 shrink-0">
+          <button id="dir-toggle" title="Toggle RTL / LTR Direction" aria-label="Toggle text direction" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition shrink-0">
             <svg class="w-4 h-4 rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 7H4M8 3.5L4 7l4 3.5" />
               <path d="M4 17h16M16 13.5l4 3.5-4 3.5" />
             </svg>
           </button>
-          <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition">
+          <button id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle dark or light mode" class="w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 transition shrink-0">
             <i class="ri-moon-line dark:hidden"></i><i class="ri-sun-line hidden dark:inline"></i>
           </button>
-          <button class="relative w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 hover:bg-ink-50 dark:hover:bg-white/10 transition" aria-label="Notifications">
+          <button class="relative w-9 h-9 rounded-lg bg-white dark:bg-white/5 border border-ink-100 dark:border-white/10 flex items-center justify-center text-ink-700 dark:text-slate-300 hover:bg-ink-50 dark:hover:bg-white/10 transition shrink-0" aria-label="Notifications">
             <i class="ri-notification-3-line"></i>
             <span class="absolute -top-1 -end-1 w-4 h-4 rounded-full bg-ember-500 text-white text-[10px] font-bold flex items-center justify-center">3</span>
           </button>
@@ -574,7 +574,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
 <script src="assets/js/firebase-config.js"></script>
 <script src="assets/js/firebase-auth.js"></script>
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/main.js?v=8"></script>
 <script src="assets/js/customer-dashboard.js?v=2"></script>
 </body>
 </html>
