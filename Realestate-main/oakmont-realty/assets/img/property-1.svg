@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="560" rx="24" fill="url(#sky)"/>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e6d4"/><stop offset="0.55" stop-color="#e9d3b5"/>
+      <stop offset="0.58" stop-color="#d9c9a8"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="1" stop-color="#c96f4a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="128" cy="89.60000000000001" r="104" fill="url(#sun)"/>
+  <circle cx="672" cy="100.8" r="16" fill="#ffffff" opacity="0.7"/>
+  <circle cx="720" cy="44.800000000000004" r="9.6" fill="#ffffff" opacity="0.6"/>
+  <rect x="0" y="308" width="800" height="252" fill="#d9c9a8" opacity="0.9"/>
+  <text x="64" y="358.4" font-size="28" font-weight="700" fill="#6b4a2f" opacity="0.55">Modern Family Home</text>
+  <ellipse cx="400" cy="318" rx="272" ry="40" fill="#00000022"/>
+  <g>
+    <polygon points="272,218.39999999999998 400,140 528,218.39999999999998" fill="#8a5a3b"/>
+    <rect x="280" y="218.39999999999998" width="240" height="168" rx="6" fill="#f5f0e8"/>
+    <rect x="356" y="252" width="40" height="56" rx="3" fill="#7fb4c9"/>
+    <rect x="416" y="252" width="40" height="56" rx="3" fill="#7fb4c9"/>
+    <rect x="380" y="364" width="40" height="44.800000000000004" rx="2" fill="#c96f4a"/>
+    <path d="M 360 308 L 440 308 L 440 364 L 360 364 Z" fill="#c96f4a" opacity="0.85"/>
+    <rect x="288" y="218.39999999999998" width="96" height="28" fill="#f5f0e8" opacity="0.9"/>
+    <rect x="416" y="218.39999999999998" width="96" height="28" fill="#f5f0e8" opacity="0.9"/>
+  </g>
+  <g>
+    <rect x="128" y="291.2" width="44" height="89.60000000000001" rx="3" fill="#53763c"/>
+    <circle cx="152" cy="257.6" r="48" fill="#7aa35c"/>
+    <circle cx="96" cy="280" r="36" fill="#7aa35c" opacity="0.8"/>
+  </g>
+  <g>
+    <rect x="624" y="291.2" width="44" height="89.60000000000001" rx="3" fill="#53763c"/>
+    <circle cx="648" cy="257.6" r="48" fill="#7aa35c"/>
+    <circle cx="704" cy="280" r="36" fill="#7aa35c" opacity="0.8"/>
+  </g>
+</svg>
