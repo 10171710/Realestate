@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="bk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dcefe4"/><stop offset="0.5" stop-color="#bcdccb"/>
+      <stop offset="0.52" stop-color="#c9d9b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" rx="24" fill="url(#bk)"/>
+  <circle cx="672" cy="80" r="72" fill="#ffffff" opacity="0.55"/>
+  <rect x="64" y="340" width="672" height="50" rx="6" fill="#122" opacity="0.95"/>
+  <text x="96" y="374" font-size="22" font-weight="700" fill="#f5f0e8" opacity="0.8">Market Report 2026</text>
+  <rect x="64" y="315" width="672" height="6" fill="#2f7d5d" opacity="0.7"/>
+  <rect x="96" y="320" width="3" height="22.5" fill="#4e7a3c"/><circle cx="98" cy="315" r="28.000000000000004" fill="#6f9a53"/><rect x="320" y="320" width="3" height="22.5" fill="#4e7a3c"/><circle cx="322" cy="315" r="28.000000000000004" fill="#6f9a53"/>
+</svg>
